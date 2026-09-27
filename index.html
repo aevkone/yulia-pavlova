@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Юлия Павлова — консультации</title>
 <meta name="description" content="Юлия Павлова: консультации по карьере, бизнесу и личным решениям. 15+ лет в строительстве, от инженера до правой руки владельца крупного холдинга.">
+<meta property="og:title" content="Юлия Павлова — консультации">
+<meta property="og:description" content="Работа, бизнес, личные решения. Скажу как есть.">
+<meta name="theme-color" content="#15130F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315130F'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' text-anchor='middle' fill='%23F5F0E8'%3EЮ%3C/text%3E%3Ccircle cx='50' cy='44' r='4' fill='%23D9714F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
@@ -45,18 +49,61 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .btn.light:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 nav .btn{padding:10px 20px}
 
-/* hero */
-.hero{padding:80px 0 90px}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+/* hero: полноэкранный, фон — видео (video/hero-desktop.mp4 / hero-mobile.mp4), пока его нет — анимированный градиент */
+.hero{position:relative;min-height:calc(100svh - 94px);display:flex;align-items:center;padding:80px 0;background:var(--ink);color:var(--paper);overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg::before{content:"";position:absolute;inset:-20%;background:
+  radial-gradient(40% 50% at 78% 62%,rgba(217,113,79,.38),transparent 70%),
+  radial-gradient(35% 40% at 88% 30%,rgba(184,67,42,.22),transparent 70%),
+  radial-gradient(60% 60% at 20% 20%,rgba(60,54,46,.55),transparent 70%);
+  animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-4%,3%,0) scale(1.08)}}
+.hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
+.hero-bg video.ready{opacity:1}
+/* затемнение: слева плотнее — там текст */
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,19,15,.88) 0%,rgba(21,19,15,.62) 45%,rgba(21,19,15,.2) 100%),linear-gradient(0deg,rgba(21,19,15,.6),transparent 35%)}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero-text{max-width:720px}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:22px}
-h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-.01em}
-h1 em{color:var(--accent);font-style:italic}
-.lead{font-size:19px;max-width:540px;margin:28px 0 36px;color:#3B362F}
+.hero .eyebrow{color:var(--accent-soft)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,80px);line-height:1.04;letter-spacing:-.01em}
+h1 em{color:var(--accent-soft);font-style:italic}
+.lead{font-size:19px;max-width:560px;margin:28px 0 38px;color:rgba(245,240,232,.82)}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-.photo{aspect-ratio:4/5;border-radius:220px 220px 16px 16px;background:linear-gradient(160deg,#2C2822,#15130F);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;color:var(--paper)}
+.hero .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.hero .btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hero .btn.ghost{background:transparent;color:var(--paper);border-color:rgba(245,240,232,.45)}
+.hero .btn.ghost:hover{background:var(--paper);color:var(--ink)}
+.scroll-hint{position:absolute;left:50%;bottom:26px;z-index:1;transform:translateX(-50%);width:1px;height:48px;background:linear-gradient(rgba(245,240,232,.6),transparent);animation:hint 2.4s ease-in-out infinite}
+@keyframes hint{0%,100%{opacity:.3}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.hero-bg::before,.scroll-hint,.marquee-track{animation:none}}
+
+/* фото (блок «Мой путь») */
+.photo{aspect-ratio:4/5;max-width:380px;border-radius:220px 220px 16px 16px;background:linear-gradient(160deg,#2C2822,#15130F);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;color:var(--paper);margin-top:36px}
 .photo::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,rgba(217,113,79,.45),transparent 55%)}
 .photo .ph{position:relative;padding:28px;text-align:center;font-size:13px;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
-.photo .tag{position:absolute;top:120px;left:0;background:var(--paper);color:var(--ink);padding:12px 18px;border-radius:0 30px 30px 0;font-family:var(--serif);font-style:italic;font-size:17px}
+.photo .tag{position:absolute;top:90px;left:0;background:var(--paper);color:var(--ink);padding:12px 18px;border-radius:0 30px 30px 0;font-family:var(--serif);font-style:italic;font-size:17px}
+
+/* бегущая строка с фразами */
+.marquee{background:var(--paper-2);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0}
+.marquee-track{display:flex;gap:56px;width:max-content;animation:marquee 60s linear infinite}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:24px;white-space:nowrap}
+.marquee span::after{content:"✦";font-style:normal;color:var(--accent);font-size:14px;margin-left:56px;vertical-align:middle}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* появление при скролле */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* мобильное меню */
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;position:relative}
+.burger span,.burger span::before,.burger span::after{position:absolute;left:9px;width:22px;height:2px;background:var(--ink);transition:.25s;content:""}
+.burger span{top:19px}
+.burger span::before{top:-7px;left:0}
+.burger span::after{top:7px;left:0}
+.nav-open .burger span{background:transparent}
+.nav-open .burger span::before{top:0;transform:rotate(45deg)}
+.nav-open .burger span::after{top:0;transform:rotate(-45deg)}
 
 /* facts */
 .facts{background:var(--ink);color:var(--paper);padding:56px 0}
@@ -142,10 +189,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
 
 @media (max-width:900px){
-  .menu{display:none}
-  .hero{padding:48px 0 64px}
-  .hero .wrap,.path .wrap{grid-template-columns:1fr;gap:40px}
-  .photo{max-width:420px;width:100%;margin:0 auto}
+  .burger{display:block}
+  nav .wrap{position:relative}
+  .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 24px 16px}
+  .menu a{padding:12px 0;font-size:17px;opacity:1;border-bottom:1px solid var(--line)}
+  .nav-open .menu{display:flex}
+  /* на телефоне текст сверху — в вертикальном видео пустые верхние 2/3 кадра */
+  .hero{align-items:flex-start;padding:56px 0 96px}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(21,19,15,.82) 0%,rgba(21,19,15,.6) 55%,rgba(21,19,15,.35) 80%,rgba(21,19,15,.7) 100%)}
+  .path .wrap{grid-template-columns:1fr;gap:40px}
+  .photo{max-width:420px;width:100%;margin:36px auto 0}
   .facts .wrap{grid-template-columns:repeat(2,1fr);gap:32px}
   .grid3,.svc,.how{grid-template-columns:1fr}
   .pr{grid-template-columns:1fr}
@@ -156,6 +209,10 @@ footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
 @media (max-width:480px){
   .wrap{padding:0 16px}
   nav .btn{display:none}
+  .menu{padding:8px 16px 16px}
+  .hero .btn{width:100%;text-align:center}
+  .scroll-hint{display:none}
+  .marquee span{font-size:20px}
   .fact b{font-size:38px}
   .pr div{padding:28px}
 }
@@ -175,25 +232,27 @@ footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
       <a href="#faq">Вопросы</a>
     </div>
     <a href="#contact" class="btn">Записаться</a>
+    <button class="burger" aria-label="Меню"><span></span></button>
   </div>
 </nav>
 
 <header class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <video muted loop playsinline preload="none"
+      data-desktop="video/hero-desktop.mp4" data-mobile="video/hero-mobile.mp4"></video>
+  </div>
   <div class="wrap">
-    <div>
+    <div class="hero-text">
       <div class="eyebrow">Консультации · работа, бизнес, решения</div>
       <h1>Мне всегда было <em>мало</em>. И я научилась выбирать, за что бороться.</h1>
-      <p class="lead">Больше 15 лет в строительстве: от инженера до правой руки владельца крупного холдинга. Помогаю разобраться, уходить из найма или оставаться, менять бизнес или нет, и где на самом деле твоё место.</p>
+      <p class="lead">Больше 15 лет в строительстве: от инженера до правой руки владельца крупного холдинга. Помогаю разобраться, уходить из найма или оставаться, менять бизнес или нет — и где на самом деле ваше место.</p>
       <div class="cta-row">
         <a href="#contact" class="btn">Записаться на консультацию</a>
         <a href="#services" class="btn ghost">Форматы работы</a>
       </div>
     </div>
-    <div class="photo">
-      <div class="tag">«Скажу как есть»</div>
-      <div class="ph">Здесь будет фото Юлии</div>
-    </div>
   </div>
+  <div class="scroll-hint" aria-hidden="true"></div>
 </header>
 
 <div class="facts">
@@ -202,6 +261,13 @@ footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
     <div class="fact"><b>100 млн ₽+</b><span>бюджеты проектов, по которым принимала решения</span></div>
     <div class="fact"><b>3 года</b><span>вела личные стройки владельца крупного холдинга в России и за рубежом</span></div>
     <div class="fact"><b>4</b><span>собственных бизнеса — знаю, что работает и что нет</span></div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Меньшее я даже не рассматривала</span><span>Гнуться можно. Прогибаться — нет</span><span>Связи работают, пока ты что-то решаешь</span><span>Разрушить успеешь. Построить заново — нет</span><span>Я лучше уйду первая, но с достоинством</span><span>Надо быть собой. На тебя найдётся свой</span>
+    <span>Меньшее я даже не рассматривала</span><span>Гнуться можно. Прогибаться — нет</span><span>Связи работают, пока ты что-то решаешь</span><span>Разрушить успеешь. Построить заново — нет</span><span>Я лучше уйду первая, но с достоинством</span><span>Надо быть собой. На тебя найдётся свой</span>
   </div>
 </div>
 
@@ -268,6 +334,10 @@ footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
       <div class="eyebrow">Мой путь</div>
       <h2>Меньшее я даже не рассматривала</h2>
       <p class="sub">Ещё студенткой сказала декану, что буду работать в крупнейшей нефтяной компании. Все засмеялись. Декан — нет. Так и вышло.</p>
+      <div class="photo">
+        <div class="tag">«Скажу как есть»</div>
+        <div class="ph">Здесь будет фото Юлии</div>
+      </div>
     </div>
     <div>
       <div class="step"><div class="when">Студенчество</div><div><h3>Своё агентство недвижимости</h3><p>Начинала риэлтором и закрывала сделки, которые другим не давались. Инвестор поверил — открыла своё агентство.</p></div></div>
@@ -339,5 +409,36 @@ footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
   </div>
 </footer>
 
+<script>
+// фоновое видео: вертикальное для телефона, горизонтальное для ПК; если файла нет — остаётся градиент
+(function(){
+  var v=document.querySelector('.hero-bg video');
+  if(!v||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var mq=matchMedia('(max-width: 900px)');
+  function load(){
+    var src=mq.matches?v.dataset.mobile:v.dataset.desktop;
+    if(v.getAttribute('src')===src) return;
+    v.classList.remove('ready');
+    v.src=src;
+    v.play().catch(function(){});
+  }
+  v.addEventListener('canplay',function(){v.classList.add('ready')});
+  v.addEventListener('error',function(){v.classList.remove('ready')});
+  mq.addEventListener('change',load);
+  load();
+})();
+
+// мобильное меню
+document.querySelector('.burger').addEventListener('click',function(){document.body.classList.toggle('nav-open')});
+document.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('nav-open')})});
+
+// появление блоков при скролле
+(function(){
+  var els=document.querySelectorAll('section h2, section .sub, .card, .step, .pr > div, .how > div, .fact, details');
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){el.classList.add('reveal');io.observe(el)});
+})();
+</script>
 </body>
 </html>
