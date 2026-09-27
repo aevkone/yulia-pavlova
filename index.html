@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Юлия Павлова — консультации</title>
+<meta name="description" content="Юлия Павлова: консультации по карьере, бизнесу и личным решениям. 15+ лет в строительстве, от инженера до правой руки владельца крупного холдинга.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15130F;
+  --ink-2:#221F1A;
+  --paper:#F5F0E8;
+  --paper-2:#EBE3D6;
+  --muted:#8A8275;
+  --accent:#B8432A;
+  --accent-soft:#D9714F;
+  --line:rgba(21,19,15,.12);
+  --line-dark:rgba(245,240,232,.14);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.draft{background:var(--accent);color:#fff;text-align:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(245,240,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:22px;font-weight:700;text-decoration:none}
+.logo span{color:var(--accent)}
+.menu{display:flex;gap:28px;font-size:15px}
+.menu a{text-decoration:none;opacity:.75}
+.menu a:hover{opacity:1}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;padding:14px 26px;border-radius:40px;font-weight:700;font-size:15px;transition:.2s;border:1px solid var(--ink)}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn.light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn.light:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+nav .btn{padding:10px 20px}
+
+/* hero */
+.hero{padding:80px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:22px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-.01em}
+h1 em{color:var(--accent);font-style:italic}
+.lead{font-size:19px;max-width:540px;margin:28px 0 36px;color:#3B362F}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.photo{aspect-ratio:4/5;border-radius:220px 220px 16px 16px;background:linear-gradient(160deg,#2C2822,#15130F);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;color:var(--paper)}
+.photo::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,rgba(217,113,79,.45),transparent 55%)}
+.photo .ph{position:relative;padding:28px;text-align:center;font-size:13px;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.photo .tag{position:absolute;top:34px;left:-8px;background:var(--paper);color:var(--ink);padding:12px 18px;border-radius:0 30px 30px 0;font-family:var(--serif);font-style:italic;font-size:17px}
+
+/* facts */
+.facts{background:var(--ink);color:var(--paper);padding:56px 0}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.fact b{display:block;font-family:var(--serif);font-size:48px;font-weight:500;color:var(--accent-soft);line-height:1.1}
+.fact span{font-size:15px;opacity:.75}
+
+section{padding:100px 0}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4vw,50px);line-height:1.1;margin-bottom:18px}
+.sub{color:#4A443B;max-width:620px;margin-bottom:52px;font-size:18px}
+
+/* audience */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{color:#5A5349;font-size:15px}
+.card q{display:block;font-family:var(--serif);font-style:italic;font-size:19px;margin-top:18px;color:var(--accent);quotes:"«" "»"}
+
+/* services */
+.services{background:var(--paper-2)}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc .card{display:flex;flex-direction:column;padding:36px 32px}
+.svc .num{font-family:var(--serif);font-size:15px;color:var(--accent);margin-bottom:26px}
+.svc h3{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.15;margin-bottom:14px}
+.svc ul{list-style:none;margin:18px 0 28px;font-size:15px;color:#4A443B}
+.svc li{padding:9px 0;border-top:1px solid var(--line)}
+.svc .price{margin-top:auto;font-weight:700;margin-bottom:18px}
+.svc .price small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.svc .card.main{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.svc .card.main p,.svc .card.main ul{color:rgba(245,240,232,.75)}
+.svc .card.main li{border-color:var(--line-dark)}
+.svc .card.main .num{color:var(--accent-soft)}
+.svc .card.main .price small{color:rgba(245,240,232,.5)}
+
+/* quote */
+.quote{background:var(--accent);color:#fff;text-align:center;padding:110px 0}
+.quote p{font-family:var(--serif);font-size:clamp(30px,4.4vw,56px);line-height:1.15;max-width:900px;margin:0 auto}
+.quote span{display:block;margin-top:24px;font-size:15px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+
+/* path */
+.path .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+.path .intro{position:sticky;top:110px;align-self:start}
+.step{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:28px 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .when{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;padding-top:4px}
+.step h3{font-family:var(--serif);font-weight:500;font-size:24px;margin-bottom:6px}
+.step p{color:#5A5349;font-size:16px}
+
+/* principles */
+.principles{background:var(--ink);color:var(--paper)}
+.principles .sub{color:rgba(245,240,232,.7)}
+.pr{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:18px;overflow:hidden}
+.pr div{background:var(--ink);padding:40px}
+.pr h3{font-family:var(--serif);font-weight:500;font-size:28px;margin-bottom:12px;color:var(--paper)}
+.pr h3 i{color:var(--accent-soft)}
+.pr p{color:rgba(245,240,232,.7);font-size:16px}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:s}
+.how div{counter-increment:s}
+.how div::before{content:"0" counter(s);display:block;font-family:var(--serif);font-size:56px;color:var(--accent);line-height:1;margin-bottom:18px}
+.how h3{font-size:19px;margin-bottom:8px}
+.how p{color:#5A5349;font-size:16px}
+
+/* faq */
+.faq{max-width:820px}
+details{border-top:1px solid var(--line);padding:24px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";font-family:var(--serif);font-size:26px;line-height:1;color:var(--accent)}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:#5A5349}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);text-align:center}
+.contact h2{max-width:760px;margin:0 auto 18px}
+.contact .sub{color:rgba(245,240,232,.7);margin:0 auto 40px}
+.contact .cta-row{justify-content:center}
+.contact .btn.ghost{color:var(--paper);border-color:rgba(245,240,232,.4)}
+.contact .btn.ghost:hover{background:var(--paper);color:var(--ink)}
+footer{background:var(--ink);color:rgba(245,240,232,.5);font-size:14px;border-top:1px solid var(--line-dark);padding:30px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer i{font-family:var(--serif);color:var(--accent-soft);font-size:17px}
+
+@media (max-width:900px){
+  .menu{display:none}
+  .hero{padding:48px 0 64px}
+  .hero .wrap,.path .wrap{grid-template-columns:1fr;gap:40px}
+  .photo{max-width:420px;width:100%;margin:0 auto}
+  .facts .wrap{grid-template-columns:repeat(2,1fr);gap:32px}
+  .grid3,.svc,.how{grid-template-columns:1fr}
+  .pr{grid-template-columns:1fr}
+  .path .intro{position:static}
+  section{padding:72px 0}
+  .step{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+  nav .btn{display:none}
+  .fact b{font-size:38px}
+  .pr div{padding:28px}
+}
+</style>
+</head>
+<body>
+
+<div class="draft">Черновой вариант · тексты и цены согласуем</div>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Юлия Павлова<span>.</span></a>
+    <div class="menu">
+      <a href="#for">Кому</a>
+      <a href="#services">Услуги</a>
+      <a href="#path">Путь</a>
+      <a href="#faq">Вопросы</a>
+    </div>
+    <a href="#contact" class="btn">Записаться</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Консультации · работа, бизнес, решения</div>
+      <h1>Мне всегда было <em>мало</em>. И я научилась выбирать, за что бороться.</h1>
+      <p class="lead">Больше 15 лет в строительстве: от инженера до правой руки владельца крупного холдинга. Помогаю разобраться, уходить из найма или оставаться, менять бизнес или нет, и где на самом деле твоё место.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn">Записаться на консультацию</a>
+        <a href="#services" class="btn ghost">Форматы работы</a>
+      </div>
+    </div>
+    <div class="photo">
+      <div class="tag">«Скажу как есть»</div>
+      <div class="ph">Здесь будет фото Юлии</div>
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><b>15+</b><span>лет в строительстве и управлении проектами</span></div>
+    <div class="fact"><b>100 млн ₽+</b><span>бюджеты проектов, по которым принимала решения</span></div>
+    <div class="fact"><b>3 года</b><span>вела личные стройки владельца крупного холдинга в России и за рубежом</span></div>
+    <div class="fact"><b>4</b><span>собственных бизнеса — знаю, что работает и что нет</span></div>
+  </div>
+</div>
+
+<section id="for">
+  <div class="wrap">
+    <div class="eyebrow">Кому это нужно</div>
+    <h2>Ко мне приходят с вопросами, которые страшно задать вслух</h2>
+    <p class="sub">Работа, деньги, решения, отношения — без шаблонов и «девчачьих» советов. Разбираем вашу ситуацию, а не теорию.</p>
+    <div class="grid3">
+      <div class="card"><h3>Женщинам в найме</h3><p>Работаете на кого-то, чувствуете потолок и сомневаетесь в выходе.</p><q>Стоит ли уйти из найма в своё дело?</q></div>
+      <div class="card"><h3>Руководителям и предпринимателям</h3><p>Нужен взгляд со стороны на решения в бизнесе и в команде.</p><q>Стоит ли из этого бизнеса уходить в другой?</q></div>
+      <div class="card"><h3>Тем, кто совмещает карьеру и семью</h3><p>Хочется и сохранить семью, и расти в работе.</p><q>Как не потерять одно ради другого?</q></div>
+      <div class="card"><h3>Сильным и независимым</h3><p>Всего добились сами, а внутри остаются вопросы.</p><q>Я сама себя сделала. Почему я одна?</q></div>
+      <div class="card"><h3>Тем, кто не хочет подстраиваться</h3><p>Устали играть роль, чтобы нравиться, но не знают, как иначе.</p><q>Как быть собой и не остаться одной?</q></div>
+      <div class="card"><h3>Тем, кто боится выйти</h3><p>Знаете, что можете больше, но не решаетесь показать себя.</p><q>А вдруг никому не надо?</q></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="eyebrow">Форматы работы</div>
+    <h2>Прямой разговор о вашей ситуации</h2>
+    <p class="sub">Не читаю мораль и не говорю «надо». Показываю, что вижу со стороны, и помогаю принять решение, за которое потом не стыдно.</p>
+    <div class="svc">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Разбор одного вопроса</h3>
+        <p>Когда нужен короткий честный взгляд со стороны на одну конкретную ситуацию.</p>
+        <ul><li>Онлайн, до 45 минут</li><li>Одна ситуация — одно решение</li><li>Можно начать с вопроса в личные сообщения</li></ul>
+        <div class="price">Стоимость уточняется<small>цена появится после согласования</small></div>
+        <a href="#contact" class="btn ghost">Задать вопрос</a>
+      </div>
+      <div class="card main">
+        <div class="num">02</div>
+        <h3>Личная консультация</h3>
+        <p>Глубокий разбор: работа, бизнес или личное решение — с планом, что делать дальше.</p>
+        <ul><li>Онлайн, 60–90 минут</li><li>Разбираем ситуацию целиком, без шаблонов</li><li>После встречи — конкретные следующие шаги</li></ul>
+        <div class="price">Стоимость уточняется<small>цена появится после согласования</small></div>
+        <a href="#contact" class="btn light">Записаться</a>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Сопровождение</h3>
+        <p>Для тех, кто проходит перемену: смена работы, выход из найма, перезапуск дела.</p>
+        <ul><li>Несколько недель на связи</li><li>Регулярные созвоны</li><li>Поддержка в момент решений</li></ul>
+        <div class="price">Стоимость уточняется<small>формат согласуем</small></div>
+        <a href="#contact" class="btn ghost">Обсудить</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote">
+  <div class="wrap">
+    <p>«Мне говорили — повезло.<br>Я год не спала».</p>
+    <span>За словом «везение» всегда стоит работа, которую никто не видит</span>
+  </div>
+</div>
+
+<section id="path" class="path">
+  <div class="wrap">
+    <div class="intro">
+      <div class="eyebrow">Мой путь</div>
+      <h2>Меньшее я даже не рассматривала</h2>
+      <p class="sub">Ещё студенткой сказала декану, что буду работать в крупнейшей нефтяной компании. Все засмеялись. Декан — нет. Так и вышло.</p>
+    </div>
+    <div>
+      <div class="step"><div class="when">Студенчество</div><div><h3>Своё агентство недвижимости</h3><p>Начинала риэлтором и закрывала сделки, которые другим не давались. Инвестор поверил — открыла своё агентство.</p></div></div>
+      <div class="step"><div class="when">Инженер</div><div><h3>Цех ремонта тепловых сетей</h3><p>Согласования с администрациями районов: утром клала на стол пачку разрешительных документов.</p></div></div>
+      <div class="step"><div class="when">Крупные компании</div><div><h3>Нефтегаз и капитальное строительство</h3><p>Претензионная работа, главный специалист. Потом переезд в Москву — claim-менеджер в федеральной компании.</p></div></div>
+      <div class="step"><div class="when">3 года</div><div><h3>Правая рука владельца холдинга</h3><p>Личные стройки и проекты недвижимости в России и за рубежом, своя команда, мировые архитекторы. Лучшая работа в жизни.</p></div></div>
+      <div class="step"><div class="when">Год</div><div><h3>Без работы — и пересборка себя</h3><p>Ушла сама, когда пропало доверие. Узнала, кто рядом по-настоящему, а кто — пока ты на высоте.</p></div></div>
+      <div class="step"><div class="when">Сейчас</div><div><h3>Руковожу стройкой и консультирую</h3><p>Свободный график, жизнь между городами, сын — и люди, которые снова и снова приходят за советом.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="wrap">
+    <div class="eyebrow">Как я смотрю на вещи</div>
+    <h2>На чём строится разговор</h2>
+    <p class="sub">Это не правила, которые я навязываю. Это то, что я проверила на себе.</p>
+    <div class="pr">
+      <div><h3>Прямота — <i>это забота</i></h3><p>Говорю в лоб то, что другие боятся сказать. Сначала может быть обидно — потом человек видит, на что способен.</p></div>
+      <div><h3>Гнись, но <i>не прогибайся</i></h3><p>Уступать можно, терять достоинство — нет. И не каждую войну нужно выигрывать.</p></div>
+      <div><h3>Будь собой — <i>свой найдётся</i></h3><p>Подстраиваться под чужие ожидания — путь к жизни, которая не твоя. Ни на работе, ни в отношениях.</p></div>
+      <div><h3>Знай, <i>где твоё</i></h3><p>Найм или своё дело, этот бизнес или другой — у каждого своё место. Помогаю его увидеть.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Как проходит консультация</div>
+    <h2>Три шага</h2>
+    <p class="sub">Без анкет на десять страниц и без долгих вступлений.</p>
+    <div class="how">
+      <div><h3>Пишете мне</h3><p>Коротко описываете ситуацию и вопрос. Выбираем формат и удобное время.</p></div>
+      <div><h3>Разговариваем</h3><p>Онлайн-встреча, на которой разбираем ситуацию честно и по делу — как есть.</p></div>
+      <div><h3>Вы решаете</h3><p>Уходите с ясной картиной и следующими шагами. Решение остаётся за вами.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Вопросы</div>
+    <h2>Частые вопросы</h2>
+    <div class="faq">
+      <details><summary>Вы психолог или коуч?</summary><p>Нет. Я практик: руководитель с опытом в крупных компаниях и собственных бизнесах. Делюсь взглядом со стороны и опытом, а не методиками.</p></details>
+      <details><summary>С какими вопросами можно прийти?</summary><p>Работа и карьера, выход из найма, выбор бизнеса, отношения с руководителем и командой, личные решения. Все сферы жизни — не одна узкая тема.</p></details>
+      <details><summary>Вы будете говорить жёстко?</summary><p>Честно. Прямота — это не грубость, а уважение к вашему времени. Но решение всегда остаётся за вами.</p></details>
+      <details><summary>Вы гарантируете результат?</summary><p>Нет — и никто честный не гарантирует. Я помогаю увидеть ситуацию ясно. Дальше вы действуете сами.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--accent-soft)">Записаться</div>
+    <h2>Вы можете больше. Давайте разберёмся, где ваше место.</h2>
+    <p class="sub">Напишите в личные сообщения — отвечаю сама. Коротко опишите ситуацию, и подберём формат.</p>
+    <div class="cta-row">
+      <a href="#" class="btn light">Написать в Telegram</a>
+      <a href="#" class="btn ghost">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Юлия Павлова</span>
+    <i>Будь на своём месте.</i>
+  </div>
+</footer>
+
+</body>
+</html>
