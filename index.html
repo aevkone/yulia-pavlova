@@ -370,6 +370,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .sthud{left:12px;right:12px;top:10px;font-size:11px}
   .beats{display:none}
   .kin{padding:20px 0 72px}
+  .core .word{font-size:46vw;letter-spacing:-.05em}
 }
 
 </style>
@@ -666,7 +667,22 @@ function rgb(c){ return 'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.ro
    управляет каждой сменой. seek(t) — чистая функция времени.
    120 BPM · 7 тактов = 14 с, последний кадр = первый.
    ===================================================== */
-var T = 14, HERO_SPEED = 0.5; // 0.5 — в два раза медленнее
+var T = 14;
+// Показ: у каждой из 11 сцен одинаковое экранное время SCENE_SEC.
+// Переходы идут со скоростью HERO_SPEED, а остаток сцены она «держится» на полностью видимом кадре.
+var HERO_SPEED = 0.55, SCENE_SEC = 4.6;
+var SEG_A = [13.75, 1, 2, 2.5, 3.5, 6, 8, 9, 10.5, 12, 13.2];
+var SEG_B = [15,    2, 2.5, 3.5, 6, 8, 9, 10.5, 12, 13.2, 13.75];
+var CYCLE = SEG_A.length*SCENE_SEC, AMB = 0, CYC = 0;
+function heroAt(sec){
+  var u = ((sec % CYCLE) + CYCLE) % CYCLE, k = Math.floor(u/SCENE_SEC), loc = u - k*SCENE_SEC;
+  var a = SEG_A[k], b = SEG_B[k], H = b - 0.16, play1 = (H - a)/HERO_SPEED, hold = Math.max(0, SCENE_SEC - (b - a)/HERO_SPEED), t;
+  if (loc < play1) t = a + loc*HERO_SPEED;
+  else if (loc < play1 + hold) t = H;
+  else t = H + (loc - play1 - hold)*HERO_SPEED;
+  AMB = sec; CYC = u/CYCLE;
+  seek(t % T);
+}
 var cam = document.getElementById('cam'), world = document.getElementById('world'), stage = document.querySelector('.stage');
 var BLK = [17,17,16], WHT = [255,255,255], ACC = [217,113,79];
 var S = [
@@ -798,7 +814,7 @@ function seek(t){
   if (cap.textContent !== S[si].n) cap.textContent = S[si].n;
   cap.style.opacity = ca.toFixed(3); cap.style.filter = ca < .999 ? 'blur('+((1-ca)*6).toFixed(1)+'px)' : 'none';
   capN.textContent = (si === 11 ? '01' : String(si+1).padStart(2,'0')) + ' / 11';
-  var beat = t*2;
+  var beat = CYC*28;
   for (i = 0; i < 28; i++){
     var age = beat - i, pulse = age >= 0 && age < 1 ? Math.exp(-age*3.2) : 0;
     BT[i].style.height = ((i%4===0 ? 10 : 6) + 10*pulse).toFixed(1)+'px';
@@ -807,11 +823,11 @@ function seek(t){
   // кнопка: стрелка подаётся навстречу курсору
   ba.style.transform = 'translateX('+(4*spring(t-0.6,20,.6) - 4*spring(t-0.9,20,.6)).toFixed(2)+'px)';
   // загрузчик и галочка
-  arc.style.transformOrigin = '36px 36px'; arc.style.transform = 'rotate('+(t*560)+'deg)';
+  arc.style.transformOrigin = '36px 36px'; arc.style.transform = 'rotate('+(AMB*400)+'deg)';
   ck.setAttribute('stroke-dashoffset', (44*(1-expo(clamp((t-2.18)/0.3,0,1)))).toFixed(2));
   // входящее: бейдж выпрыгивает, волна дышит
   bdg.style.transform = 'scale('+Math.max(0, spring(t-2.85, 24, .45)).toFixed(3)+')';
-  for (var k = 0; k < wave.children.length; k++) wave.children[k].style.height = (6+11*Math.abs(Math.sin(t*9+k*0.9))+7*Math.abs(Math.sin(t*5.3+k))).toFixed(1)+'px';
+  for (var k = 0; k < wave.children.length; k++) wave.children[k].style.height = (6+11*Math.abs(Math.sin(AMB*6+k*0.9))+7*Math.abs(Math.sin(AMB*3.7+k))).toFixed(1)+'px';
   // курсор и круги от нажатий
   cur.style.transform = 'translate('+(cx-4).toFixed(2)+'px,'+(cy-3).toFixed(2)+'px) scale('+(1-0.16*pr).toFixed(3)+')';
   for (i = 0; i < PRESS.length; i++){
@@ -881,7 +897,7 @@ function seek(t){
   var em = kl[0].querySelector('em'); em.style.opacity = (0.4 + 0.6*hl).toFixed(3);
   // готово: галочка прорисовывается, полоска таймера сжимается
   pc.style.transform = 'scale('+Math.max(0, spring(t-13.35,22,.5)).toFixed(3)+')';
-  pck.setAttribute('stroke-dashoffset', (20*(1-expo(clamp((t-13.45)/0.25,0,1)))).toFixed(2));
+  pck.setAttribute('stroke-dashoffset', (20*(1-expo(clamp((t-13.36)/0.2,0,1)))).toFixed(2));
   pl.style.transform = 'scaleX('+(1 - clamp((t-13.3)/0.45,0,1)).toFixed(3)+')';
 }
 function fitStage(){ world.style.transform = 'scale('+(stage.clientWidth/600)+')'; }
@@ -1032,7 +1048,7 @@ function retOff(){ RV.forEach(function(v){ if (!v.paused) v.pause(); }); }
 function progress(sec){ var r = sec.getBoundingClientRect(), vh = innerHeight; if (r.bottom < -50 || r.top > vh + 50) return -1; return clamp(-r.top/(r.height - vh), 0, 1); }
 function frame(ms){
   var now = ms/1000, p;
-  if (heroOn) seek((ms - t0)/1000*HERO_SPEED);
+  if (heroOn) heroAt((ms - t0)/1000);
   pRender(now);
   if ((p = progress(focusSec)) >= 0) focusRender(now, p);
   if ((p = progress(pathSec)) >= 0) pathRender(p);
