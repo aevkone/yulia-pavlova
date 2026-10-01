@@ -964,7 +964,7 @@ function pathRender(p){
     var d = f - i, o = clamp((0.5 - Math.abs(d))/0.12, 0, 1);
     PB[i].style.opacity = o.toFixed(3);
     PB[i].style.transform = 'translateY('+(-d*60).toFixed(1)+'px) scale('+(0.92+0.08*expo(o)).toFixed(4)+')';
-    PH[i].style.opacity = (o*0.9).toFixed(3); PH[i].style.transform = 'scale('+(1.12 - 0.08*expo(o) - (f-i)*0.01).toFixed(4)+')';
+    PH[i].style.opacity = clamp(1.2 - Math.abs(d)*1.4, 0, 1).toFixed(3); PH[i].style.transform = 'scale('+(1.12 - 0.08*expo(o) - (f-i)*0.01).toFixed(4)+')';
     PS[i].style.opacity = o.toFixed(3); PS[i].style.transform = 'translateY('+(-d*24).toFixed(1)+'px)'; 
     var act = clamp(1 - Math.abs(d), 0, 1), passed = f >= i - 0.02;
     RL[i].style.color = 'rgba(255,255,255,'+(0.6+0.4*act).toFixed(3)+')';
