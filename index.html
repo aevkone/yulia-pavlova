@@ -74,7 +74,7 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .hero h1 span{color:var(--accent)}
 .hero .lead{font-size:19px;color:rgba(255,255,255,.74);max-width:520px;margin:28px 0 36px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.stage-wrap{position:relative;z-index:1;align-self:center;justify-self:end;width:100%;max-width:min(620px,calc(100svh - 330px))}
+.stage-wrap{position:relative;z-index:1;align-self:center;justify-self:end;width:100%;max-width:min(660px,calc(100svh - 190px))}
 .stage{position:relative;aspect-ratio:1/1;border-radius:24px;background:var(--stage);overflow:hidden}
 .world{position:absolute;left:0;top:0;width:600px;height:600px;transform-origin:0 0}
 .cam{position:absolute;inset:0;transform-origin:300px 300px}
@@ -111,9 +111,13 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .fcard .go svg{width:18px;height:18px;color:#fff;transition:transform .5s var(--ease)}
 .fcard:hover .go svg{transform:translateX(5px)}
 .fcard.acc{background:#1E1713}
+.fcard.ph2{padding-top:0}
+.fphoto{display:block;margin:0 -30px 22px;height:250px;overflow:hidden;border-radius:24px 24px 0 0}
+.fphoto img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform 1.2s var(--ease)}
+.fcard.ph2:hover .fphoto img{transform:scale(1.05)}
+.fcard.ph2 h3{margin-top:auto}
 .fcard .art.photo{inset:0;height:100%;object-fit:cover;object-position:50% 30%;opacity:.55;transition:transform 1.2s var(--ease),opacity .6s}
 .fcard:hover .art.photo{transform:scale(1.05);opacity:.7}
-.fcard .art.photo+.meta::before{content:"";position:absolute;left:-30px;right:-30px;top:-30px;height:520px;background:linear-gradient(180deg,rgba(21,20,18,.2),rgba(21,20,18,.55) 45%,rgba(21,20,18,.95) 75%);z-index:-1}
 
 /* ============ ФОКУС (моушн A) ============ */
 .focus{position:relative;height:280vh;background:var(--black)}
@@ -159,14 +163,13 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 
 /* ============ ПУТЬ (моушн B) ============ */
 .path{position:relative;height:520vh;background:var(--black)}
-.path-pin{position:sticky;top:0;height:100svh;padding-top:68px !important;overflow:hidden;display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center;max-width:1320px;margin:0 auto;padding:0 32px}
-.path-photos{position:sticky;top:0;height:100svh;margin-bottom:-100svh;overflow:hidden}
-.path-photos img{position:absolute;right:0;top:0;width:58%;height:100%;object-fit:cover;object-position:50% 30%;opacity:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%)}
-.path-photos::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 30%,rgba(11,11,10,.55) 70%,rgba(11,11,10,.75))}
+.path-pin{position:sticky;top:0;height:100svh;padding-top:68px !important;overflow:hidden;display:grid;grid-template-columns:1.25fr .8fr .6fr;gap:40px;align-items:center;max-width:1320px;margin:0 auto;padding:0 32px}
+.path-photo{position:relative;aspect-ratio:3/4;border-radius:22px;overflow:hidden;background:#1a1816}
+.path-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0}
 .path-pin{z-index:1}
 .path-title{font-size:15px;color:var(--gray-d);margin-bottom:18px}
 .path-big{position:relative;height:clamp(120px,15vw,210px)}
-.pb{position:absolute;left:0;bottom:0;font-size:clamp(64px,7.8vw,150px);font-weight:600;letter-spacing:-.055em;line-height:.9;white-space:nowrap;opacity:0}
+.pb{position:absolute;left:0;bottom:0;font-size:clamp(56px,5.2vw,96px);font-weight:600;letter-spacing:-.055em;line-height:.9;white-space:nowrap;opacity:0}
 .path-sub{font-size:19px;color:rgba(255,255,255,.72);max-width:520px;margin-top:30px;min-height:140px;position:relative}
 .ps{position:absolute;left:0;top:0;opacity:0}
 .ps strong{display:block;font-size:26px;color:#fff;font-weight:500;letter-spacing:-.03em;margin-bottom:10px;line-height:1.15}
@@ -202,8 +205,11 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 /* ============ РЕТРИТ (моушн C) ============ */
 .retreat{position:relative;height:420vh;background:#08080F}
 .ret-pin{position:sticky;top:0;height:100svh;overflow:hidden}
-.sky{position:absolute;inset:0}
-.ret-svg{position:absolute;inset:0;width:100%;height:100%}
+.ret-vids{position:absolute;inset:0;background:#0d0d10}
+.ret-vids video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.ret-vids::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.62) 0%,rgba(8,8,10,.28) 45%,rgba(8,8,10,.55) 100%),linear-gradient(90deg,rgba(8,8,10,.5),transparent 60%)}
+.ret-copy{color:#fff}
+
 .ret-copy{position:absolute;inset:0;max-width:1320px;margin:0 auto;padding:13vh 32px 0;pointer-events:none}
 .ret-copy h2{font-size:clamp(56px,10vw,160px);letter-spacing:-.05em}
 .ret-copy .intro{font-size:20px;max-width:520px;margin-top:20px;line-height:1.4}
@@ -233,9 +239,15 @@ details p{padding:0 0 26px;color:#3c3934;max-width:640px}
 
 /* ============ ФИНАЛ ============ */
 .final{padding:10px;background:var(--white)}
-.final-panel{border-radius:28px;background:var(--panel) url(photos/night-roses.jpg) 50% 35%/cover;color:#fff;padding:140px 56px;text-align:center;position:relative;overflow:hidden}
+.final-panel{border-radius:28px;background:var(--panel);color:#fff;padding:24px;position:relative;overflow:hidden;display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.final-photo{margin:0;position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden}
+.final-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.final-copy{padding:40px 40px 40px 0}
+.final .final-copy h2{margin:0;text-align:left}
+.final .final-copy p{margin:26px 0 40px}
+.final .final-copy .cta{justify-content:flex-start}
 .final-panel>*{position:relative;z-index:1}
-.final-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,10,.78),rgba(11,11,10,.62) 50%,rgba(11,11,10,.85))}
+
 .final-panel::before{content:"";position:absolute;left:50%;bottom:-40%;width:900px;height:600px;margin-left:-450px;border-radius:50%;background:radial-gradient(closest-side,rgba(217,113,79,.35),transparent);z-index:1}
 .final h2{font-size:clamp(42px,6vw,96px);max-width:1000px;margin:0 auto;position:relative}
 .final p{position:relative;color:rgba(255,255,255,.74);margin:26px auto 40px;max-width:520px;font-size:19px}
@@ -247,7 +259,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media (max-width:1024px){
   .hero-panel{grid-template-columns:1fr;padding:40px 28px 28px;gap:36px;min-height:0}
   .stage-wrap{justify-self:stretch;max-width:none}
-  .event{left:16px;bottom:16px}
+  .final-panel{grid-template-columns:1fr;gap:8px}
+  .final-copy{padding:20px 12px 32px}
+  .final-photo{aspect-ratio:4/3}
+  .path-pin{grid-template-columns:1fr !important;align-content:center}
+  .path-photo{order:-1;width:28vw;max-width:150px}
+  .path-rail{height:22vh}
   .pillars .grid,.meet .grid,.faq .grid{grid-template-columns:1fr;gap:40px}
   .path-pin{grid-template-columns:1fr;align-content:center;gap:28px}
   .path-rail{height:30vh}
@@ -295,7 +312,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .rm .path-big,.rm .path-sub{height:auto;min-height:0}
 .rm .pb,.rm .ps{position:relative}
 /* ---- главный экран: детали ---- */
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;opacity:.5;pointer-events:none;animation:kb 28s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:.42;pointer-events:none;animation:kb 28s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.12) translate(-1.5%,1%)}}
 .rm .hero-bg{animation:none}
 .hero-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,20,18,.92) 0%,rgba(21,20,18,.72) 45%,rgba(21,20,18,.42) 100%);pointer-events:none}
@@ -380,7 +397,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-panel">
-    <img class="hero-bg" id="hvid" src="photos/hero-city.jpg" alt="" fetchpriority="high">
+    <img class="hero-bg" id="hvid" src="photos/hero-towers.jpg" alt="" fetchpriority="high">
     <div class="hero-copy">
       <h1>Я вижу <span>суть</span> там, где вы видите тупик</h1>
       <p class="lead">15 лет руководила людьми и стройками, построила четыре бизнеса и многое прошла сама. Помогаю разобраться в отношениях, работе и себе — и найти своё место.</p>
@@ -391,10 +408,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     </div>
     <div class="stage-wrap">
       <div class="stage" aria-hidden="true"><div class="world" id="world"><div class="stgrid" id="stgrid"></div><div class="cam" id="cam"></div></div><div class="sthud"><span class="cap"><b id="stcapn">01 / 11</b><span id="stcap">Запись</span></span><span class="beats" id="stbeats"></span></div></div>
-      <a href="#retreat" class="event">
-        <span class="event-art"></span>
-        <span><small>Скоро · лист ожидания</small><b>Ретрит «Перезагрузка» — несколько дней вдали от города</b></span>
-      </a>
     </div>
   </div>
 </header>
@@ -433,8 +446,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <p>Для больших перемен: уверенность, работа, отношения. Между встречами — время попробовать.</p>
       <span class="go"><span>Стоимость уточняется</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
     </a>
-    <a class="fcard" href="#retreat">
-      <img class="art photo" src="photos/flowers-event.jpg" alt="" loading="lazy">
+    <a class="fcard ph2" href="#retreat">
+      <span class="fphoto"><img src="photos/flowers-event.jpg" alt="" loading="lazy"></span>
       <span class="meta">Скоро · лист ожидания</span>
       <h3>Ретрит «Перезагрузка»</h3>
       <p>Несколько дней с девочками вдали от города: разговоры, тишина и своё.</p>
@@ -505,13 +518,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
 <!-- ПУТЬ -->
 <section class="path" id="path" aria-label="Мой путь">
-  <div class="path-photos" id="pphotos" aria-hidden="true"></div>
   <div class="path-pin">
     <div>
       <div class="path-title">Мой путь</div>
       <div class="path-big" id="pbig"></div>
       <div class="path-sub" id="psub"></div>
     </div>
+    <div class="path-photo" id="pphotos" aria-hidden="true"></div>
     <div class="path-rail">
       <div class="rail-line"><div class="rail-fill" id="rfill"></div></div>
       <ol class="rail-list" id="rlist"></ol>
@@ -555,15 +568,12 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <!-- РЕТРИТ -->
 <section class="retreat" id="retreat" aria-label="Ретрит «Перезагрузка»">
   <div class="ret-pin">
-    <div class="sky" id="sky"></div>
-    <svg class="ret-svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <g id="stars"></g>
-      <circle id="sun" r="46" cx="180" cy="720"/>
-      <path id="hl3" d="M0 760 C 180 700 320 720 480 690 C 640 660 760 720 920 700 C 1100 676 1260 640 1600 690 V1000 H0Z"/>
-      <path id="hl2" d="M0 830 C 200 790 380 820 560 790 C 760 756 900 812 1080 796 C 1260 780 1420 760 1600 790 V1000 H0Z"/>
-      <path id="hl1" d="M0 900 C 160 870 300 892 460 874 C 600 858 700 880 820 868 C 980 852 1140 880 1300 866 C 1440 854 1520 868 1600 862 V1000 H0Z"/>
-      <g id="palms"></g>
-    </svg>
+    <div class="ret-vids" id="rvids">
+      <video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/20686803/20686803-hd_1920_1080_30fps.mp4"></video>
+      <video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/7356537/7356537-hd_1280_720_25fps.mp4"></video>
+      <video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/5123097/5123097-hd_1280_720_50fps.mp4"></video>
+      <video muted loop playsinline preload="none" src="https://videos.pexels.com/video-files/7358098/7358098-hd_1920_1080_25fps.mp4"></video>
+    </div>
     <div class="ret-copy" id="rcopy">
       <h2>Перезагрузка</h2>
       <p class="intro">Ретрит: несколько дней с девочками вдали от города. Каждая берёт то, что нужно именно ей.</p>
@@ -607,16 +617,19 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <!-- ФИНАЛ -->
 <section class="final" id="contact">
   <div class="final-panel">
+    <figure class="final-photo"><img src="photos/night-roses.jpg" alt="Юлия Павлова" loading="lazy"></figure>
+    <div class="final-copy">
     <h2>Вы можете больше — давайте найдём ваше место</h2>
     <p>Напишите в личные сообщения — отвечаю сама. Коротко опишите ситуацию, и подберём формат.</p>
     <div class="cta">
       <a href="#" class="pill w">Написать в Telegram <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       <a href="#" class="pill o">Instagram</a>
     </div>
+    </div>
   </div>
 </section>
 <a href="#contact" class="pill w sticky-cta" id="scta">Записаться на консультацию <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-<footer><div class="wrap"><span>© 2026 Юлия Павлова · Будь на своём месте</span><span>Видео: <a href="https://www.pexels.com/@mart-production" target="_blank" rel="noopener">MART PRODUCTION</a> / Pexels</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Юлия Павлова · Будь на своём месте</span><span>Видео: <a href="https://www.pexels.com/@mart-production" target="_blank" rel="noopener">MART PRODUCTION</a>, <a href="https://www.pexels.com/@riturajgogoi" target="_blank" rel="noopener">Aerial Wanderlust</a>, <a href="https://www.pexels.com/@freestockpro" target="_blank" rel="noopener">Atlantic Ambience</a>, <a href="https://www.pexels.com/@katerina-witt-2930774" target="_blank" rel="noopener">Katerina Witt</a> / Pexels</span></div></footer>
 
 <script>
 (function(){
@@ -988,53 +1001,24 @@ function pathRender(p){
 }
 
 /* =====================================================
-   РЕТРИТ (моушн C): сутки за один скролл — от рассвета до звёзд
+   РЕТРИТ (моушн C): сутки за один скролл — четыре настоящих видео
+   (рассвет в джунглях → пляж днём → закат → ночь), смена по скроллу
    ===================================================== */
-var sky = document.getElementById('sky'), sun = document.getElementById('sun'), stars = document.getElementById('stars'), palms = document.getElementById('palms');
-var HL = ['hl3','hl2','hl1'].map(function(id){ return document.getElementById(id); });
+var RV = [].slice.call(document.querySelectorAll('#rvids video'));
 var rcopy = document.getElementById('rcopy'), rclock = document.getElementById('rclock'), rcta = document.getElementById('rcta'), retSec = document.getElementById('retreat');
 var SL = [].slice.call(document.querySelectorAll('.sl'));
-var NS = 'http://www.w3.org/2000/svg';
-for (var si = 0; si < 90; si++){ var c = document.createElementNS(NS,'circle'); c.setAttribute('cx', (si*173.3) % 1600); c.setAttribute('cy', (si*97.7) % 560); c.setAttribute('r', si % 5 === 0 ? 1.8 : 1.1); c.setAttribute('fill','#fff'); c.setAttribute('opacity','0'); c.dataset.ph = (si*0.77) % 6.28; stars.appendChild(c); }
-function palm(x, y, s, flip){ // авторский силуэт: внешняя группа — место, внутренняя — покачивание
-  var g = document.createElementNS(NS,'g'); g.setAttribute('transform','translate('+x+' '+y+') scale('+(flip ? -s : s)+' '+s+')');
-  var inner = document.createElementNS(NS,'g');
-  inner.innerHTML = '<path d="M0 0 C -6 -60 4 -130 22 -190" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M22 -190 C 60 -210 100 -200 128 -170 C 96 -184 62 -186 22 -186Z"/><path d="M22 -190 C 0 -232 -40 -246 -80 -232 C -46 -230 -14 -214 20 -186Z"/><path d="M22 -190 C 56 -238 96 -250 130 -240 C 96 -232 62 -218 24 -186Z"/><path d="M22 -190 C -8 -196 -46 -180 -70 -146 C -40 -168 -10 -180 20 -186Z"/><path d="M22 -190 C 40 -170 52 -140 50 -104 C 40 -136 30 -160 18 -186Z"/>';
-  g.appendChild(inner); palms.appendChild(g); return inner;
-}
-var PALMS = [palm(170,930,1.25,false), palm(300,945,0.85,true), palm(1350,935,1.4,true), palm(1480,948,0.9,false), palm(640,940,0.9,false), palm(960,950,0.7,true)];
-var MOBILE_PALMS = PALMS.slice(4);
-var SKY = [
-  {p:0,   top:[44,40,64],   bot:[242,176,138], hill:[58,42,52], ink:[255,255,255]},
-  {p:.22, top:[120,170,214],bot:[246,226,200], hill:[64,84,70], ink:[17,17,16]},
-  {p:.5,  top:[96,154,206], bot:[236,214,186], hill:[54,72,60], ink:[17,17,16]},
-  {p:.7,  top:[70,50,86],   bot:[232,120,84],  hill:[40,26,34], ink:[255,255,255]},
-  {p:1,   top:[8,9,20],     bot:[24,22,44],    hill:[6,6,10],   ink:[255,255,255]}
-];
-function skyAt(p, key){
-  for (var i = 1; i < SKY.length; i++){ if (p <= SKY[i].p){ var a = SKY[i-1], b = SKY[i], k = sm(a.p, b.p, p); return [lerp(a[key][0],b[key][0],k), lerp(a[key][1],b[key][1],k), lerp(a[key][2],b[key][2],k)]; } }
-  return SKY[SKY.length-1][key];
-}
 function retRender(now, p){
-  var top = skyAt(p,'top'), bot = skyAt(p,'bot'), hill = skyAt(p,'hill'), ink = skyAt(p,'ink');
-  sky.style.background = 'linear-gradient(180deg,'+rgb(top)+' 0%,'+rgb(bot)+' 78%)';
-  var sp = clamp(p/0.78, 0, 1), ang = Math.PI*(1 - sp), night = sm(0.8, 0.95, p);
-  var narrow = innerWidth <= 820;
-  MOBILE_PALMS.forEach(function(g){ g.parentNode.style.display = narrow ? '' : 'none'; });
-  var sx = narrow ? lerp(800 + Math.cos(ang)*200, 900, night) : lerp(1000 + Math.cos(ang)*560, 1220, night);
-  var sy = narrow ? lerp(800 - Math.sin(ang)*190, 640, night) : lerp(740 - Math.sin(ang)*450, 300, night);
-  sun.setAttribute('cx', sx.toFixed(1)); sun.setAttribute('cy', sy.toFixed(1)); sun.setAttribute('r', (46 - 14*night).toFixed(1));
-  var dusk = sm(.6,.78,p);
-  sun.setAttribute('fill', night > .5 ? '#F4EDE2' : rgb([lerp(255,250,dusk), lerp(214,140,dusk), lerp(160,96,dusk)]));
-  sun.style.filter = 'drop-shadow(0 0 '+(30+40*(1-night)).toFixed(0)+'px rgba(255,200,150,'+(0.55*(1-night)+0.25*night).toFixed(2)+'))';
-  HL.forEach(function(h, i){ var k = [0.55,0.78,1][i]; h.setAttribute('fill', rgb([lerp(bot[0],hill[0],k), lerp(bot[1],hill[1],k), lerp(bot[2],hill[2],k)])); h.style.transform = 'translateY('+((1-p)*(i+1)*14).toFixed(1)+'px)'; });
-  PALMS.forEach(function(g, i){ g.setAttribute('fill', rgb(hill)); g.setAttribute('stroke', rgb(hill)); g.style.transformBox = 'fill-box'; g.style.transformOrigin = '50% 100%'; g.style.transform = 'rotate('+(Math.sin(now*0.8+i)*1.4).toFixed(2)+'deg)'; });
-  var so = sm(0.74, 0.95, p);
-  for (var i = 0; i < stars.children.length; i++){ var s = stars.children[i]; s.setAttribute('opacity', (so*(0.5+0.5*Math.sin(now*2 + +s.dataset.ph))).toFixed(3)); }
-  rcopy.style.color = rgb(ink);
+  var f = p*4;
+  RV.forEach(function(v, i){
+    var o = clamp(1 - Math.abs(f - i - 0.5)*1.25, 0, 1);
+    if (i === 0 && f < 0.5) o = 1; if (i === 3 && f > 3.5) o = 1;
+    v.style.opacity = o.toFixed(3);
+    v.style.transform = 'scale('+(1.12 - 0.08*o).toFixed(4)+')';
+    if (o > 0.01){ if (v.preload !== 'auto') v.preload = 'auto'; if (v.paused) v.play().catch(function(){}); }
+    else if (!v.paused) v.pause();
+  });
   var hour = 6 + p*18, hh = Math.floor(hour) % 24, mm = Math.floor((hour % 1)*4)*15;
   rclock.textContent = (hh < 10 ? '0' : '')+hh+':'+(mm < 10 ? '0' : '')+mm;
-  var f = p*4;
   SL.forEach(function(s, i){
     var d = f - i - 0.5, o = clamp(1 - Math.abs(d)*2.2, 0, 1);
     if (i === 0 && f < 0.5) o = 1; if (i === 3 && f > 3.5) o = 1;
@@ -1042,6 +1026,7 @@ function retRender(now, p){
   });
   var cta = sm(0.86, 0.96, p); rcta.style.opacity = cta.toFixed(3); rcta.style.transform = 'translateY('+((1-cta)*16).toFixed(1)+'px)';
 }
+function retOff(){ RV.forEach(function(v){ if (!v.paused) v.pause(); }); }
 
 /* ---------- общий цикл ---------- */
 function progress(sec){ var r = sec.getBoundingClientRect(), vh = innerHeight; if (r.bottom < -50 || r.top > vh + 50) return -1; return clamp(-r.top/(r.height - vh), 0, 1); }
@@ -1051,7 +1036,7 @@ function frame(ms){
   pRender(now);
   if ((p = progress(focusSec)) >= 0) focusRender(now, p);
   if ((p = progress(pathSec)) >= 0) pathRender(p);
-  if ((p = progress(retSec)) >= 0) retRender(now, p);
+  if ((p = progress(retSec)) >= 0) retRender(now, p); else retOff();
   requestAnimationFrame(frame);
 }
 if (RM){
@@ -1074,7 +1059,8 @@ function extras(now){
   var y = scrollY, H = document.documentElement.scrollHeight - innerHeight;
   nprog.style.transform = 'scaleX('+(H > 0 ? y/H : 0).toFixed(4)+')';
   var hb = heroEl.getBoundingClientRect().bottom, ct = contactEl.getBoundingClientRect().top;
-  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6);
+  var rp = progress(retSec);
+  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6 && !(rp > 0.82));
   // кинетическая строка: позиция от скролла + скорость даёт наклон
   vel += ((y - lastY) - vel)*0.15; lastY = y;
   var r = kinSec.getBoundingClientRect();
