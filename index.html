@@ -22,6 +22,9 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+section,header{scroll-margin-top:72px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:#fff;color:#121211;padding:10px 16px;border-radius:10px;font-weight:500}
+.skip:focus{top:12px}
 body{background:var(--black);color:var(--white);font-family:var(--f);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--accent);color:#fff}
 a{color:inherit;text-decoration:none}
@@ -58,7 +61,7 @@ nav .wrap{height:68px;display:flex;align-items:center;gap:32px}
 .menu a{color:rgba(255,255,255,.72);transition:color .2s}
 .menu a:hover{color:#fff}
 nav .pill{height:40px;padding:0 18px;font-size:14px}
-.burger{display:none;width:40px;height:40px;border:0;background:none;cursor:pointer;position:relative}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
 .burger i,.burger i::before,.burger i::after{position:absolute;left:10px;width:20px;height:1.5px;background:#fff;content:"";transition:transform .4s var(--ease),background .2s}
 .burger i{top:19px}.burger i::before{left:0;top:-6px}.burger i::after{left:0;top:6px}
 .nav-open .burger i{background:transparent}
@@ -74,6 +77,9 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .hero h1 span{color:var(--accent)}
 .hero .lead{font-size:19px;color:rgba(255,255,255,.74);max-width:520px;margin:28px 0 36px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:14px;margin-top:30px;font-size:14px;color:rgba(255,255,255,.72);max-width:480px;line-height:1.4}
+.who img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none;border:2px solid rgba(255,255,255,.18)}
+.who b{display:block;color:#fff;font-weight:500;font-size:15px}
 .stage-wrap{position:relative;z-index:1;align-self:center;justify-self:end;width:100%;max-width:min(660px,calc(100svh - 190px))}
 .stage{position:relative;aspect-ratio:1/1;border-radius:24px;background:var(--stage);overflow:hidden}
 .world{position:absolute;left:0;top:0;width:600px;height:600px;transform-origin:0 0}
@@ -120,7 +126,7 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .fcard:hover .art.photo{transform:scale(1.05);opacity:.7}
 
 /* ============ ФОКУС (моушн A) ============ */
-.focus{position:relative;height:280vh;background:var(--black)}
+.focus{position:relative;height:180vh;background:var(--black)}
 .focus-pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
 .focus-glow{position:absolute;left:50%;top:50%;width:110vmax;height:110vmax;margin:-55vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(217,113,79,.22),transparent 70%);pointer-events:none}
 .fw{position:absolute;left:50%;top:50%;white-space:nowrap;font-weight:500;letter-spacing:-.03em;color:#fff;pointer-events:none}
@@ -135,7 +141,7 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .plist{position:relative;padding-left:28px}
 .plist .bar{position:absolute;left:0;width:3px;border-radius:3px;background:var(--ink)}
 .plist .track{position:absolute;left:1px;top:0;bottom:0;width:1px;background:var(--line)}
-.plist button{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:var(--f);font-size:clamp(40px,5.2vw,78px);font-weight:500;letter-spacing:-.04em;line-height:1.12;color:rgba(18,18,17,.2);padding:2px 0;transition:color .5s var(--ease)}
+.plist button{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:var(--f);font-size:clamp(40px,5.2vw,78px);font-weight:500;letter-spacing:-.04em;line-height:1.12;color:rgba(18,18,17,.42);padding:2px 0;transition:color .5s var(--ease)}
 .plist button:hover{color:rgba(18,18,17,.45)}
 .plist button[aria-selected="true"]{color:var(--ink)}
 .ppanel{position:relative;border-radius:24px;background:var(--off);overflow:hidden;min-height:440px}
@@ -162,7 +168,7 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .story .pill{margin-top:36px}
 
 /* ============ ПУТЬ (моушн B) ============ */
-.path{position:relative;height:520vh;background:var(--black)}
+.path{position:relative;height:320vh;background:var(--black)}
 .path-pin{position:sticky;top:0;height:100svh;padding-top:68px !important;overflow:hidden;display:grid;grid-template-columns:1.25fr .8fr .6fr;gap:40px;align-items:center;max-width:1320px;margin:0 auto;padding:0 32px}
 .path-photo{position:relative;aspect-ratio:3/4;border-radius:22px;overflow:hidden;background:#1a1816}
 .flt{display:none}
@@ -179,7 +185,7 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .rail-fill{position:absolute;left:0;top:0;width:2px;background:var(--accent);border-radius:2px}
 .rail-dot{position:absolute;left:-5px;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--black);border:2px solid #4a4640}
 .rail-list{list-style:none;display:flex;flex-direction:column;justify-content:space-between;height:100%;margin:-10px 0}
-.rail-list li{font-size:17px;letter-spacing:-.01em;color:rgba(255,255,255,.35);line-height:1.25}
+.rail-list li{font-size:17px;letter-spacing:-.01em;color:rgba(255,255,255,.6);line-height:1.25}
 .rail-list li b{display:block;font-weight:400;font-size:12px;font-family:var(--mono);letter-spacing:0;opacity:.8}
 
 /* ============ ИСТОРИИ ============ */
@@ -199,12 +205,12 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .prow h3,.prow p{transition:transform .6s var(--ease)}
 .prow:last-child{border-bottom:1px solid var(--line-d)}
 .prow h3{font-size:clamp(28px,3vw,44px)}
-.prow h3 span{color:var(--accent)}
+.prow h3 .a{color:var(--accent)}
 .prow p{color:rgba(255,255,255,.7);max-width:560px}
 @media (hover:hover){.prow:hover h3,.prow:hover p{transform:translateX(16px)}}
 
 /* ============ РЕТРИТ (моушн C) ============ */
-.retreat{position:relative;height:420vh;background:#08080F}
+.retreat{position:relative;height:230vh;background:#08080F}
 .ret-pin{position:sticky;top:0;height:100svh;overflow:hidden}
 .ret-vids{position:absolute;inset:0;background:#0d0d10}
 .ret-vids video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
@@ -313,11 +319,29 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   summary{font-size:18px}
   .story{font-size:18px}
 }
+@media (max-width:820px){
+  .path{height:auto}
+  .path-pin{position:relative !important;height:auto !important;padding:84px 20px 40px !important;display:block}
+  .path-pin .path-title{margin-bottom:24px}
+  .path-big,.path-rail,.path-pin>.path-photo{display:none}
+  .path-sub{display:block !important;margin:0}
+  .path-sub .ps{position:relative !important;opacity:1 !important;transform:none !important;padding:22px 0;border-top:1px solid var(--line-d)}
+  .path-sub .ps::before{content:attr(data-when);display:block;font-size:28px;font-weight:600;letter-spacing:-.04em;color:#fff;margin-bottom:10px}
+  .path-sub .ps .flt{display:block;float:right;width:42vw;height:56vw;margin:0 0 10px 14px;border-radius:16px;background:center 22%/cover no-repeat;filter:saturate(.82) contrast(1.06) sepia(.12)}
+  .path-sub .path-photo{display:none}
+  body{padding-bottom:84px}
+}
 /* без анимаций */
+.rm .path-sub{display:block !important}
+.rm .ps{position:relative !important;opacity:1 !important;transform:none !important;margin-bottom:22px}
+.rm .path-big,.rm .path-pin>.path-photo{display:none}
+.rm .path-pin{display:block !important}
 .rm .focus,.rm .path,.rm .retreat{height:auto}
 .rm .focus-pin,.rm .path-pin,.rm .ret-pin{position:relative;height:auto;min-height:100svh;padding-top:80px;padding-bottom:80px}
 .rm .path-big,.rm .path-sub{height:auto;min-height:0}
 .rm .pb,.rm .ps{position:relative}
+/* ---- единая обработка фото ---- */
+.portrait img,.path-photo img,.final-photo img,.fphoto img,.who img{filter:saturate(.82) contrast(1.06) sepia(.12) brightness(.98)}
 /* ---- главный экран: детали ---- */
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:.42;pointer-events:none;animation:kb 28s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.12) translate(-1.5%,1%)}}
@@ -329,7 +353,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .stgrid{position:absolute;inset:-60px;background-image:radial-gradient(rgba(18,18,17,.16) 1.2px,transparent 1.3px);background-size:24px 24px}
 .shadow{position:absolute;left:300px;top:300px;border-radius:50%;background:rgba(0,0,0,.3);filter:blur(16px)}
 .ripple{position:absolute;left:0;top:0;border-radius:50%;border:2px solid #121211;display:none;z-index:4}
-.sthud{position:absolute;left:18px;right:18px;top:16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#121211;pointer-events:none}
+.sthud{position:absolute;inset:0;pointer-events:none;color:#121211}
+.bars{position:absolute;left:16px;right:16px;top:14px;display:flex;gap:6px}
+.bars span{flex:1;height:3px;border-radius:2px;background:rgba(18,18,17,.14);overflow:hidden}
+.bars i{display:block;height:100%;background:#121211;transform-origin:0 50%;transform:scaleX(0)}
+.sttop{position:absolute;left:18px;top:28px;font-size:13px;color:#5f5a53}
+.stitle{position:absolute;left:20px;right:20px;bottom:18px;display:flex;align-items:baseline;gap:12px;font-size:clamp(17px,1.7vw,24px);font-weight:500;letter-spacing:-.02em}
+.stitle b{font-family:var(--mono);font-weight:400;font-size:13px;color:#5f5a53}
+.stage{transition:none}
 .sthud .cap{display:flex;gap:10px;align-items:center;white-space:nowrap}
 .sthud .cap b{font-family:var(--mono);font-weight:400;color:#6F6A63}
 .beats{display:flex;gap:3px;align-items:flex-end;height:20px}
@@ -383,6 +414,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
+<a class="skip" href="#spheres">К содержанию</a>
 
 <div class="draft">Черновой вариант · тексты и цены согласуем</div>
 
@@ -413,56 +445,34 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <a href="#contact" class="pill w">Записаться на консультацию <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
         <a href="#formats" class="pill o">Форматы работы</a>
       </div>
+      <div class="who"><img src="photos/portrait.jpg" alt=""><span><b>Юлия Павлова</b>15 лет руковожу людьми и стройками · 4 своих бизнеса · команда до 70 человек</span></div>
     </div>
     <div class="stage-wrap">
-      <div class="stage" aria-hidden="true"><div class="world" id="world"><div class="stgrid" id="stgrid"></div><div class="cam" id="cam"></div></div><div class="sthud"><span class="cap"><b id="stcapn">01 / 11</b><span id="stcap">Запись</span></span><span class="beats" id="stbeats"></span></div></div>
+      <div class="stage" aria-hidden="true"><div class="world" id="world"><div class="stgrid" id="stgrid"></div><div class="cam" id="cam"></div></div><div class="sthud"><div class="bars" id="stbars"></div><div class="sttop">Как проходит разговор</div><div class="stitle"><b id="stnum">1/6</b><span id="sttitle">Вы пишете вопрос</span></div></div></div>
     </div>
   </div>
 </header>
 
-<!-- ФОРМАТЫ -->
-<section class="formats" id="formats">
-  <div class="wrap head-row">
-    <h2>Выберите, как<br>мы поговорим</h2>
-    <div>
-      <p>Не читаю мораль и не говорю «надо». Показываю, что вижу, и помогаю принять решение, за которое потом не стыдно.</p>
-      <div class="arrows">
-        <button class="arrow" data-rail="r1" data-dir="-1" aria-label="Предыдущий формат"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 9H3M7 4L2.5 9 7 14"/></svg></button>
-        <button class="arrow" data-rail="r1" data-dir="1" aria-label="Следующий формат"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></button>
+<!-- СФЕРЫ -->
+<section class="pillars light" id="spheres">
+  <div class="wrap">
+    <div class="head-row"><h2>С чем ко мне приходят</h2><p>Вопросы, которые страшно задать вслух. Чаще всего — про отношения и про себя. Без шаблонов и чужих правил.</p></div>
+    <div class="grid">
+      <div class="plist" role="tablist" aria-label="Сферы">
+        <span class="track"></span><span class="bar" id="pbar"></span>
+        <button role="tab" aria-selected="true">Отношения</button>
+        <button role="tab" aria-selected="false">Уверенность</button>
+        <button role="tab" aria-selected="false">Работа</button>
+        <button role="tab" aria-selected="false">Предназначение</button>
+      </div>
+      <div class="ppanel" role="tabpanel">
+        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><circle cx="125" cy="150" r="80" stroke="#121211" stroke-opacity=".14"/><circle cx="185" cy="150" r="80" stroke="#D9714F" stroke-width="1.5"/></svg><q>Я сама себя сделала. Почему я одна?</q><p>Сила и независимость не отменяют желания быть любимой. Разбираем, что на самом деле стоит между вами и отношениями, — и уходить ли, если всё кажется плохим.</p><span class="who">Сильным и независимым · тем, кто на перепутье</span></div>
+        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="40" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="80" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="120" stroke="#D9714F" stroke-width="1.5"/></svg><q>Почему я себе не нравлюсь?</q><p>По тому, как человек говорит и реагирует, видно, чего он боится. Находим страхи, которые ведут, и красоту, которую вы прячете за чужими правилами.</p><span class="who">Тем, кто прячет себя · кто устал подстраиваться</span></div>
+        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><path d="M40 250 H120 V180 H190 V110 H260" stroke="#D9714F" stroke-width="1.5"/><path d="M40 268 H260" stroke="#121211" stroke-opacity=".14"/></svg><q>Уйти в своё дело или остаться?</q><p>Потолок в найме, сложный руководитель, выбор между бизнесами. Говорю из 15 лет управления и четырёх собственных бизнесов.</p><span class="who">Женщинам в найме · руководителям</span></div>
+        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><path d="M150 40 V260 M40 150 H260" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="100" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="12" fill="#D9714F"/></svg><q>Для чего я вообще здесь?</q><p>Кто-то счастлив дома с детьми, кто-то на должности. Важно, чтобы это был ваш выбор, а не чужой сценарий. Помогаю увидеть своё.</p><span class="who">Тем, кто ищет своё</span></div>
       </div>
     </div>
   </div>
-  <div class="rail" id="r1">
-    <a class="fcard" href="#contact">
-      <svg class="art" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice"><g stroke="rgba(255,255,255,.14)"><circle cx="300" cy="90" r="40"/><circle cx="300" cy="90" r="80"/><circle cx="300" cy="90" r="120"/><circle cx="300" cy="90" r="160"/></g><circle cx="300" cy="90" r="9" fill="#D9714F"/></svg>
-      <span class="meta">1 час · онлайн или лично</span>
-      <h3>Личная консультация</h3>
-      <p>Один вопрос — одна встреча. Ответ и понятный следующий шаг.</p>
-      <span class="go"><span>Стоимость уточняется</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
-    </a>
-    <a class="fcard acc" href="#contact">
-      <svg class="art" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M40 210 C140 210 160 90 260 90 S 360 40 380 40" stroke="rgba(255,255,255,.16)"/><circle cx="110" cy="196" r="9" fill="rgba(255,255,255,.35)"/><circle cx="232" cy="100" r="9" fill="rgba(255,255,255,.6)"/><circle cx="352" cy="50" r="9" fill="#D9714F"/></svg>
-      <span class="meta">3 встречи</span>
-      <h3>Три встречи</h3>
-      <p>Когда одной мало. Я уже знаю вас — на каждой сразу переходим к делу.</p>
-      <span class="go"><span>Стоимость уточняется</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
-    </a>
-    <a class="fcard" href="#contact">
-      <svg class="art" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice"><g fill="rgba(255,255,255,.1)"><rect x="200" y="150" width="34" height="90" rx="8"/><rect x="246" y="120" width="34" height="120" rx="8"/><rect x="292" y="84" width="34" height="156" rx="8"/></g><rect x="338" y="44" width="34" height="196" rx="8" fill="#D9714F"/></svg>
-      <span class="meta">4 недели · созвон раз в неделю и чат</span>
-      <h3>Месяц вместе</h3>
-      <p>Для больших перемен: уверенность, работа, отношения. Между встречами — время попробовать.</p>
-      <span class="go"><span>Стоимость уточняется</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
-    </a>
-    <a class="fcard ph2" href="#retreat">
-      <span class="fphoto"><img src="photos/flowers-event.jpg" alt="" loading="lazy"></span>
-      <span class="meta">Скоро · лист ожидания</span>
-      <h3>Ретрит «Перезагрузка»</h3>
-      <p>Несколько дней с девочками вдали от города: разговоры, тишина и своё.</p>
-      <span class="go"><span>Узнать первой</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
-    </a>
-  </div>
-  <div class="wrap"><div class="rprog"><i data-rail="r1"></i></div></div>
 </section>
 
 <!-- ФОКУС -->
@@ -479,28 +489,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 
-<!-- СФЕРЫ -->
-<section class="pillars light" id="spheres">
-  <div class="wrap">
-    <div class="head-row"><h2>С чем ко мне приходят</h2><p>Вопросы, которые страшно задать вслух. Все сферы жизни — без шаблонов и без «девочки, делаем вот так».</p></div>
-    <div class="grid">
-      <div class="plist" role="tablist" aria-label="Сферы">
-        <span class="track"></span><span class="bar" id="pbar"></span>
-        <button role="tab" aria-selected="true">Отношения</button>
-        <button role="tab" aria-selected="false">Уверенность</button>
-        <button role="tab" aria-selected="false">Работа</button>
-        <button role="tab" aria-selected="false">Предназначение</button>
-      </div>
-      <div class="ppanel" role="tabpanel" aria-live="polite">
-        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><circle cx="125" cy="150" r="80" stroke="#121211" stroke-opacity=".14"/><circle cx="185" cy="150" r="80" stroke="#D9714F" stroke-width="1.5"/></svg><q>Я сама себя сделала. Почему я одна?</q><p>Сила и независимость не отменяют желания быть любимой. Разбираем, что на самом деле стоит между вами и отношениями, — и уходить ли, если всё кажется плохим.</p><span class="who">Сильным и независимым · тем, кто на перепутье</span></div>
-        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="40" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="80" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="120" stroke="#D9714F" stroke-width="1.5"/></svg><q>Почему я себе не нравлюсь?</q><p>По тому, как человек говорит и реагирует, видно, чего он боится. Находим страхи, которые ведут, и красоту, которую вы прячете за чужими правилами.</p><span class="who">Тем, кто прячет себя · кто устал подстраиваться</span></div>
-        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><path d="M40 250 H120 V180 H190 V110 H260" stroke="#D9714F" stroke-width="1.5"/><path d="M40 268 H260" stroke="#121211" stroke-opacity=".14"/></svg><q>Уйти в своё дело или остаться?</q><p>Потолок в найме, сложный руководитель, выбор между бизнесами. Говорю из 15 лет управления и четырёх собственных бизнесов.</p><span class="who">Женщинам в найме · руководителям</span></div>
-        <div class="pp"><svg class="pp-art" viewBox="0 0 300 300" fill="none"><path d="M150 40 V260 M40 150 H260" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="100" stroke="#121211" stroke-opacity=".14"/><circle cx="150" cy="150" r="12" fill="#D9714F"/></svg><q>Для чего я вообще здесь?</q><p>Мы не все родились, чтобы выйти замуж за олигарха или строить карьеру. У каждого своё. Помогаю увидеть ваше — без оглядки на чужие ожидания.</p><span class="who">Тем, кто ищет своё</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ЗНАКОМСТВО -->
 <section class="meet light" id="meet">
   <div class="wrap">
@@ -511,17 +499,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <p>Ещё студенткой я сказала декану, что буду работать в крупнейшей нефтяной компании. <b>Все засмеялись. Декан — нет.</b> Так и вышло.</p>
         <p>Мне говорили «повезло». А я год искала квартиру мечты: в обед бегала на просмотры, ночами листала объявления — и сказала хозяину: «Это моя квартира».</p>
         <p>Я руководила командой из семидесяти человек. На мой день рождения они заказали мой портрет. <b>Без людей я ничто — мои люди делают меня.</b> Поэтому я умею видеть в каждом то, что он сам в себе не замечает.</p>
-        <p>Скажу как есть. Сегодня может быть обидно — зато потом вы увидите, на что способны.</p>
+        <p>Сначала смотрю на фундамент, потом обсуждаем отделку. Так я привыкла на стройке — так работаю и с людьми.</p>
         <a href="#contact" class="pill b">Познакомиться лично <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
       </div>
     </div>
   </div>
-</section>
-
-<!-- КИНЕТИЧЕСКАЯ СТРОКА -->
-<section class="kin" aria-hidden="true">
-  <div class="kin-row" id="kin1"><span>Каждая хороша в своём проявлении</span><i></i><span>Мои люди делают меня</span><i></i><span>Скажу как есть</span><i></i><span>Каждая хороша в своём проявлении</span><i></i><span>Мои люди делают меня</span><i></i><span>Скажу как есть</span><i></i></div>
-  <div class="kin-row o" id="kin2"><span>Гнись, но не прогибайся</span><i></i><span>Меньшее я даже не рассматривала</span><i></i><span>Гнись, но не прогибайся</span><i></i><span>Меньшее я даже не рассматривала</span><i></i></div>
 </section>
 
 <!-- ПУТЬ -->
@@ -543,7 +525,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <!-- ИСТОРИИ -->
 <section class="stories off" id="stories">
   <div class="wrap head-row">
-    <h2>Как меняются жизни<br>после разговора</h2>
+    <h2>Что бывает после<br>одного честного разговора</h2>
     <div>
       <p>Истории людей, с которыми я говорила. Имена и детали изменены.</p>
       <div class="arrows">
@@ -554,22 +536,92 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </div>
   <div class="rail" id="r2">
     <article class="scard"><span class="tag">Прямой разговор</span><q>Это же дно. Ты красивая, умная — ты можешь больше.</q><p>Знакомая обиделась на эти слова. Мы долго не общались.</p><div class="after"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>Через время она вернулась: «После того разговора я всё поменяла».</span></div></article>
-    <article class="scard"><span class="tag">Отношения</span><q>Я хочу развестись. Всё плохо.</q><p>Она пришла с этим запросом и уверенностью, что дело в муже.</p><div class="after"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>За два часа стало ясно, где на самом деле проблема — и что с ней делать.</span></div></article>
-    <article class="scard"><span class="tag">Красота</span><q>Мне идут большие очки.</q><p>Подруга носила очки на пол-лица и прятала за ними огромные голубые глаза.</p><div class="after"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>Я первая сказала: сними. Она увидела себя по-новому.</span></div></article>
+    <article class="scard"><span class="tag">Отношения</span><q>Я хочу развестись. Всё плохо.</q><p>Она пришла с этим запросом и уверенностью, что дело в муже.</p><div class="after"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>За час стало ясно: дело не в муже, а в том, о чём она молчит. Что делать дальше, она решила сама.</span></div></article>
     <article class="scard"><span class="tag">Команда</span><q>Заберите нас с собой.</q><p>Так до сих пор пишут люди, которыми я руководила.</p><div class="after"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11.5l4.5 4.5L18 6"/></svg><span>Пять человек готовы идти за мной на любое новое место.</span></div></article>
   </div>
-  <div class="wrap"><div class="rprog"><i data-rail="r2"></i></div><p class="note">Решения в каждой истории принимал сам человек. Я не обещаю, что изменится жизнь, — я показываю, что вижу.</p></div>
+  <div class="wrap"><div class="rprog"><i data-rail="r2"></i></div><p class="note">Истории рассказаны с согласия, имена и детали изменены. Решения в каждой из них человек принимал сам.</p></div>
 </section>
 
 <!-- ПРИНЦИПЫ -->
 <section class="principles">
   <div class="wrap">
-    <div class="head-row"><h2>На чём строится<br>разговор</h2><p>Это не правила, которые я навязываю. Это то, что я проверила на себе.</p></div>
-    <div class="prow"><h3>Прямота — <span>это забота</span></h3><p>Говорю в лоб то, что другие боятся сказать. Сначала может быть обидно — потом человек видит, на что способен.</p></div>
-    <div class="prow"><h3>Каждая хороша <span>по-своему</span></h3><p>Нет правильного способа быть женщиной. Та, что печёт пироги, не хуже той, что на должности. Просто у неё своё.</p></div>
-    <div class="prow"><h3>Сильная — <span>и хочет любви</span></h3><p>Независимость не отменяет желания быть любимой. Отказ от мужчин «на щит» чаще защищает, чем делает счастливой.</p></div>
-    <div class="prow"><h3>Универсального <span>совета нет</span></h3><p>Все разные. То, что спасёт одну, навредит другой. Поэтому сначала ваш вопрос — потом решение.</p></div>
-    <div class="prow"><h3>Гнись, но <span>не прогибайся</span></h3><p>Уступать можно, терять достоинство — нет. И не каждую войну нужно выигрывать.</p></div>
+    <div class="head-row"><h2>На чём строится<br>разговор</h2><p>Я проверила это на себе.</p></div>
+    <div class="prow"><h3>Говорю <span class="a">прямо</span></h3><p>То, что другие боятся сказать. Сначала бывает обидно, потом становится легче.</p></div>
+    <div class="prow"><h3>Каждая хороша <span class="a">по-своему</span></h3><p>Нет правильного способа быть женщиной. Та, что печёт пироги, не хуже той, что на должности. Просто у неё своё.</p></div>
+    <div class="prow"><h3>Сильной тоже <span class="a">хочется любви</span></h3><p>Стена из «мне никто не нужен» защищает, но не греет.</p></div>
+    <div class="prow"><h3>Сначала <span class="a">ваша ситуация</span></h3><p>Готовых рецептов не даю: то, что спасёт одну, навредит другой.</p></div>
+    <div class="prow"><h3>Гнись, но <span class="a">не прогибайся</span></h3><p>Уступать можно, терять достоинство — нет. И не каждую войну нужно выигрывать.</p></div>
+  </div>
+</section>
+
+<!-- ФОРМАТЫ -->
+<section class="formats" id="formats">
+  <div class="wrap head-row">
+    <h2>Выберите, как<br>мы поговорим</h2>
+    <div>
+      <p>Не читаю мораль и не говорю «надо». Показываю, что вижу, и помогаю принять решение, за которое потом не стыдно.</p>
+      <div class="arrows">
+        <button class="arrow" data-rail="r1" data-dir="-1" aria-label="Предыдущий формат"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 9H3M7 4L2.5 9 7 14"/></svg></button>
+        <button class="arrow" data-rail="r1" data-dir="1" aria-label="Следующий формат"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="rail" id="r1">
+    <a class="fcard" href="#contact">
+      <svg class="art" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice"><g stroke="rgba(255,255,255,.14)"><circle cx="300" cy="90" r="40"/><circle cx="300" cy="90" r="80"/><circle cx="300" cy="90" r="120"/><circle cx="300" cy="90" r="160"/></g><circle cx="300" cy="90" r="9" fill="#D9714F"/></svg>
+      <span class="meta">1 час · онлайн или лично</span>
+      <h3>Личная консультация</h3>
+      <p>Один вопрос — одна встреча. Ответ и понятный следующий шаг.</p>
+      <span class="go"><span>Цену назову в ответ на сообщение</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
+    </a>
+    <a class="fcard acc" href="#contact">
+      <svg class="art" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice"><path d="M40 210 C140 210 160 90 260 90 S 360 40 380 40" stroke="rgba(255,255,255,.16)"/><circle cx="110" cy="196" r="9" fill="rgba(255,255,255,.35)"/><circle cx="232" cy="100" r="9" fill="rgba(255,255,255,.6)"/><circle cx="352" cy="50" r="9" fill="#D9714F"/></svg>
+      <span class="meta">3 встречи</span>
+      <h3>Три встречи</h3>
+      <p>Когда одной мало. Я уже знаю вас — на каждой сразу переходим к делу.</p>
+      <span class="go"><span>Цену назову в ответ на сообщение</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
+    </a>
+    <a class="fcard" href="#contact">
+      <svg class="art" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice"><g fill="rgba(255,255,255,.1)"><rect x="200" y="150" width="34" height="90" rx="8"/><rect x="246" y="120" width="34" height="120" rx="8"/><rect x="292" y="84" width="34" height="156" rx="8"/></g><rect x="338" y="44" width="34" height="196" rx="8" fill="#D9714F"/></svg>
+      <span class="meta">4 недели · созвон раз в неделю и чат</span>
+      <h3>Месяц вместе</h3>
+      <p>Для больших перемен: уверенность, работа, отношения. Между встречами — время попробовать.</p>
+      <span class="go"><span>Цену назову в ответ на сообщение</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
+    </a>
+    <a class="fcard ph2" href="#retreat">
+      <span class="fphoto"><img src="photos/flowers-event.jpg" alt="" loading="lazy"></span>
+      <span class="meta">Скоро · лист ожидания</span>
+      <h3>Ретрит «Перезагрузка»</h3>
+      <p>Несколько дней в женской компании вдали от города: разговоры, тишина и своё.</p>
+      <span class="go"><span>Узнать первой</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h12M11 4l4.5 5-4.5 5"/></svg></span>
+    </a>
+  </div>
+  <div class="wrap"><div class="rprog"><i data-rail="r1"></i></div></div>
+</section>
+
+<!-- КАК ПРОХОДИТ -->
+<section class="how light">
+  <div class="wrap">
+    <h2>Как проходит консультация</h2>
+    <div class="steps">
+      <div class="step"><span class="n">Шаг 1</span><h3>Пишете мне</h3><p>Коротко описываете ситуацию и вопрос. Выбираем формат и удобное время — вечером или в выходные.</p></div>
+      <div class="step"><span class="n">Шаг 2</span><h3>Разговариваем</h3><p>Разбираем ситуацию честно и по делу — как есть. Строго по времени, без воды.</p></div>
+      <div class="step"><span class="n">Шаг 3</span><h3>Вы решаете</h3><p>Уходите с ясной картиной и следующими шагами.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq light" id="faq">
+  <div class="wrap grid">
+    <h2>Частые вопросы</h2>
+    <div>
+      <details><summary>Вы психолог или коуч?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Нет. Я практик с большим жизненным опытом: руководитель, предприниматель, женщина, которая многое прошла сама. Я вижу суть ситуации и помогаю её разрешить.</p></details>
+      <details><summary>С какими вопросами можно прийти?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Чаще всего — с отношениями и вопросом «что со мной не так». Разбираем и работу, деньги, выбор между наймом и своим делом: здесь у меня 15 лет практики.</p></details>
+      <details><summary>Почему вы не даёте готовых советов?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Потому что жизнь у каждой своя. Сначала разбираемся в вашей ситуации, потом ищем решение.</p></details>
+      <details><summary>Вы будете говорить жёстко?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Честно. Без грубости, но и без сахара: так быстрее доходим до сути.</p></details>
+      <details><summary>Кому я не подойду?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Если нужна та, кто скажет «ты во всём права», — это не ко мне. Если тяжёлое состояние или горе — сначала к врачу или психотерапевту: я их не заменяю.</p></details>
+      <details><summary>Вы гарантируете результат?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Нет — и никто честный не гарантирует. Я помогаю увидеть ситуацию ясно. Дальше вы действуете сами.</p></details>
+    </div>
   </div>
 </section>
 
@@ -584,7 +636,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     </div>
     <div class="ret-copy" id="rcopy">
       <h2>Перезагрузка</h2>
-      <p class="intro">Ретрит: несколько дней с девочками вдали от города. Каждая берёт то, что нужно именно ей.</p>
+      <p class="intro">Ретрит: несколько дней в женской компании вдали от города. Каждая берёт то, что нужно именно ей.</p>
       <div class="slot" id="rslot">
         <div class="sl"><b>Утро</b><span>Моё выступление — одна тема на день</span></div>
         <div class="sl"><b>День</b><span>Личные консультации и медитации с поющими чашами</span></div>
@@ -593,31 +645,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       </div>
       <div class="ret-clock" id="rclock">06:00</div>
       <div class="ret-cta" id="rcta"><a href="#contact" class="pill w">Хочу в лист ожидания <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- КАК ПРОХОДИТ -->
-<section class="how light">
-  <div class="wrap">
-    <h2>Как проходит консультация</h2>
-    <div class="steps">
-      <div class="step"><span class="n">Шаг 1</span><h3>Пишете мне</h3><p>Коротко описываете ситуацию и вопрос. Выбираем формат и удобное время — вечером или в выходные.</p></div>
-      <div class="step"><span class="n">Шаг 2</span><h3>Разговариваем</h3><p>Разбираем ситуацию честно и по делу — как есть. Строго по времени, без воды.</p></div>
-      <div class="step"><span class="n">Шаг 3</span><h3>Вы решаете</h3><p>Уходите с ясной картиной и следующими шагами. Решение остаётся за вами.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="faq light" id="faq">
-  <div class="wrap grid">
-    <h2>Частые вопросы</h2>
-    <div>
-      <details><summary>Вы психолог или коуч?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Нет. Я практик с большим жизненным опытом: руководитель, предприниматель, женщина, которая многое прошла сама. Я вижу суть ситуации и помогаю её разрешить.</p></details>
-      <details><summary>С какими вопросами можно прийти?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Отношения, уверенность в себе, страхи, работа и карьера, выбор между наймом и своим делом, личные решения. Все сферы жизни — не одна узкая тема.</p></details>
-      <details><summary>Почему вы не даёте готовых советов?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Потому что универсального рецепта нет. Совет, который поможет одной, навредит другой. Сначала разбираемся в вашей ситуации — потом решение.</p></details>
-      <details><summary>Вы будете говорить жёстко?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Честно. Прямота — это не грубость, а уважение к вашему времени. Но решение всегда остаётся за вами.</p></details>
-      <details><summary>Вы гарантируете результат?<svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3v16M3 11h16"/></svg></summary><p>Нет — и никто честный не гарантирует. Я помогаю увидеть ситуацию ясно. Дальше вы действуете сами.</p></details>
     </div>
   </div>
 </section>
@@ -637,7 +664,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 <a href="#contact" class="pill w sticky-cta" id="scta">Записаться на консультацию <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-<footer><div class="wrap"><span>© 2026 Юлия Павлова · Будь на своём месте</span><span>Видео: <a href="https://www.pexels.com/@mart-production" target="_blank" rel="noopener">MART PRODUCTION</a>, <a href="https://www.pexels.com/@riturajgogoi" target="_blank" rel="noopener">Aerial Wanderlust</a>, <a href="https://www.pexels.com/@freestockpro" target="_blank" rel="noopener">Atlantic Ambience</a>, <a href="https://www.pexels.com/@katerina-witt-2930774" target="_blank" rel="noopener">Katerina Witt</a> / Pexels</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Юлия Павлова · Будьте на своём месте</span><span>Видео: <a href="https://www.pexels.com/@mart-production" target="_blank" rel="noopener">MART PRODUCTION</a>, <a href="https://www.pexels.com/@riturajgogoi" target="_blank" rel="noopener">Aerial Wanderlust</a>, <a href="https://www.pexels.com/@freestockpro" target="_blank" rel="noopener">Atlantic Ambience</a>, <a href="https://www.pexels.com/@katerina-witt-2930774" target="_blank" rel="noopener">Katerina Witt</a> / Pexels</span></div></footer>
 
 <script>
 (function(){
@@ -670,248 +697,169 @@ function expo(x){ return x >= 1 ? 1 : 1 - Math.pow(2, -10*x); }
 function rgb(c){ return 'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')'; }
 
 /* =====================================================
-   HERO — одна форма меняет размер, радиус и цвет; курсор
-   управляет каждой сменой. seek(t) — чистая функция времени.
-   120 BPM · 7 тактов = 14 с, последний кадр = первый.
+   HERO — «как проходит разговор» в 6 шагах, как сторис.
+   Одна форма меняет размер, радиус и цвет; курсор ведёт действия.
+   seek(t) — чистая функция времени; шаги одинаковой длины; цикл замкнут.
    ===================================================== */
-var T = 14;
-// Показ: у каждой из 11 сцен одинаковое экранное время SCENE_SEC.
-// Переходы идут со скоростью HERO_SPEED, а остаток сцены она «держится» на полностью видимом кадре.
-var HERO_SPEED = 0.55, SCENE_SEC = 4.6;
-var SEG_A = [13.75, 1, 2, 2.5, 3.5, 6, 8, 9, 10.5, 12, 13.2];
-var SEG_B = [15,    2, 2.5, 3.5, 6, 8, 9, 10.5, 12, 13.2, 13.75];
-var CYCLE = SEG_A.length*SCENE_SEC, AMB = 0, CYC = 0;
-function heroAt(sec){
-  var u = ((sec % CYCLE) + CYCLE) % CYCLE, k = Math.floor(u/SCENE_SEC), loc = u - k*SCENE_SEC;
-  var a = SEG_A[k], b = SEG_B[k], H = b - 0.16, play1 = (H - a)/HERO_SPEED, hold = Math.max(0, SCENE_SEC - (b - a)/HERO_SPEED), t;
-  if (loc < play1) t = a + loc*HERO_SPEED;
-  else if (loc < play1 + hold) t = H;
-  else t = H + (loc - play1 - hold)*HERO_SPEED;
-  AMB = sec; CYC = u/CYCLE;
-  seek(t % T);
-}
+var D = 4.6, NS_ = 6, T = D*NS_;
 var cam = document.getElementById('cam'), world = document.getElementById('world'), stage = document.querySelector('.stage');
-var BLK = [17,17,16], WHT = [255,255,255], ACC = [217,113,79];
-var S = [
-  {t:0,     w:252, h:72,  r:36, c:BLK, n:'Запись'},
-  {t:1.0,   w:72,  h:72,  r:36, c:BLK, n:'Отправка'},
-  {t:2.0,   w:72,  h:72,  r:36, c:ACC, n:'Готово'},
-  {t:2.5,   w:388, h:72,  r:36, c:BLK, n:'Входящее'},
-  {t:3.5,   w:452, h:224, r:30, c:BLK, n:'Вопрос из директа'},
-  {t:6.0,   w:460, h:150, r:30, c:WHT, n:'Уверенность'},
-  {t:8.0,   w:388, h:108, r:54, c:WHT, n:'Перестать подстраиваться'},
-  {t:9.0,   w:452, h:88,  r:44, c:WHT, n:'Фокус'},
-  {t:10.5,  w:470, h:318, r:30, c:WHT, n:'Ясность'},
-  {t:12.0,  w:476, h:292, r:26, c:BLK, n:'Поиск'},
-  {t:13.2,  w:404, h:156, r:30, c:WHT, n:'Готово'},
-  {t:13.75, w:252, h:72,  r:36, c:BLK, n:'Запись'}
+var BLK = [17,17,16], WHT = [255,255,255];
+var SC = [ // форма шага и тон сцены
+  {w:460, h:250, r:28, c:WHT, bg:[231,229,225], title:'Вы пишете вопрос'},
+  {w:460, h:214, r:30, c:BLK, bg:[226,220,212], title:'Я отвечаю голосом'},
+  {w:460, h:222, r:28, c:WHT, bg:[229,224,232], title:'Разбираем: страх, опыт, суть'},
+  {w:404, h:116, r:58, c:WHT, bg:[224,229,226], title:'Перестаём подстраиваться'},
+  {w:480, h:286, r:26, c:BLK, bg:[232,224,214], title:'Видим суть'},
+  {w:430, h:168, r:30, c:WHT, bg:[241,226,216], title:'Решение — ваше'}
 ];
-function keysOf(f){ return S.map(function(s){ return [s.t, f(s)]; }); }
+function keysOf(f){ var k = SC.map(function(s, i){ return [i*D, f(s)]; }); k.push([T, f(SC[0])]); return k; }
 var KW = keysOf(function(s){return s.w;}), KH = keysOf(function(s){return s.h;}), KR = keysOf(function(s){return s.r;});
 var KC = [0,1,2].map(function(i){ return keysOf(function(s){return s.c[i];}); });
-var KZ = keysOf(function(s){ return Math.min(1.5, 470/Math.max(s.w, s.h)); });
+var KB = [0,1,2].map(function(i){ return keysOf(function(s){return s.bg[i];}); });
+var KZ = keysOf(function(s){ return Math.min(1.22, 470/Math.max(s.w, s.h)); });
 
-// курсор (координаты мира) и нажатия
-var CX = [[0,540],[0.55,356],[1.6,470],[2.9,505],[3.7,124],[4.6,280],[4.95,312],[5.55,470],[5.95,520],[6.3,0],[7.0,0],[7.45,0],[7.75,470],[8.3,0],[8.95,440],[9.35,300],[9.85,446],[10.4,480],[11.35,0],[11.9,530],[12.95,480],[13.55,540]];
-var CY = [[0,540],[0.55,312],[1.6,430],[2.9,480],[3.7,0],[4.6,0],[4.95,0],[5.55,0],[5.95,470],[6.3,0],[7.0,0],[7.45,0],[7.75,430],[8.3,300],[8.95,420],[9.35,300],[9.85,300],[10.4,430],[11.35,0],[11.9,430],[12.95,470],[13.55,540]];
-var PRESS = [[0.85,0.98],[3.9,4.02],[5.0,5.6],[6.4,7.5],[8.45,8.57],[9.45,9.57],[9.95,10.07]];
+// геометрия управляемых элементов (координаты мира)
+var SEND = [300+230-22-26, 300+125-22-26];             // кнопка «отправить»
+var PLAY = [300-230+24+24, 300+107-22-24];             // кнопка «играть»
+var TABY = 300-111+12+34, TABW = (460-24)/3, TABX0 = 300-230+12;
+var TGL = [300+202-30-44, 300];                        // переключатель
+var CX = [[0,560],[0.4,540],[2.2,SEND[0]+40],[2.5,SEND[0]],[3.4,SEND[0]+30],[4.3,560],
+          [D+0.2,PLAY[0]+60],[D+0.5,PLAY[0]],[D+1.3,PLAY[0]+40],[D+3.6,560],
+          [2*D+0.6,TABX0+TABW*1.5+30],[2*D+1.25,TABX0+TABW*1.5],[2*D+2.1,TABX0+TABW*2.2],[2*D+2.65,TABX0+TABW*2.5],[2*D+3.6,560],
+          [3*D+0.7,TGL[0]+50],[3*D+1.45,TGL[0]],[3*D+2.4,TGL[0]+40],[3*D+3.6,560],
+          [4*D+0.5,560],[5*D+0.5,560],[T,560]];
+var CY = [[0,560],[0.4,540],[2.2,SEND[1]+40],[2.5,SEND[1]],[3.4,SEND[1]+30],[4.3,560],
+          [D+0.2,PLAY[1]+50],[D+0.5,PLAY[1]],[D+1.3,PLAY[1]+40],[D+3.6,560],
+          [2*D+0.6,TABY+50],[2*D+1.25,TABY],[2*D+2.1,TABY+10],[2*D+2.65,TABY],[2*D+3.6,560],
+          [3*D+0.7,TGL[1]+50],[3*D+1.45,TGL[1]],[3*D+2.4,TGL[1]+40],[3*D+3.6,560],
+          [4*D+0.5,560],[5*D+0.5,560],[T,560]];
+var PRESS = [[2.6,2.72],[D+0.6,D+0.72],[2*D+1.35,2*D+1.47],[2*D+2.75,2*D+2.87],[3*D+1.55,3*D+1.67]];
 
 var shadow = document.createElement('div'); shadow.className = 'shadow'; cam.appendChild(shadow);
 var shape = document.createElement('div'); shape.className = 'shape'; cam.appendChild(shape);
 var ST = [];
-function add(i0, i1, html){
-  var s = S[i0], d = document.createElement('div'); d.className = 'st'; d.innerHTML = html;
+function add(k, html){
+  var s = SC[k], d = document.createElement('div'); d.className = 'st'; d.innerHTML = html;
   d.style.width = s.w+'px'; d.style.height = s.h+'px'; d.style.marginLeft = (-s.w/2)+'px'; d.style.marginTop = (-s.h/2)+'px';
-  shape.appendChild(d); ST.push({a:S[i0].t, b:S[i1].t, el:d}); return d;
+  shape.appendChild(d); ST.push({k:k, el:d}); return d;
 }
-var ARROW = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11M10 4.5L14.5 9 10 13.5"/></svg>';
-var sBtn = add(0,1,'<div style="height:100%;display:flex;align-items:center;justify-content:center;gap:12px;color:#fff;font-size:22px;font-weight:500"><span>Записаться</span><span class="ba" style="display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:#111">'+ARROW+'</span></div>');
-var sLoad = add(1,2,'<svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="15" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="4"/><circle class="arc" cx="36" cy="36" r="15" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="24 70"/></svg>');
-var sChk = add(2,3,'<svg width="72" height="72" viewBox="0 0 72 72"><path class="ck" d="M25 37 l8 8 l15 -17" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="44" stroke-dashoffset="44"/></svg>');
-var sIsl = add(3,4,'<div style="height:100%;display:flex;align-items:center;gap:14px;padding:0 16px;color:#fff"><span style="position:relative;width:42px;height:42px;border-radius:50%;background:#D9714F;display:grid;place-items:center;font-weight:600;font-size:17px;flex:none">Ю<span class="bdg" style="position:absolute;right:-3px;top:-3px;width:16px;height:16px;border-radius:50%;background:#fff;color:#111;font-size:10px;font-weight:600;display:grid;place-items:center;border:2px solid #111">1</span></span><span style="flex:1;line-height:1.25;min-width:0"><span style="display:block;font-size:13px;color:rgba(255,255,255,.55)">Новое сообщение · сейчас</span><span style="font-size:17px;font-weight:500">Вопрос в директ</span></span><span class="wave" style="display:flex;gap:3px;align-items:center;height:30px;padding-right:6px"></span></div>');
-var wave = sIsl.querySelector('.wave');
-for (var wi = 0; wi < 8; wi++){ var bb = document.createElement('i'); bb.style.cssText = 'display:block;width:3px;border-radius:2px;background:#fff'; wave.appendChild(bb); }
-var PLW = 300;
-var sPl = add(4,5,'<div style="padding:24px 28px;color:#fff;height:100%;display:flex;flex-direction:column"><div style="display:flex;justify-content:space-between;align-items:center;font-size:14px;color:rgba(255,255,255,.55)"><span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#D9714F"></span>Вопрос из директа</span><span style="font-family:var(--mono)"><span class="tc">0:00</span> / 0:42</span></div><div style="font-size:30px;font-weight:500;letter-spacing:-.03em;margin-top:12px;line-height:1.15">«Уходить или остаться?»</div><div style="margin-top:auto;display:flex;align-items:center;gap:18px"><span class="pbt" style="width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none"><svg class="ip" width="16" height="16" viewBox="0 0 16 16"><path d="M4.5 2.5v11l9-5.5z" fill="#111"/></svg><svg class="ipa" width="16" height="16" viewBox="0 0 16 16" style="display:none"><rect x="3" y="2.5" width="3.4" height="11" rx="1" fill="#111"/><rect x="9.6" y="2.5" width="3.4" height="11" rx="1" fill="#111"/></svg></span><span class="wf" style="position:relative;width:'+PLW+'px;height:40px;display:flex;align-items:center;justify-content:space-between"></span></div></div>');
-var wf = sPl.querySelector('.wf'), WF = [];
-for (var k0 = 0; k0 < 40; k0++){ var hb = 6 + Math.round(30*Math.abs(Math.sin(k0*1.7)*Math.cos(k0*0.37)) ); var bar = document.createElement('i'); bar.style.cssText = 'display:block;width:3.5px;border-radius:2px;height:'+hb+'px'; wf.appendChild(bar); WF.push(bar); }
-var head = document.createElement('i'); head.style.cssText = 'position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;border-radius:2px;background:#D9714F'; wf.appendChild(head);
-var sSl = add(5,6,'<div style="padding:26px 32px;height:100%;color:#111;position:relative"><div style="display:flex;justify-content:space-between;align-items:baseline;font-size:18px;font-weight:500"><span>Уверенность</span><span class="sv" style="font-family:var(--mono);font-weight:400;font-size:16px;color:#6F6A63">30%</span></div><div class="str" style="position:relative;height:8px;margin-top:40px;border-radius:4px;background:#E7E5E1;transform-origin:0 50%"><span class="sf" style="position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:#111"></span><span class="bub" style="position:absolute;bottom:22px;padding:4px 9px;border-radius:8px;background:#111;color:#fff;font-family:var(--mono);font-size:13px;white-space:nowrap;transform-origin:50% 100%"></span><span class="sk" style="position:absolute;top:50%;height:28px;margin-top:-14px;border-radius:14px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.06)"></span></div><div class="tks" style="display:flex;justify-content:space-between;margin-top:16px"></div></div>');
-var tks = sSl.querySelector('.tks'); for (var tq = 0; tq <= 10; tq++){ var tki = document.createElement('i'); tki.style.cssText = 'display:block;width:1.5px;height:'+(tq%5===0?10:6)+'px;background:#C9C4BC'; tks.appendChild(tki); }
-var sTg = add(6,7,'<div style="height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 28px 0 34px;color:#111"><span style="font-size:20px;font-weight:500;line-height:1.3">Подстраиваться<span style="position:relative;display:block;height:20px;font-size:15px;font-weight:400;color:#6F6A63"><span class="tg1" style="position:absolute;left:0;top:0;white-space:nowrap">включено</span><span class="tg2" style="position:absolute;left:0;top:0;white-space:nowrap;opacity:0">выключено — я выбираю себя</span></span></span><span class="tw" style="position:relative;width:88px;height:52px;border-radius:26px;flex:none"><span class="tk" style="position:absolute;top:6px;height:40px;border-radius:20px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.22)"></span></span></div>');
-var sTb = add(7,8,'<div style="position:relative;height:100%;padding:10px"><span class="ti" style="position:absolute;top:10px;bottom:10px;border-radius:34px;background:#111"></span><div class="tl" style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);height:100%;font-size:19px;font-weight:500"><span style="display:grid;place-items:center">Страх</span><span style="display:grid;place-items:center">Опыт</span><span style="display:grid;place-items:center">Суть</span></div></div>');
-var sCh = add(8,9,'<div style="padding:26px 30px;height:100%;color:#111;position:relative"><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:21px;font-weight:500">Ясность</span><span style="font-size:14px;color:#6F6A63">ваш путь</span></div><svg class="chs" width="410" height="200" viewBox="0 0 410 200" style="margin-top:18px;overflow:visible"><g class="grd" stroke="#EEEBE6"><path d="M0 50 H410"/><path d="M0 100 H410"/><path d="M0 150 H410"/></g><path d="M0 199 H410" stroke="#DDD9D2"/><clipPath id="chc"><rect class="chr" x="0" y="-10" width="0" height="220"/></clipPath><path clip-path="url(#chc)" d="M4 182 C 70 180 96 160 140 142 S 214 128 250 90 S 330 30 404 20 V199 H4Z" fill="rgba(17,17,16,.06)"/><path class="cp" d="M4 182 C 70 180 96 160 140 142 S 214 128 250 90 S 330 30 404 20" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/><g class="pts" fill="#fff" stroke="#111" stroke-width="2.5"><circle cx="140" cy="142" r="0"/><circle cx="250" cy="90" r="0"/></g><circle class="cdot" cx="404" cy="20" r="0" fill="#D9714F"/><text x="0" y="222" font-size="13" fill="#6F6A63" font-family="Geist">тупик</text><text x="410" y="222" font-size="13" fill="#6F6A63" text-anchor="end" font-family="Geist">суть</text></svg><div class="tip" style="position:absolute;right:30px;top:62px;background:#111;color:#fff;font-size:14px;padding:8px 12px;border-radius:10px;white-space:nowrap;opacity:0">Вот она — суть</div></div>');
-var ICON = {
-  heart:'<path d="M9 15s-6-3.6-6-8a3.3 3.3 0 0 1 6-1.9A3.3 3.3 0 0 1 15 7c0 4.4-6 8-6 8z"/>',
-  spark:'<path d="M9 2v4M9 12v4M2 9h4M12 9h4M4.5 4.5l2.2 2.2M11.3 11.3l2.2 2.2M13.5 4.5l-2.2 2.2M6.7 11.3l-2.2 2.2"/>',
-  case:'<rect x="2.5" y="5.5" width="13" height="9" rx="2"/><path d="M6.5 5.5V4a1.5 1.5 0 0 1 1.5-1.5h2A1.5 1.5 0 0 1 11.5 4v1.5"/>',
-  comp:'<circle cx="9" cy="9" r="6.5"/><path d="M11.8 6.2l-1.6 4-4 1.6 1.6-4z"/>'
-};
-function ico(k){ return '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+ICON[k]+'</svg>'; }
-var sK = add(9,10,'<div style="padding:18px;height:100%;color:#fff;display:flex;flex-direction:column"><div style="display:flex;align-items:center;gap:12px;height:54px;flex:none;padding:0 14px;border-radius:14px;background:rgba(255,255,255,.08)"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="kq" style="font-size:18px;flex:1;white-space:nowrap"></span><span style="font-family:var(--mono);font-size:13px;padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.72)">⌘K</span></div><div class="kl" style="margin-top:10px;display:flex;flex-direction:column;font-size:17px"><span>'+ico('heart')+'Отношения<em>Enter</em></span><span>'+ico('spark')+'Уверенность</span><span>'+ico('case')+'Работа</span><span>'+ico('comp')+'Предназначение</span></div></div>');
-var sPo = add(10,11,'<div style="position:relative;height:100%;display:flex;align-items:center;gap:18px;padding:0 30px;color:#111"><span class="pc" style="width:54px;height:54px;border-radius:50%;background:#D9714F;display:grid;place-items:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path class="pck" d="M6 12.5l4 4L18 8" stroke-dasharray="20" stroke-dashoffset="20"/></svg></span><span style="line-height:1.3"><span style="display:block;font-size:21px;font-weight:500">Вы записаны</span><span style="font-size:15px;color:#6F6A63">Консультация · тема: отношения</span></span><span class="pl" style="position:absolute;left:30px;right:30px;bottom:18px;height:3px;border-radius:2px;background:#111;transform-origin:0 50%"></span></div>');
+var AV = '<span style="width:36px;height:36px;border-radius:50%;background:#D9714F;color:#fff;display:grid;place-items:center;font-weight:600;font-size:15px;flex:none">Ю</span>';
+var s0 = add(0, '<div style="height:100%;padding:20px 22px;display:flex;flex-direction:column;color:#111"><div style="display:flex;align-items:center;gap:12px">'+AV+'<span style="line-height:1.2"><b style="display:block;font-weight:500;font-size:16px">Юлия Павлова</b><span style="font-size:13px;color:#2E8B57">в сети</span></span></div><div style="flex:1;position:relative"><span class="sb" style="position:absolute;right:0;top:14px;max-width:300px;padding:10px 14px;border-radius:18px 18px 4px 18px;background:#D9714F;color:#fff;font-size:17px;opacity:0;white-space:nowrap">Уходить или остаться? <svg class="tk2" width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-left:6px;vertical-align:-1px;opacity:0"><path d="M1 6.5l3 3L10 3M7 9.5L13 3"/></svg></span></div><div style="display:flex;gap:10px;align-items:center"><span style="flex:1;height:52px;border-radius:26px;background:#F1EFEC;display:flex;align-items:center;padding:0 18px;font-size:17px;white-space:nowrap;overflow:hidden" class="inp"></span><span class="snd" style="width:52px;height:52px;border-radius:50%;background:#111;display:grid;place-items:center;flex:none"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h13M11 4.5L16.5 10 11 15.5"/></svg></span></div></div>');
+var s1 = add(1, '<div style="height:100%;padding:22px 24px;display:flex;flex-direction:column;color:#fff"><div style="display:flex;align-items:center;gap:12px">'+AV+'<span style="line-height:1.2"><b style="display:block;font-weight:500;font-size:16px">Юлия · голосовое</b><span class="vt" style="font-size:13px;color:rgba(255,255,255,.55);font-family:var(--mono)">0:00 / 0:42</span></span></div><div class="sub" style="margin-top:14px;font-size:18px;line-height:1.35;min-height:48px;color:rgba(255,255,255,.92)"></div><div style="margin-top:auto;display:flex;align-items:center;gap:16px"><span class="pb2" style="width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none"><svg class="ip" width="16" height="16" viewBox="0 0 16 16"><path d="M4.5 2.5v11l9-5.5z" fill="#111"/></svg><svg class="ipa" width="16" height="16" viewBox="0 0 16 16" style="display:none"><rect x="3" y="2.5" width="3.4" height="11" rx="1" fill="#111"/><rect x="9.6" y="2.5" width="3.4" height="11" rx="1" fill="#111"/></svg></span><span class="wf" style="position:relative;flex:1;height:40px;display:flex;align-items:center;justify-content:space-between"></span></div></div>');
+var wf = s1.querySelector('.wf'), WF = [];
+for (var k0 = 0; k0 < 38; k0++){ var hb = 6 + Math.round(28*Math.abs(Math.sin(k0*1.7)*Math.cos(k0*0.37))); var bar = document.createElement('i'); bar.style.cssText = 'display:block;width:3.5px;border-radius:2px;height:'+hb+'px'; wf.appendChild(bar); WF.push(bar); }
+var s2 = add(2, '<div style="height:100%;padding:12px;color:#111;display:flex;flex-direction:column"><div style="position:relative;height:68px;border-radius:34px;background:#F1EFEC"><span class="ti" style="position:absolute;top:6px;bottom:6px;border-radius:30px;background:#111"></span><div class="tl" style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);height:100%;font-size:19px;font-weight:500"><span style="display:grid;place-items:center">Страх</span><span style="display:grid;place-items:center">Опыт</span><span style="display:grid;place-items:center">Суть</span></div></div><div class="qs" style="position:relative;flex:1;margin:0 14px"><span style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);font-size:21px;letter-spacing:-.02em;line-height:1.3">«А вдруг я останусь одна?»</span><span style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);font-size:21px;letter-spacing:-.02em;line-height:1.3">«Я уже начинала с нуля — и справилась»</span><span style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);font-size:21px;letter-spacing:-.02em;line-height:1.3;color:#A9472A">«Мне важно, чтобы меня слышали»</span></div></div>');
+var s3 = add(3, '<div style="height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 36px;color:#111"><span style="font-size:20px;font-weight:500;line-height:1.3">Подстраиваться<span style="position:relative;display:block;height:20px;font-size:15px;font-weight:400;color:#6F6A63"><span class="tg1" style="position:absolute;left:0;top:0;white-space:nowrap">включено</span><span class="tg2" style="position:absolute;left:0;top:0;white-space:nowrap;opacity:0;color:#A9472A">выключено — выбираю себя</span></span></span><span class="tw" style="position:relative;width:88px;height:52px;border-radius:26px;flex:none"><span class="tk" style="position:absolute;top:6px;height:40px;border-radius:20px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.22)"></span></span></div>');
+var s4 = add(4, '<div style="padding:18px;height:100%;color:#fff;display:flex;flex-direction:column"><div style="display:flex;align-items:center;gap:12px;height:54px;flex:none;padding:0 16px;border-radius:14px;background:rgba(255,255,255,.08)"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="kq" style="font-size:18px;flex:1;white-space:nowrap"></span><span class="ke" style="font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.25)">Enter</span></div><div class="res" style="margin-top:14px;flex:1;border-radius:16px;background:#fff;color:#111;padding:18px 20px;opacity:0"><span style="display:block;font-size:13px;color:#A9472A;font-weight:500;letter-spacing:.02em">Суть · отношения</span><span style="display:block;margin-top:8px;font-size:21px;line-height:1.28;letter-spacing:-.02em;font-weight:500">Ответ вы давно знаете. Страшно сказать его вслух.</span></div></div>');
+var s5 = add(5, '<div style="height:100%;display:flex;align-items:center;gap:20px;padding:0 30px;color:#111"><span class="pc" style="width:58px;height:58px;border-radius:50%;background:#D9714F;display:grid;place-items:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path class="pck" d="M6 12.5l4 4L18 8" stroke-dasharray="20" stroke-dashoffset="20"/></svg></span><span style="line-height:1.3"><span style="display:block;font-size:22px;font-weight:500;letter-spacing:-.02em">Решение принимаете вы</span><span style="font-size:16px;color:#6F6A63">а я рядом, пока вы к нему идёте</span></span></div>');
 
 var RIP = PRESS.map(function(){ var r = document.createElement('div'); r.className = 'ripple'; cam.appendChild(r); return r; });
 var cur = document.createElement('div'); cur.className = 'cursor';
 cur.innerHTML = '<svg width="26" height="26" viewBox="0 0 26 26"><path d="M4 3l15 7.6-6.6 1.7-3 6.2z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>';
 cam.appendChild(cur);
-var cap = document.getElementById('stcap'), capN = document.getElementById('stcapn'), beats = document.getElementById('stbeats'), grid = document.getElementById('stgrid');
-var BT = []; for (var bi = 0; bi < 28; bi++){ var bt = document.createElement('i'); beats.appendChild(bt); BT.push(bt); }
+var bars = document.getElementById('stbars'), stTitle = document.getElementById('sttitle'), stNum = document.getElementById('stnum'), grid = document.getElementById('stgrid');
+var BR = SC.map(function(){ var b = document.createElement('span'); b.innerHTML = '<i></i>'; bars.appendChild(b); return b.firstChild; });
 
 function q(s,e){ return e.querySelector(s); }
-var arc = q('.arc',sLoad), ck = q('.ck',sChk), bdg = q('.bdg',sIsl), ba = q('.ba',sBtn);
-var tc = q('.tc',sPl), ip = q('.ip',sPl), ipa = q('.ipa',sPl), pbt = q('.pbt',sPl);
-var sv = q('.sv',sSl), str = q('.str',sSl), sf = q('.sf',sSl), sk = q('.sk',sSl), bub = q('.bub',sSl);
-var tw = q('.tw',sTg), tk = q('.tk',sTg), tg1 = q('.tg1',sTg), tg2 = q('.tg2',sTg);
-var ti = q('.ti',sTb), tl = q('.tl',sTb).children;
-var cp = q('.cp',sCh), chr = q('.chr',sCh), cdot = q('.cdot',sCh), tip = q('.tip',sCh), pts = q('.pts',sCh).children, grd = q('.grd',sCh).children;
-var kq = q('.kq',sK), kl = q('.kl',sK).children, pck = q('.pck',sPo), pl = q('.pl',sPo), pc = q('.pc',sPo);
-var cpLen = 0;
+var inp = q('.inp',s0), sb = q('.sb',s0), tk2 = q('.tk2',s0), snd = q('.snd',s0);
+var vt = q('.vt',s1), sub = q('.sub',s1), ip = q('.ip',s1), ipa = q('.ipa',s1), pb2 = q('.pb2',s1);
+var ti = q('.ti',s2), tl = q('.tl',s2).children, qs = q('.qs',s2).children;
+var tw = q('.tw',s3), tk = q('.tk',s3), tg1 = q('.tg1',s3), tg2 = q('.tg2',s3);
+var kq = q('.kq',s4), ke = q('.ke',s4), res = q('.res',s4);
+var pc = q('.pc',s5), pck = q('.pck',s5);
+var Q1 = 'Уходить или остаться?', VOICE = 'Давайте разберёмся, чего вы на самом деле боитесь.', WORD = 'отношения';
 
-// геометрия управляемых элементов в координатах мира (до камеры)
-var PL0 = 300 - 226 + 28 + 48 + 18;           // левый край волны плеера
-var PLY = 300 + 112 - 24 - 24;                // центр строки плеера
-var SL0 = 300 - 230 + 32, SLW = 460 - 64;     // трек ползунка
-var SLY = 300 - 75 + 26 + 28 + 40 + 4;        // центр трека
-var TGX = 300 + 194 - 28 - 44, TGY = 300;     // центр переключателя
-var CHX = 300 - 235 + 30 + 404, CHY = 300 - 159 + 26 + 32 + 18 + 20;
-// подставляем точные цели курсора
-function setK(arr, t, v){ for (var i = 0; i < arr.length; i++) if (arr[i][0] === t) arr[i][1] = v; }
-setK(CY,3.7,PLY-2); setK(CY,4.6,PLY); setK(CY,4.95,PLY); setK(CY,5.55,PLY);
-setK(CX,3.7,300-226+28+24);
-setK(CX,4.95,PL0+PLW*0.5); setK(CX,4.6,PL0+PLW*0.45);
-setK(CX,6.3,SL0+SLW*0.3); setK(CX,7.0,SL0+SLW*0.92); setK(CX,7.45,SL0+SLW*1.2);
-setK(CY,6.3,SLY); setK(CY,7.0,SLY); setK(CY,7.45,SLY);
-setK(CX,8.3,TGX);
-setK(CX,11.35,CHX); setK(CY,11.35,CHY);
-
-// у каждого содержимого свои вход и выход: появляется, когда форма уже почти раскрылась,
-// и исчезает до того, как она начнёт сжиматься — слова никогда не обрезаются
-function win(t, a, b){ return Math.min(sm(a+0.16, a+0.36, t), 1 - sm(b-0.14, b+0.01, t)); }
-function pressSpring(t){ var v = 0; for (var i = 0; i < PRESS.length; i++) v += spring(t-PRESS[i][0],38,.7) - spring(t-PRESS[i][1],38,.7); return v; }
+function pressSpring(t){ var v = 0; for (var i = 0; i < PRESS.length; i++) v += spring(t-PRESS[i][0],34,.7) - spring(t-PRESS[i][1],34,.7); return v; }
+function win(l){ return Math.min(sm(0.35, 0.65, l), 1 - sm(D-0.3, D-0.06, l)); }
 
 function seek(t){
   t = ((t % T) + T) % T;
-  var w = track(KW,t,16,.78,T), h = track(KH,t,16,.78,T), r = track(KR,t,16,.8,T);
-  var c = [track(KC[0],t,14,1,T), track(KC[1],t,14,1,T), track(KC[2],t,14,1,T)];
-  var z = track(KZ,t,7,.95,T);
-  var cx = track(CX,t,13,.88,T), cy = track(CY,t,13,.88,T), pr = pressSpring(t);
+  var k = Math.min(NS_-1, Math.floor(t/D)), l = t - k*D;
+  var w = track(KW,t,11,.8,T), h = track(KH,t,11,.8,T), r = track(KR,t,11,.82,T);
+  var c = [track(KC[0],t,9,1,T), track(KC[1],t,9,1,T), track(KC[2],t,9,1,T)];
+  var bg = [track(KB[0],t,6,1,T), track(KB[1],t,6,1,T), track(KB[2],t,6,1,T)];
+  var z = track(KZ,t,6,.95,T);
+  var cx = track(CX,t,9,.9,T), cy = track(CY,t,9,.9,T), pr = pressSpring(t);
+  stage.style.background = rgb(bg);
   shape.style.width = w+'px'; shape.style.height = h+'px'; shape.style.marginLeft = (-w/2)+'px'; shape.style.marginTop = (-h/2)+'px';
   shape.style.borderRadius = r+'px'; shape.style.background = rgb(c);
-  // тень: источник света напротив курсора, форма «оседает» при нажатии
-  var lx = (300 - cx)*0.05, ly = (300 - cy)*0.03;
-  shadow.style.width = (w*0.84)+'px'; shadow.style.height = Math.max(18, h*0.22)+'px';
-  shadow.style.marginLeft = (-w*0.42 + lx)+'px'; shadow.style.marginTop = (h/2 - Math.max(18,h*0.22)/2 + 14 + ly - pr*4)+'px';
-  shadow.style.opacity = (0.55 - pr*0.15).toFixed(3);
   shape.style.transform = 'scale('+(1 - pr*0.012).toFixed(4)+')';
+  var lx = (300 - cx)*0.05, ly = (300 - cy)*0.03, shh = Math.max(18, h*0.22);
+  shadow.style.width = (w*0.84)+'px'; shadow.style.height = shh+'px';
+  shadow.style.marginLeft = (-w*0.42 + lx)+'px'; shadow.style.marginTop = (h/2 - shh/2 + 16 + ly - pr*4)+'px';
   cam.style.transform = 'scale('+z.toFixed(4)+')';
-  grid.style.transform = 'translate('+((300-cx)*0.03).toFixed(2)+'px,'+((300-cy)*0.03).toFixed(2)+'px) scale('+(0.9+z*0.1).toFixed(4)+')';
+  grid.style.transform = 'translate('+((300-cx)*0.03).toFixed(2)+'px,'+((300-cy)*0.03).toFixed(2)+'px)';
 
-  var si = 0; for (var i = 0; i < S.length; i++) if (t >= S[i].t) si = i;
-  for (i = 0; i < ST.length; i++){
-    var s = ST[i], o = win(t, s.a, s.b);
-    if (s.el === sBtn) o = Math.max(win(t, -1, S[1].t), win(t, S[11].t, T+2));
-    s.el.style.opacity = o.toFixed(3);
-    s.el.style.filter = o < .999 ? 'blur('+((1-o)*8).toFixed(2)+'px)' : 'none';
-    s.el.style.transform = 'translateY('+((1-o)*6).toFixed(2)+'px) scale('+(0.97+0.03*o).toFixed(4)+')';
-    s.el.style.visibility = o < .002 ? 'hidden' : 'visible';
+  // содержимое шага: появляется, когда форма раскрылась, исчезает до сжатия
+  for (var i = 0; i < ST.length; i++){
+    var o = ST[i].k === k ? win(l) : 0;
+    var st = ST[i].el.style; st.opacity = o.toFixed(3); st.visibility = o < .002 ? 'hidden' : 'visible';
+    st.transform = 'translateY('+((1-o)*8).toFixed(2)+'px) scale('+(0.97+0.03*o).toFixed(4)+')';
   }
-  // подпись состояния и сетка тактов
-  var ca = Math.min(sm(S[si].t, S[si].t+0.25, t), si+1 < S.length ? 1 - sm(S[si+1].t-0.12, S[si+1].t, t) : 1);
-  if (cap.textContent !== S[si].n) cap.textContent = S[si].n;
-  cap.style.opacity = ca.toFixed(3); cap.style.filter = ca < .999 ? 'blur('+((1-ca)*6).toFixed(1)+'px)' : 'none';
-  capN.textContent = (si === 11 ? '01' : String(si+1).padStart(2,'0')) + ' / 11';
-  var beat = CYC*28;
-  for (i = 0; i < 28; i++){
-    var age = beat - i, pulse = age >= 0 && age < 1 ? Math.exp(-age*3.2) : 0;
-    BT[i].style.height = ((i%4===0 ? 10 : 6) + 10*pulse).toFixed(1)+'px';
-    BT[i].style.background = age >= 0 ? (pulse > .02 ? '#D9714F' : '#121211') : 'rgba(18,18,17,.18)';
-  }
-  // кнопка: стрелка подаётся навстречу курсору
-  ba.style.transform = 'translateX('+(4*spring(t-0.6,20,.6) - 4*spring(t-0.9,20,.6)).toFixed(2)+'px)';
-  // загрузчик и галочка
-  arc.style.transformOrigin = '36px 36px'; arc.style.transform = 'rotate('+(AMB*400)+'deg)';
-  ck.setAttribute('stroke-dashoffset', (44*(1-expo(clamp((t-2.18)/0.3,0,1)))).toFixed(2));
-  // входящее: бейдж выпрыгивает, волна дышит
-  bdg.style.transform = 'scale('+Math.max(0, spring(t-2.85, 24, .45)).toFixed(3)+')';
-  for (var k = 0; k < wave.children.length; k++) wave.children[k].style.height = (6+11*Math.abs(Math.sin(AMB*6+k*0.9))+7*Math.abs(Math.sin(AMB*3.7+k))).toFixed(1)+'px';
+  // полоски-сторис и подпись шага
+  for (i = 0; i < BR.length; i++) BR[i].style.transform = 'scaleX('+(i < k ? 1 : i > k ? 0 : clamp(l/D,0,1)).toFixed(4)+')';
+  if (stTitle.textContent !== SC[k].title){ stTitle.textContent = SC[k].title; stNum.textContent = (k+1)+'/'+NS_; }
+  var ta = Math.min(sm(0.05, 0.45, l), 1 - sm(D-0.25, D-0.02, l));
+  stTitle.parentNode.style.opacity = ta.toFixed(3); stTitle.parentNode.style.transform = 'translateY('+((1-ta)*10).toFixed(1)+'px)';
+
   // курсор и круги от нажатий
   cur.style.transform = 'translate('+(cx-4).toFixed(2)+'px,'+(cy-3).toFixed(2)+'px) scale('+(1-0.16*pr).toFixed(3)+')';
   for (i = 0; i < PRESS.length; i++){
     var a0 = t - PRESS[i][0], rr = RIP[i];
-    if (a0 > 0 && a0 < 0.6){ var px = track(CX,PRESS[i][0],13,.88,T), py = track(CY,PRESS[i][0],13,.88,T), kk = expo(a0/0.6), sz = 10 + 46*kk;
-      rr.style.display = 'block'; rr.style.width = rr.style.height = sz+'px'; rr.style.transform = 'translate('+(px-sz/2).toFixed(1)+'px,'+(py-sz/2).toFixed(1)+'px)'; rr.style.opacity = (0.55*(1-a0/0.6)).toFixed(3);
+    if (a0 > 0 && a0 < 0.7){ var px = track(CX,PRESS[i][0],9,.9,T), py = track(CY,PRESS[i][0],9,.9,T), kk = expo(a0/0.7), sz = 12 + 56*kk;
+      rr.style.display = 'block'; rr.style.width = rr.style.height = sz+'px'; rr.style.transform = 'translate('+(px-sz/2).toFixed(1)+'px,'+(py-sz/2).toFixed(1)+'px)'; rr.style.opacity = (0.5*(1-a0/0.7)).toFixed(3);
     } else rr.style.display = 'none';
   }
-  // плеер: воспроизведение, затем перемотка (значение = положение курсора, пока он зажат)
-  var playing = t >= 3.98 && t < 5.0;
+  // 1 · вопрос печатается и отправляется
+  var l0 = t, n0 = clamp(Math.floor((l0-0.7)/0.07)+1, 0, Q1.length);
+  var sent = l0 >= 2.7;
+  inp.innerHTML = sent ? '<span style="color:#9A948C">Сообщение…</span>' : (n0 ? Q1.slice(0,n0) : '<span style="color:#9A948C">Сообщение…</span>') + (l0 < 2.6 && Math.floor(l0*3)%2 === 0 ? '<span style="color:#D9714F">|</span>' : '');
+  var sa = clamp(spring(l0-2.7,16,.7),0,1.2);
+  sb.style.opacity = clamp(sa,0,1).toFixed(3); sb.style.transform = 'translateY('+((1-Math.min(sa,1))*60).toFixed(1)+'px) scale('+(0.9+0.1*Math.min(sa,1)).toFixed(3)+')';
+  tk2.style.opacity = sm(3.2, 3.5, l0).toFixed(3);
+  snd.style.transform = 'scale('+(1 - 0.1*(spring(l0-2.6,34,.6)-spring(l0-2.72,34,.6))).toFixed(3)+')';
+  // 2 · голосовое: играет, бегут субтитры
+  var l1 = t - D, p1 = clamp((l1-0.72)/3.1, 0, 1), playing = l1 > 0.72 && l1 < 3.82;
   ip.style.display = playing ? 'none' : 'block'; ipa.style.display = playing ? 'block' : 'none';
-  pbt.style.transform = 'scale('+(1 - 0.08*(spring(t-3.9,38,.6) - spring(t-4.02,38,.6))).toFixed(3)+')';
-  var p;
-  if (t < 3.98) p = 0; else if (t < 5.0) p = (t-3.98)/1.02*0.5; else if (t < 5.6) p = clamp((cx - PL0)/PLW, 0, 1); else p = clamp((track(CX,5.6,13,.88,T) - PL0)/PLW, 0, 1);
-  for (k = 0; k < WF.length; k++){ var on = (k+0.5)/WF.length <= p; WF[k].style.background = on ? '#fff' : 'rgba(255,255,255,.26)'; WF[k].style.transform = 'scaleY('+(on && playing ? 0.85+0.25*Math.abs(Math.sin(t*12+k)) : 1).toFixed(3)+')'; }
-  head.style.left = (p*100)+'%'; head.style.opacity = t >= 3.98 ? 1 : 0;
-  var sec = Math.round(p*42); tc.textContent = '0:'+(sec < 10 ? '0' : '')+sec;
-  // ползунок: тянется выше максимума, при отпускании пружинит назад
-  var v;
-  if (t < 6.4) v = 0.3;
-  else if (t < 7.5) v = (cx - SL0)/SLW;
-  else { var rel = (track(CX,7.5,13,.88,T) - SL0)/SLW; v = 1 + (rel-1)*(1-spring(t-7.5,18,.42)); }
-  var over = Math.max(0, v-1), val = clamp(v,0,1);
-  str.style.transform = 'scaleX('+(1 + Math.min(0.18, over*0.45)).toFixed(4)+')';
-  sf.style.width = (val*100)+'%';
-  var kw = 28 + over*70; sk.style.width = kw+'px'; sk.style.left = 'calc('+(val*100)+'% - 14px)';
-  sv.textContent = Math.round(val*100)+'%';
-  var bo = clamp(spring(t-6.4,22,.6) - spring(t-7.6,22,.8),0,1);
-  bub.textContent = over > 0.02 ? 'больше, чем 100%' : Math.round(val*100)+'%';
-  bub.style.left = 'calc('+(val*100)+'% + '+(kw/2-14)+'px)'; bub.style.transform = 'translateX('+(-50-40*val).toFixed(1)+'%) scale('+(0.6+0.4*bo).toFixed(3)+')'; bub.style.opacity = bo.toFixed(3);
-  // переключатель в такт: два края ручки на разных пружинах
-  var e1 = spring(t-8.5, 30, .62), e2 = spring(t-8.5, 17, .72);
+  pb2.style.transform = 'scale('+(1 - 0.08*(spring(l1-0.6,34,.6) - spring(l1-0.72,34,.6))).toFixed(3)+')';
+  for (i = 0; i < WF.length; i++){ var on = (i+0.5)/WF.length <= p1; WF[i].style.background = on ? '#fff' : 'rgba(255,255,255,.26)'; WF[i].style.transform = 'scaleY('+(on && playing ? (0.8+0.3*Math.abs(Math.sin(t*11+i))).toFixed(3) : 1)+')'; }
+  var sec = Math.round(p1*42); vt.textContent = '0:'+(sec < 10 ? '0' : '')+sec+' / 0:42';
+  var words = VOICE.split(' '), nw = Math.ceil(p1*words.length);
+  sub.textContent = words.slice(0, nw).join(' ');
+  // 3 · вкладки: передний край индикатора тянется впереди заднего; ниже — мысль вкладки
+  var l2 = t - 2*D, tabW = TABW - 0;
+  var A = (spring(l2-1.4,20,.72) + spring(l2-2.8,20,.72))*tabW, B = (spring(l2-1.4,11,.86) + spring(l2-2.8,11,.86))*tabW;
+  ti.style.left = (6+Math.min(A,B))+'px'; ti.style.width = (tabW-12+Math.abs(A-B))+'px';
+  var act = (A+B)/2/tabW;
+  for (var j = 0; j < 3; j++){ var dd = clamp(1-Math.abs(act-j),0,1); tl[j].style.color = rgb([lerp(17,255,dd),lerp(17,255,dd),lerp(16,255,dd)]); }
+  var qa = [1 - sm(1.35, 1.6, l2), Math.min(sm(1.5, 1.8, l2), 1 - sm(2.75, 3.0, l2)), sm(2.9, 3.2, l2)];
+  for (j = 0; j < 3; j++){ qs[j].style.opacity = qa[j].toFixed(3); qs[j].style.transform = 'translateY(calc(-50% + '+((1-qa[j])*10).toFixed(1)+'px))'; }
+  // 4 · переключатель: два края ручки на разных пружинах
+  var l3 = t - 3*D, e1 = spring(l3-1.6, 24, .62), e2 = spring(l3-1.6, 13, .72);
   var lead = 1 - Math.max(e1,e2), trail = 1 - Math.min(e1,e2);
   var lx2 = 6 + 36*Math.min(lead,trail), rx2 = 46 + 36*Math.max(lead,trail);
   tk.style.left = lx2+'px'; tk.style.width = (rx2-lx2)+'px';
   var onv = clamp((lead+trail)/2,0,1);
   tw.style.background = rgb([lerp(214,17,onv), lerp(210,17,onv), lerp(204,16,onv)]);
-  var sw = sm(8.5, 8.75, t); tg1.style.opacity = (1-sw).toFixed(3); tg2.style.opacity = sw.toFixed(3);
-  tg1.style.filter = 'blur('+(sw*5).toFixed(1)+'px)'; tg2.style.filter = 'blur('+((1-sw)*5).toFixed(1)+'px)';
-  tg2.style.transform = 'translateY('+((1-sw)*6).toFixed(1)+'px)'; tg2.style.color = sw > .5 ? '#A9472A' : '';
-  // вкладки: передний край индикатора тянется впереди заднего
-  var tabW = (452-20)/3;
-  var A = (spring(t-9.5,26,.72) + spring(t-10.0,26,.72))*tabW, B = (spring(t-9.5,14,.86) + spring(t-10.0,14,.86))*tabW;
-  ti.style.left = (10+Math.min(A,B))+'px'; ti.style.width = (tabW+Math.abs(A-B))+'px';
-  var act = (A+B)/2/tabW;
-  for (var j = 0; j < 3; j++){ var dd = clamp(1-Math.abs(act-j),0,1); tl[j].style.color = rgb([lerp(17,255,dd),lerp(17,255,dd),lerp(16,255,dd)]); }
-  // диаграмма рисуется сама: сетка, линия, заливка, точки, подсказка
-  if (!cpLen){ try { cpLen = cp.getTotalLength(); } catch(err){ cpLen = 480; } cp.style.strokeDasharray = cpLen; }
-  var dr = expo(clamp((t-10.8)/0.95,0,1));
-  cp.style.strokeDashoffset = (cpLen*(1-dr)).toFixed(1); chr.setAttribute('width', (410*dr).toFixed(1));
-  for (k = 0; k < grd.length; k++){ var gk = expo(clamp((t-10.6-k*0.06)/0.4,0,1)); grd[k].style.strokeDasharray = 410; grd[k].style.strokeDashoffset = (410*(1-gk)).toFixed(1); }
-  pts[0].setAttribute('r', Math.max(0, 5*spring(t-11.05,24,.5)).toFixed(2)); pts[1].setAttribute('r', Math.max(0, 5*spring(t-11.3,24,.5)).toFixed(2));
-  cdot.setAttribute('r', Math.max(0, 7*spring(t-11.55,22,.45)).toFixed(2));
-  var tp = clamp(spring(t-11.5,24,.8) - spring(t-11.95,24,.8),0,1);
-  tip.style.opacity = tp.toFixed(3); tip.style.transform = 'translateY('+((1-tp)*6).toFixed(1)+'px)';
-  // ⌘K: ввод фильтрует список, Enter подсвечивает
-  var word = 'отношения', n = clamp(Math.floor((t-12.3)/0.065)+1, 0, word.length);
-  var caret = (t < 12.9 || Math.floor(t*4) % 2 === 0) ? '<span style="color:#D9714F">|</span>' : '';
-  kq.innerHTML = n ? word.slice(0,n) + caret : caret + '<span style="color:rgba(255,255,255,.42)">Что вас беспокоит?</span>';
-  var hl = clamp(spring(t-12.95,30,.7),0,1), fade = clamp(1 - spring(t-12.39, 22, .9),0,1);
-  for (var m = 0; m < kl.length; m++){
-    var vis = m === 0 ? 1 : fade, st = kl[m].style;
-    st.display = 'flex'; st.alignItems = 'center'; st.gap = '12px'; st.padding = '0 12px'; st.borderRadius = '10px'; st.whiteSpace = 'nowrap';
-    st.height = (44*vis).toFixed(1)+'px'; st.opacity = vis.toFixed(3); st.overflow = 'hidden';
-    st.background = m === 0 ? 'rgba(255,255,255,'+(0.06+0.12*hl).toFixed(3)+')' : 'transparent';
-  }
-  var em = kl[0].querySelector('em'); em.style.opacity = (0.4 + 0.6*hl).toFixed(3);
-  // готово: галочка прорисовывается, полоска таймера сжимается
-  pc.style.transform = 'scale('+Math.max(0, spring(t-13.35,22,.5)).toFixed(3)+')';
-  pck.setAttribute('stroke-dashoffset', (20*(1-expo(clamp((t-13.36)/0.2,0,1)))).toFixed(2));
-  pl.style.transform = 'scaleX('+(1 - clamp((t-13.3)/0.45,0,1)).toFixed(3)+')';
+  var sw = sm(1.6, 1.9, l3); tg1.style.opacity = (1-sw).toFixed(3); tg2.style.opacity = sw.toFixed(3); tg2.style.transform = 'translateY('+((1-sw)*6).toFixed(1)+'px)';
+  // 5 · поиск сути: печать, Enter, ответ
+  var l4 = t - 4*D, n4 = clamp(Math.floor((l4-0.6)/0.08)+1, 0, WORD.length);
+  kq.innerHTML = (n4 ? WORD.slice(0,n4) : '<span style="color:rgba(255,255,255,.42)">Что вас беспокоит?</span>') + (l4 < 1.5 || Math.floor(l4*3)%2 === 0 ? '<span style="color:#D9714F">|</span>' : '');
+  var en = clamp(spring(l4-1.55,30,.7) - spring(l4-1.75,30,.7),0,1);
+  ke.style.background = 'rgba(217,113,79,'+(en*0.9).toFixed(3)+')'; ke.style.borderColor = en > .1 ? '#D9714F' : 'rgba(255,255,255,.25)';
+  var ra = clamp(spring(l4-1.8,14,.75),0,1.1);
+  res.style.opacity = clamp(ra,0,1).toFixed(3); res.style.transform = 'translateY('+((1-Math.min(ra,1))*24).toFixed(1)+'px)';
+  // 6 · решение: галочка прорисовывается
+  var l5 = t - 5*D;
+  pc.style.transform = 'scale('+Math.max(0, spring(l5-0.5,18,.5)).toFixed(3)+')';
+  pck.setAttribute('stroke-dashoffset', (20*(1-expo(clamp((l5-0.75)/0.35,0,1)))).toFixed(2));
 }
+function heroAt(sec){ seek(sec); }
 function fitStage(){ world.style.transform = 'scale('+(stage.clientWidth/600)+')'; }
 fitStage(); addEventListener('resize', fitStage);
 var t0 = performance.now(), heroOn = true;
 new IntersectionObserver(function(e){ heroOn = e[0].isIntersecting; }).observe(stage);
-seek(RM ? 4.6 : 0);
+seek(RM ? 4*D + 3.5 : 0);
 
 /* =====================================================
    СФЕРЫ — список-столпы, «жидкий» индикатор на двух пружинах
@@ -944,7 +892,7 @@ function pRender(now){
       var off = i+1 < pHist.length ? 1 - sm(0, 0.2, now - pHist[i+1][0]) : 1;
       o = Math.max(o, Math.min(on, off));
     }
-    el.style.opacity = o.toFixed(3); el.style.filter = o < .999 ? 'blur('+((1-o)*10).toFixed(1)+'px)' : 'none';
+    el.style.opacity = o.toFixed(3);
     el.style.transform = 'translateY('+((1-o)*14).toFixed(1)+'px)'; el.style.visibility = o < .002 ? 'hidden' : 'visible';
     var art = el.firstElementChild; art.style.transform = 'rotate('+((1-o)*-40 + now*3).toFixed(2)+'deg)';
   });
@@ -980,8 +928,8 @@ function focusRender(now, p){
   fword.style.transform = 'scale('+(0.7+0.3*expo(core)).toFixed(4)+')';
   fword.style.letterSpacing = (-0.06 + (1-core)*0.25).toFixed(3)+'em';
   fword.style.color = rgb([lerp(255,217,warm), lerp(255,113,warm), lerp(255,79,warm)]);
-  var ln = sm(0.68, 0.84, p); fline.style.opacity = ln.toFixed(3); fline.style.transform = 'translateY('+((1-ln)*18).toFixed(1)+'px)'; fline.style.filter = ln < .999 ? 'blur('+((1-ln)*6).toFixed(1)+'px)' : 'none';
-  var cc = sm(0.8, 0.92, p); fcta.style.opacity = cc.toFixed(3); fcta.style.transform = 'translateY('+((1-cc)*14).toFixed(1)+'px)';
+  var ln = sm(0.68, 0.84, p); fline.style.opacity = ln.toFixed(3); fline.style.transform = 'translateY('+((1-ln)*18).toFixed(1)+'px)'; 
+  var cc = sm(0.8, 0.92, p); fcta.style.opacity = cc.toFixed(3); fcta.style.visibility = cc < .05 ? 'hidden' : 'visible'; fcta.style.transform = 'translateY('+((1-cc)*14).toFixed(1)+'px)';
   fglow.style.transform = 'scale('+(0.4+core*0.8).toFixed(3)+')'; fglow.style.opacity = (0.3+core*0.7).toFixed(3);
 }
 
@@ -993,16 +941,16 @@ var STEPS = [
   ['Инженер','Цех ремонта тепловых сетей','Утром клала на стол начальника пачку разрешительных документов. Он спрашивал: «Что ты с ними делаешь?»'],
   ['Нефтегаз','Крупные компании','Претензионная работа и капитальное строительство. Потом переезд в Москву — по приглашению федеральной компании.'],
   ['3 года','Правая рука владельца холдинга','Личные стройки в России и за рубежом, своя команда, мировые архитекторы. Лучшая работа в жизни.'],
-  ['Год','Без работы — и пересборка себя','Ушла сама, когда пропало доверие. Узнала, кто рядом по-настоящему, а кто — пока ты на высоте.'],
-  ['4 бизнеса','Знаю, что работает','Агентство, торговый павильон, детская одежда, цветы. Про каждый знаю, что было и почему не моё.'],
+  ['Год','Пауза и пересборка себя','Ушла сама. За этот год узнала, кто рядом по-настоящему.'],
+  ['4 бизнеса','Знаю, как открывать и когда закрыть','Агентство, торговый павильон, детская одежда, цветы. Каждое дело чему-то научило.'],
   ['Сейчас','Руковожу стройкой и консультирую','Свободный график, жизнь между городами, сын — и люди, которые снова и снова приходят за советом.']
 ];
 var pbig = document.getElementById('pbig'), psub = document.getElementById('psub'), rlist = document.getElementById('rlist'), rfill = document.getElementById('rfill'), pathSec = document.getElementById('path');
 var PB = [], PS = [], RL = [], RD = [];
 var PIMG = ['path-1','path-2','path-3','path-4','path-7','path-5','path-6'], pphotos = document.getElementById('pphotos'), PH = PIMG.map(function(n){ var im = document.createElement('img'); im.src = 'photos/'+n+'.jpg'; im.alt = ''; im.loading = 'lazy'; pphotos.appendChild(im); return im; });
-STEPS.forEach(function(s, i){
+STEPS.forEach(function(s, i){ var PHOTO_I = ['path-1','path-2','path-3','path-4','path-7','path-5','path-6'][i];
   var b = document.createElement('div'); b.className = 'pb'; b.textContent = s[0]; pbig.appendChild(b); PB.push(b);
-  var d = document.createElement('div'); d.className = 'ps'; d.innerHTML = '<span class="flt"></span><strong>'+s[1]+'</strong>'+s[2]; psub.appendChild(d); PS.push(d);
+  var d = document.createElement('div'); d.className = 'ps'; d.innerHTML = '<span class="flt"></span><strong>'+s[1]+'</strong>'+s[2]; d.dataset.when = s[0]; d.firstChild.style.backgroundImage = 'url(photos/'+PHOTO_I+'.jpg)'; psub.appendChild(d); PS.push(d);
   var li = document.createElement('li'); li.innerHTML = '<b>'+String(i+1).padStart(2,'0')+'</b>'+s[1]; rlist.appendChild(li); RL.push(li);
   var dot = document.createElement('span'); dot.className = 'rail-dot'; dot.style.top = (i/(STEPS.length-1)*100)+'%'; rfill.parentNode.appendChild(dot); RD.push(dot);
 });
@@ -1013,13 +961,13 @@ function pathRender(p){
   var n = STEPS.length, f = p*(n-1);
   rfill.style.height = (p*100)+'%';
   for (var i = 0; i < n; i++){
-    var d = f - i, o = clamp(1 - Math.abs(d)*1.6, 0, 1);
-    PB[i].style.opacity = o.toFixed(3); PB[i].style.filter = o < .999 ? 'blur('+((1-o)*16).toFixed(1)+'px)' : 'none';
+    var d = f - i, o = clamp((0.5 - Math.abs(d))/0.12, 0, 1);
+    PB[i].style.opacity = o.toFixed(3);
     PB[i].style.transform = 'translateY('+(-d*60).toFixed(1)+'px) scale('+(0.92+0.08*expo(o)).toFixed(4)+')';
     PH[i].style.opacity = (o*0.9).toFixed(3); PH[i].style.transform = 'scale('+(1.12 - 0.08*expo(o) - (f-i)*0.01).toFixed(4)+')';
-    PS[i].style.opacity = o.toFixed(3); PS[i].style.transform = 'translateY('+(-d*24).toFixed(1)+'px)'; PS[i].style.filter = o < .999 ? 'blur('+((1-o)*6).toFixed(1)+'px)' : 'none';
+    PS[i].style.opacity = o.toFixed(3); PS[i].style.transform = 'translateY('+(-d*24).toFixed(1)+'px)'; 
     var act = clamp(1 - Math.abs(d), 0, 1), passed = f >= i - 0.02;
-    RL[i].style.color = 'rgba(255,255,255,'+(0.32+0.68*act).toFixed(3)+')';
+    RL[i].style.color = 'rgba(255,255,255,'+(0.6+0.4*act).toFixed(3)+')';
     RL[i].style.transform = 'translateX('+(act*10).toFixed(1)+'px)';
     RD[i].style.background = passed ? '#D9714F' : '#0B0B0A'; RD[i].style.borderColor = passed ? '#D9714F' : '#4a4640';
     RD[i].style.transform = 'scale('+(1+act*0.5).toFixed(3)+')';
@@ -1031,6 +979,9 @@ function pathRender(p){
    (рассвет в джунглях → пляж днём → закат → ночь), смена по скроллу
    ===================================================== */
 var RV = [].slice.call(document.querySelectorAll('#rvids video'));
+var LITE = matchMedia('(max-width: 820px)').matches || (navigator.connection && navigator.connection.saveData);
+var POSTERS = ['https://images.pexels.com/videos/20686803/aerial-assam-drone-fog-20686803.jpeg?auto=compress&cs=tinysrgb&w=1280','https://images.pexels.com/videos/7356537/pexels-photo-7356537.jpeg?auto=compress&cs=tinysrgb&w=1280','https://images.pexels.com/videos/5123097/pexels-photo-5123097.jpeg?auto=compress&cs=tinysrgb&w=1280','https://images.pexels.com/videos/7358098/pexels-photo-7358098.jpeg?auto=compress&cs=tinysrgb&w=1280'];
+RV.forEach(function(v, i){ v.poster = POSTERS[i]; if (LITE){ v.removeAttribute('src'); v.load(); } });
 var rcopy = document.getElementById('rcopy'), rclock = document.getElementById('rclock'), rcta = document.getElementById('rcta'), retSec = document.getElementById('retreat');
 var SL = [].slice.call(document.querySelectorAll('.sl'));
 function retRender(now, p){
@@ -1040,7 +991,7 @@ function retRender(now, p){
     if (i === 0 && f < 0.5) o = 1; if (i === 3 && f > 3.5) o = 1;
     v.style.opacity = o.toFixed(3);
     v.style.transform = 'scale('+(1.12 - 0.08*o).toFixed(4)+')';
-    if (o > 0.01){ if (v.preload !== 'auto') v.preload = 'auto'; if (v.paused) v.play().catch(function(){}); }
+    if (o > 0.01 && !LITE && !RM){ if (v.preload !== 'auto') v.preload = 'auto'; if (v.paused) v.play().catch(function(){}); }
     else if (!v.paused) v.pause();
   });
   var hour = 6 + p*18, hh = Math.floor(hour) % 24, mm = Math.floor((hour % 1)*4)*15;
@@ -1048,9 +999,9 @@ function retRender(now, p){
   SL.forEach(function(s, i){
     var d = f - i - 0.5, o = clamp(1 - Math.abs(d)*2.2, 0, 1);
     if (i === 0 && f < 0.5) o = 1; if (i === 3 && f > 3.5) o = 1;
-    s.style.opacity = o.toFixed(3); s.style.filter = o < .999 ? 'blur('+((1-o)*10).toFixed(1)+'px)' : 'none'; s.style.transform = 'translateY('+(-d*22).toFixed(1)+'px)';
+    s.style.opacity = o.toFixed(3); s.style.transform = 'translateY('+(-d*22).toFixed(1)+'px)';
   });
-  var cta = sm(0.86, 0.96, p); rcta.style.opacity = cta.toFixed(3); rcta.style.transform = 'translateY('+((1-cta)*16).toFixed(1)+'px)';
+  var cta = sm(0.86, 0.96, p); rcta.style.opacity = cta.toFixed(3); rcta.style.visibility = cta < .05 ? 'hidden' : 'visible'; rcta.style.transform = 'translateY('+((1-cta)*16).toFixed(1)+'px)';
 }
 function retOff(){ RV.forEach(function(v){ if (!v.paused) v.pause(); }); }
 
@@ -1059,7 +1010,7 @@ function progress(sec){ var r = sec.getBoundingClientRect(), vh = innerHeight; i
 function frame(ms){
   var now = ms/1000, p;
   if (heroOn) heroAt((ms - t0)/1000);
-  pRender(now);
+  if (pVisible) pRender(now);
   if ((p = progress(focusSec)) >= 0) focusRender(now, p);
   if ((p = progress(pathSec)) >= 0) pathRender(p);
   if ((p = progress(retSec)) >= 0) retRender(now, p); else retOff();
@@ -1078,7 +1029,7 @@ if (RM){
    наклон карточек, проявление заголовков, перетаскивание каруселей
    ===================================================== */
 var nprog = document.getElementById('nprog'), scta = document.getElementById('scta'), heroEl = document.getElementById('top'), contactEl = document.getElementById('contact');
-var kin1 = document.getElementById('kin1'), kin2 = document.getElementById('kin2'), kinSec = document.querySelector('.kin');
+
 var fvid = document.getElementById('fvid'), hvid = document.getElementById('hvid');
 var lastY = scrollY, vel = 0, kinOff = 0;
 function extras(now){
@@ -1086,15 +1037,10 @@ function extras(now){
   nprog.style.transform = 'scaleX('+(H > 0 ? y/H : 0).toFixed(4)+')';
   var hb = heroEl.getBoundingClientRect().bottom, ct = contactEl.getBoundingClientRect().top;
   var rp = progress(retSec);
-  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6 && !(rp > 0.82) && !(progress(pathSec) >= 0 && progress(pathSec) < 1));
+  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6 && !(rp > 0.82));
+  scta.style.visibility = scta.classList.contains('on') ? 'visible' : 'hidden';
   // кинетическая строка: позиция от скролла + скорость даёт наклон
   vel += ((y - lastY) - vel)*0.15; lastY = y;
-  var r = kinSec.getBoundingClientRect();
-  if (r.bottom > 0 && r.top < innerHeight){
-    var base = (innerHeight - r.top)*0.45, sk = clamp(vel*0.25, -12, 12);
-    kin1.style.transform = 'translateX('+(-base).toFixed(1)+'px) skewX('+(-sk).toFixed(2)+'deg)';
-    kin2.style.transform = 'translateX('+(base - kin2.offsetWidth*0.35).toFixed(1)+'px) skewX('+(sk).toFixed(2)+'deg)';
-  }
   // тушь в воде проявляется, пока слова собираются
   var fp = progress(focusSec);
   if (fp >= 0){ if (fvid.paused){ fvid.play().catch(function(){}); } fvid.style.opacity = (0.15 + 0.45*sm(0.1,0.55,fp) - 0.25*sm(0.75,1,fp)).toFixed(3); }
@@ -1160,6 +1106,7 @@ document.querySelectorAll('.rail').forEach(function(rl){
 document.querySelectorAll('.arrow').forEach(function(b){ b.addEventListener('click', function(){ var r = document.getElementById(b.dataset.rail); r.scrollBy({left: (+b.dataset.dir)*(r.firstElementChild.offsetWidth+16), behavior: RM ? 'auto' : 'smooth'}); }); });
 var burger = document.querySelector('.burger');
 burger.addEventListener('click', function(){ var o = document.body.classList.toggle('nav-open'); burger.setAttribute('aria-expanded', String(o)); });
+addEventListener('keydown', function(e){ if (e.key === 'Escape' && document.body.classList.contains('nav-open')){ document.body.classList.remove('nav-open'); burger.setAttribute('aria-expanded','false'); burger.focus(); } });
 document.querySelectorAll('.menu a').forEach(function(a){ a.addEventListener('click', function(){ document.body.classList.remove('nav-open'); burger.setAttribute('aria-expanded','false'); }); });
 })();
 </script>
