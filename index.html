@@ -165,6 +165,7 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .path{position:relative;height:520vh;background:var(--black)}
 .path-pin{position:sticky;top:0;height:100svh;padding-top:68px !important;overflow:hidden;display:grid;grid-template-columns:1.25fr .8fr .6fr;gap:40px;align-items:center;max-width:1320px;margin:0 auto;padding:0 32px}
 .path-photo{position:relative;aspect-ratio:3/4;border-radius:22px;overflow:hidden;background:#1a1816}
+.flt{display:none}
 .path-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0}
 .path-pin{z-index:1}
 .path-title{font-size:15px;color:var(--gray-d);margin-bottom:18px}
@@ -265,6 +266,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .path-pin{grid-template-columns:1fr !important;align-content:center}
   .path-photo{order:-1;width:28vw;max-width:150px}
   .path-rail{height:22vh}
+  /* телефон: крупное фото справа, текст шага его обтекает */
+  .path-sub{display:grid;min-height:0 !important;margin-top:18px}
+  .path-sub .ps{position:relative !important;grid-area:1/1;font-size:16px;line-height:1.45}
+  .path-sub .ps strong{font-size:21px}
+  .path-sub .flt{display:block;float:right;width:calc(min(44vw,260px) + 14px);height:calc(min(44vw,260px) * 1.3333);shape-outside:inset(0 0 0 14px round 18px)}
+  .path-sub .path-photo{position:absolute;right:0;top:0;width:min(44vw,260px);max-width:none;z-index:2;border-radius:18px}
   .pillars .grid,.meet .grid,.faq .grid{grid-template-columns:1fr;gap:40px}
   .path-pin{grid-template-columns:1fr;align-content:center;gap:28px}
   .path-rail{height:30vh}
@@ -995,10 +1002,13 @@ var PB = [], PS = [], RL = [], RD = [];
 var PIMG = ['path-1','path-2','path-3','path-4','path-7','path-5','path-6'], pphotos = document.getElementById('pphotos'), PH = PIMG.map(function(n){ var im = document.createElement('img'); im.src = 'photos/'+n+'.jpg'; im.alt = ''; im.loading = 'lazy'; pphotos.appendChild(im); return im; });
 STEPS.forEach(function(s, i){
   var b = document.createElement('div'); b.className = 'pb'; b.textContent = s[0]; pbig.appendChild(b); PB.push(b);
-  var d = document.createElement('div'); d.className = 'ps'; d.innerHTML = '<strong>'+s[1]+'</strong>'+s[2]; psub.appendChild(d); PS.push(d);
+  var d = document.createElement('div'); d.className = 'ps'; d.innerHTML = '<span class="flt"></span><strong>'+s[1]+'</strong>'+s[2]; psub.appendChild(d); PS.push(d);
   var li = document.createElement('li'); li.innerHTML = '<b>'+String(i+1).padStart(2,'0')+'</b>'+s[1]; rlist.appendChild(li); RL.push(li);
   var dot = document.createElement('span'); dot.className = 'rail-dot'; dot.style.top = (i/(STEPS.length-1)*100)+'%'; rfill.parentNode.appendChild(dot); RD.push(dot);
 });
+var pathPin = document.querySelector('.path-pin'), pathRail = document.querySelector('.path-rail'), mqPath = matchMedia('(max-width: 1024px)');
+function placePathPhoto(){ if (mqPath.matches){ if (pphotos.parentNode !== psub) psub.appendChild(pphotos); } else if (pphotos.parentNode !== pathPin){ pathPin.insertBefore(pphotos, pathRail); } }
+placePathPhoto(); mqPath.addEventListener('change', placePathPhoto);
 function pathRender(p){
   var n = STEPS.length, f = p*(n-1);
   rfill.style.height = (p*100)+'%';
@@ -1076,7 +1086,7 @@ function extras(now){
   nprog.style.transform = 'scaleX('+(H > 0 ? y/H : 0).toFixed(4)+')';
   var hb = heroEl.getBoundingClientRect().bottom, ct = contactEl.getBoundingClientRect().top;
   var rp = progress(retSec);
-  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6 && !(rp > 0.82));
+  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6 && !(rp > 0.82) && !(progress(pathSec) >= 0 && progress(pathSec) < 1));
   // кинетическая строка: позиция от скролла + скорость даёт наклон
   vel += ((y - lastY) - vel)*0.15; lastY = y;
   var r = kinSec.getBoundingClientRect();
