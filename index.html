@@ -666,7 +666,7 @@ function rgb(c){ return 'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.ro
    управляет каждой сменой. seek(t) — чистая функция времени.
    120 BPM · 7 тактов = 14 с, последний кадр = первый.
    ===================================================== */
-var T = 14;
+var T = 14, HERO_SPEED = 0.5; // 0.5 — в два раза медленнее
 var cam = document.getElementById('cam'), world = document.getElementById('world'), stage = document.querySelector('.stage');
 var BLK = [17,17,16], WHT = [255,255,255], ACC = [217,113,79];
 var S = [
@@ -868,7 +868,7 @@ function seek(t){
   var tp = clamp(spring(t-11.5,24,.8) - spring(t-11.95,24,.8),0,1);
   tip.style.opacity = tp.toFixed(3); tip.style.transform = 'translateY('+((1-tp)*6).toFixed(1)+'px)';
   // ⌘K: ввод фильтрует список, Enter подсвечивает
-  var word = 'отнош', n = clamp(Math.floor((t-12.3)/0.09)+1, 0, word.length);
+  var word = 'отношения', n = clamp(Math.floor((t-12.3)/0.065)+1, 0, word.length);
   var caret = (t < 12.9 || Math.floor(t*4) % 2 === 0) ? '<span style="color:#D9714F">|</span>' : '';
   kq.innerHTML = n ? word.slice(0,n) + caret : caret + '<span style="color:rgba(255,255,255,.42)">Что вас беспокоит?</span>';
   var hl = clamp(spring(t-12.95,30,.7),0,1), fade = clamp(1 - spring(t-12.39, 22, .9),0,1);
@@ -1032,7 +1032,7 @@ function retOff(){ RV.forEach(function(v){ if (!v.paused) v.pause(); }); }
 function progress(sec){ var r = sec.getBoundingClientRect(), vh = innerHeight; if (r.bottom < -50 || r.top > vh + 50) return -1; return clamp(-r.top/(r.height - vh), 0, 1); }
 function frame(ms){
   var now = ms/1000, p;
-  if (heroOn) seek((ms - t0)/1000);
+  if (heroOn) seek((ms - t0)/1000*HERO_SPEED);
   pRender(now);
   if ((p = progress(focusSec)) >= 0) focusRender(now, p);
   if ((p = progress(pathSec)) >= 0) pathRender(p);
