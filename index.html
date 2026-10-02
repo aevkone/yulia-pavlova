@@ -67,7 +67,8 @@ h2{font-size:clamp(36px,4.6vw,66px)}
 nav{position:sticky;top:0;z-index:50;background:rgba(11,11,10,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
 nav .wrap{height:68px;display:flex;align-items:center;gap:32px}
 .logo{font-weight:600;font-size:17px;letter-spacing:-.02em;margin-right:auto}
-.logo{font-weight:500;font-size:19px;letter-spacing:-.045em;white-space:nowrap}
+.logo{font-weight:500;font-size:19px;letter-spacing:-.045em;white-space:nowrap;display:inline-flex;align-items:baseline}
+.logo-mark{width:32px;height:32px;border-radius:9px;margin-right:10px;align-self:center;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
 .logo-dot{display:inline-block;width:.24em;height:.24em;border-radius:50%;background:var(--accent);margin-left:.06em}
 .menu{display:flex;gap:28px;font-size:15px}
 .menu a{color:rgba(255,255,255,.72);transition:color .2s}
@@ -499,8 +500,6 @@ button,.pill,.chip,summary,.arrow,.burger,.fcard{-webkit-user-select:none;user-s
   .sticky-cta{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
   body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   .chip{font-size:16px}
-  /* тушь и слова без тяжёлого размытия: на телефоне это тормозит */
-  .fw{filter:none !important}
 }
 /* зерно: двигаем слой трансформацией, без перерисовки на весь экран */
 body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:transform}
@@ -526,7 +525,7 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
 <nav>
   <span class="nprog" id="nprog"></span>
   <div class="wrap">
-    <a href="#top" class="logo" translate="no" aria-label="Юлия Павлова, на главную">Юлия Павлова<span class="logo-dot" aria-hidden="true"></span></a>
+    <a href="#top" class="logo" translate="no" aria-label="Юлия Павлова, на главную"><img class="logo-mark" src="favicon.svg" width="32" height="32" alt="">Юлия Павлова<span class="logo-dot" aria-hidden="true"></span></a>
     <div class="menu" id="menu">
       <a href="#formats">Форматы</a>
       <a href="#spheres">С чем приходят</a>
@@ -1161,6 +1160,8 @@ if (RM){
 var nprog = document.getElementById('nprog'), scta = document.getElementById('scta'), heroEl = document.getElementById('top'), contactEl = document.getElementById('contact');
 
 var fvid = document.getElementById('fvid'), hvid = document.getElementById('hvid');
+// тушь начинает грузиться заранее, за полтора экрана до блока, чтобы дым был с первого кадра
+new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ fvid.preload = 'auto'; fvid.load(); o.disconnect(); } }, {rootMargin:'150% 0px'}).observe(focusSec);
 var lastY = scrollY, vel = 0, kinOff = 0;
 function extras(now){
   var y = scrollY, H = document.documentElement.scrollHeight - innerHeight;
