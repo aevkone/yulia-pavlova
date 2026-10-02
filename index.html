@@ -585,7 +585,7 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
 <!-- ФОКУС -->
 <section class="focus" id="focus" aria-label="Суть">
   <div class="focus-pin">
-    <video aria-hidden="true" class="focus-vid" id="fvid" muted loop playsinline preload="none" poster="media/ink.jpg" src="media/ink.mp4"></video>
+    <video aria-hidden="true" class="focus-vid" id="fvid" muted playsinline preload="none" poster="media/ink.jpg" src="media/ink.mp4"></video>
     <div class="focus-glow" id="fglow"></div>
     <div id="fwords" aria-hidden="true"></div>
     <div class="core">
@@ -1161,7 +1161,16 @@ var nprog = document.getElementById('nprog'), scta = document.getElementById('sc
 
 var fvid = document.getElementById('fvid'), hvid = document.getElementById('hvid');
 // тушь начинает грузиться заранее, за полтора экрана до блока, чтобы дым был с первого кадра
-new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ fvid.preload = 'auto'; fvid.load(); o.disconnect(); } }, {rootMargin:'150% 0px'}).observe(focusSec);
+new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ fvid.preload = 'auto'; fvid.load();
+  // iOS отдаёт кадры для перемотки только после первого play()
+  var pr = fvid.play(); if (pr) pr.then(function(){ fvid.pause(); }, function(){}); o.disconnect(); } }, {rootMargin:'150% 0px'}).observe(focusSec);
+// дым растекается вместе с прокруткой: время ролика = прогресс блока
+function inkScrub(fp){
+  if (fvid.readyState < 1 || fvid.seeking) return;
+  var k = clamp((fp - 0.02)/0.62, 0, 1), tt = (fvid.duration || 3.6)*0.98*Math.pow(k, 1.7);
+  if (!fvid.paused) fvid.pause();
+  if (Math.abs(fvid.currentTime - tt) > 0.03) fvid.currentTime = tt;
+}
 var lastY = scrollY, vel = 0, kinOff = 0;
 function extras(now){
   var y = scrollY, H = document.documentElement.scrollHeight - innerHeight;
@@ -1174,8 +1183,7 @@ function extras(now){
   vel += ((y - lastY) - vel)*0.15; lastY = y;
   // тушь в воде проявляется, пока слова собираются
   var fp = progress(focusSec);
-  if (fp >= 0){ if (fvid.paused){ fvid.play().catch(function(){}); } fvid.style.opacity = (0.15 + 0.45*sm(0.1,0.55,fp) - 0.25*sm(0.75,1,fp)).toFixed(3); }
-  else if (!fvid.paused) fvid.pause();
+  if (fp >= 0){ inkScrub(fp); fvid.style.opacity = (0.25 + 0.5*sm(0.05,0.5,fp) - 0.25*sm(0.8,1,fp)).toFixed(3); }
   // прогресс каруселей
   RP.forEach(function(o){ var rl = o.rail, max = rl.scrollWidth - rl.clientWidth, k = max > 0 ? rl.scrollLeft/max : 0, w = rl.clientWidth/rl.scrollWidth; o.bar.style.width = (w*100)+'%'; o.bar.style.transform = 'translateX('+((1-w)/w*k*100).toFixed(2)+'%)'; });
 }
