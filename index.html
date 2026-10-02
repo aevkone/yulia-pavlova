@@ -8,7 +8,9 @@
 <meta property="og:title" content="Юлия Павлова: консультации">
 <meta property="og:description" content="Отношения, работа, решения. Вижу суть, скажу как есть.">
 <meta name="theme-color" content="#0B0B0A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B0B0A'/%3E%3Ctext x='31' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='%23fff'%3EЮ%3C/text%3E%3Ccircle cx='48' cy='42' r='4' fill='%23D9714F'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/Geist-cyrillic-0.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="photos/hero-towers.jpg" as="image">
 <style>
@@ -65,7 +67,8 @@ h2{font-size:clamp(36px,4.6vw,66px)}
 nav{position:sticky;top:0;z-index:50;background:rgba(11,11,10,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
 nav .wrap{height:68px;display:flex;align-items:center;gap:32px}
 .logo{font-weight:600;font-size:17px;letter-spacing:-.02em;margin-right:auto}
-.logo i{font-style:normal;color:var(--accent)}
+.logo{font-weight:500;font-size:19px;letter-spacing:-.045em;white-space:nowrap}
+.logo-dot{display:inline-block;width:.24em;height:.24em;border-radius:50%;background:var(--accent);margin-left:.06em}
 .menu{display:flex;gap:28px;font-size:15px}
 .menu a{color:rgba(255,255,255,.72);transition:color .2s}
 
@@ -513,7 +516,7 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
 <nav>
   <span class="nprog" id="nprog"></span>
   <div class="wrap">
-    <a href="#top" class="logo">Юлия Павлова</a>
+    <a href="#top" class="logo" aria-label="Юлия Павлова, на главную">Юлия Павлова<span class="logo-dot" aria-hidden="true"></span></a>
     <div class="menu" id="menu">
       <a href="#formats">Форматы</a>
       <a href="#spheres">С чем приходят</a>
