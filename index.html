@@ -1163,10 +1163,13 @@ var fvid = document.getElementById('fvid'), hvid = document.getElementById('hvid
 // тушь начинает грузиться заранее, за полтора экрана до блока, чтобы дым был с первого кадра
 new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ fvid.preload = 'auto'; fvid.load();
   // iOS отдаёт кадры для перемотки только после первого play()
-  var pr = fvid.play(); if (pr) pr.then(function(){ fvid.pause(); }, function(){}); o.disconnect(); } }, {rootMargin:'150% 0px'}).observe(focusSec);
+  var pr = fvid.play(); if (pr) pr.then(function(){ fvid.pause(); }, function(){}); o.disconnect(); } }, {rootMargin:'400% 0px'}).observe(focusSec);
 // дым растекается вместе с прокруткой: время ролика = прогресс блока
 function inkScrub(fp){
-  if (fvid.readyState < 1 || fvid.seeking) return;
+  // пока ролик не загрузился, дым растекается из постера: масштаб от центра по прокрутке
+  if (fvid.readyState < 2){ var g = sm(0.02, 0.6, fp); fvid.style.transform = 'scale('+(0.25 + 0.85*g).toFixed(3)+')'; return; }
+  if (fvid.style.transform) fvid.style.transform = '';
+  if (fvid.seeking) return;
   var k = clamp((fp - 0.02)/0.62, 0, 1), tt = (fvid.duration || 3.6)*0.98*Math.pow(k, 1.7);
   if (!fvid.paused) fvid.pause();
   if (Math.abs(fvid.currentTime - tt) > 0.03) fvid.currentTime = tt;
