@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Аватар ТГ-канала</title>
+<style>
+@font-face{font-family:'Oswald';font-weight:600;src:url(fonts/Oswald-SemiBold.ttf)}
+*{margin:0;padding:0}
+html,body{width:640px;height:640px;overflow:hidden;background:#0B0B0A}
+</style></head>
+<body>
+<!-- лицо в круге, терракотовое кольцо, название по дуге сверху -->
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="c"><circle cx="320" cy="340" r="206"/></clipPath>
+    <path id="arc" d="M 62 340 A 258 258 0 0 1 578 340"/>
+    <radialGradient id="g" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#2a1610"/><stop offset="1" stop-color="#0B0B0A"/></radialGradient>
+  </defs>
+  <rect width="640" height="640" fill="url(#g)"/>
+  <image href="yulia_restaurant.jpg" x="-80" y="-206" width="756" height="1344" clip-path="url(#c)" preserveAspectRatio="none"/>
+  <circle cx="320" cy="340" r="220" fill="none" stroke="#D9714F" stroke-width="14"/>
+  <text font-family="Oswald" font-weight="600" font-size="56" letter-spacing="7" fill="#fff" text-anchor="middle">
+    <textPath href="#arc" startOffset="50%">КАНАЛ ПАВЛОВОЙ</textPath>
+  </text>
+  <circle cx="320" cy="572" r="13" fill="#D9714F"/>
+</svg>
+</body></html>

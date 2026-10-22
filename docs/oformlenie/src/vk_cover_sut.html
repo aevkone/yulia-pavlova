@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Обложка ВК</title>
+<style>
+@font-face{font-family:'Geist';font-weight:400 600;src:url(../../../fonts/Geist-cyrillic-0.woff2) format('woff2');unicode-range:U+0400-045F,U+2116;}
+@font-face{font-family:'Geist';font-weight:400 600;src:url(../../../fonts/Geist-latin-1.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F;}
+:root{--off:#F3F1EE;--stage:#E7E5E1;--ink:#121211;--gray:#6F6A63;--accent:#D9714F;--accent-ink:#A9472A;--line:rgba(18,18,17,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:768px;overflow:hidden}
+body{font-family:'Geist',sans-serif;font-weight:500;color:var(--ink);background:var(--off);position:relative;-webkit-font-smoothing:antialiased}
+body.dark{--off:#0B0B0A;--ink:#fff;--gray:#A29C94;--accent-ink:#D9714F;--line:rgba(255,255,255,.13)}
+/* мягкое тёплое пятно справа, как дым туши на сайте */
+.halo{position:absolute;left:1236px;top:-120px;width:1000px;height:1000px;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,113,79,.20) 0,rgba(217,113,79,.08) 38%,rgba(217,113,79,0) 68%)}
+.dark .halo{background:radial-gradient(circle,rgba(217,113,79,.26) 0,rgba(217,113,79,.09) 38%,rgba(217,113,79,0) 68%)}
+/* «точка» = суть */
+.dot{position:absolute;left:1556px;top:330px;width:108px;height:108px;border-radius:50%;background:var(--accent)}
+.ring{position:absolute;border-radius:50%;border:1.5px solid var(--line)}
+.r1{left:1460px;top:234px;width:300px;height:300px}
+.r2{left:1350px;top:124px;width:520px;height:520px}
+.wrap{position:absolute;left:380px;top:150px;width:1000px}
+.logo{font-size:34px;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--accent)}
+h1{margin-top:58px;font-size:92px;line-height:1.02;letter-spacing:-.045em;font-weight:500}
+h1 em{font-style:normal;color:var(--accent-ink)}
+.sub{margin-top:40px;font-size:30px;line-height:1.35;letter-spacing:-.01em;color:var(--gray);font-weight:400;max-width:none}
+.sub b{font-weight:500;color:var(--ink)}
+</style></head>
+<body class="">
+<div class="halo"></div>
+<div class="ring r2"></div><div class="ring r1"></div><div class="dot"></div>
+<div class="wrap">
+  <div class="logo">Юлия Павлова<i>.</i></div>
+  <h1>Вижу <em>суть</em> там,<br>где вы видите тупик</h1>
+  <p class="sub">Отношения, работа и решения, которые давно откладываете.<br><b>17 лет в стройке и 4 своих бизнеса</b> – говорю прямо, по делу</p>
+</div>
+<script>if(location.hash==='#dark')document.body.className='dark'</script>
+</body></html>

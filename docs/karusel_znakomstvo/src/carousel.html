@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:Geist;src:url(../../../fonts/Geist-cyrillic-0.woff2) format('woff2');font-weight:100 900;unicode-range:U+0400-04FF}
+@font-face{font-family:Geist;src:url(../../../fonts/Geist-latin-1.woff2) format('woff2');font-weight:100 900}
+:root{--bg:#F6F1EA;--ink:#1E1A17;--muted:#5E554D;--acc:#D9714F;--acc-ink:#A9472A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--bg)}
+body{font-family:Geist,system-ui,sans-serif;font-weight:500;color:var(--ink);-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1080px;height:1350px}
+.photo{position:absolute;inset:0 0 auto 0;height:945px;overflow:hidden;border-radius:0 0 40px 40px}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,10,.45) 0%,rgba(20,14,10,0) 18%,rgba(20,14,10,0) 48%,rgba(20,14,10,.78) 100%)}
+.top{position:absolute;top:44px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center;z-index:2;color:#fff;font-size:26px;letter-spacing:-.01em}
+.logo{display:flex;align-items:center;gap:14px}
+.mark{width:46px;height:46px;border-radius:12px;background:#1E1A17;color:#fff;display:grid;place-items:center;font-size:24px}
+.mark i,.logo i{color:var(--acc);font-style:normal}
+.count{font-variant-numeric:tabular-nums;opacity:.9}
+.badge{display:inline-block;background:var(--acc);color:#fff;font-size:24px;padding:10px 20px;border-radius:999px;margin-bottom:22px;letter-spacing:.01em}
+.title{position:absolute;left:56px;right:56px;bottom:450px;z-index:2;color:#fff}
+.title h1{font-size:68px;line-height:1.04;letter-spacing:-.035em;font-weight:500;text-wrap:balance}
+.title h1 em{font-style:normal;color:#F3B79F}
+.band{position:absolute;left:56px;right:56px;top:945px;bottom:0;padding-top:44px;display:flex;flex-direction:column}
+.band p{font-size:33px;line-height:1.32;letter-spacing:-.012em;color:var(--ink);text-wrap:pretty}
+.band p+p{margin-top:14px}
+.band ul{list-style:none;font-size:31px;line-height:1.3;letter-spacing:-.012em}
+.band li{padding-left:30px;position:relative}
+.band li+li{margin-top:8px}
+.band li::before{content:"";position:absolute;left:0;top:15px;width:12px;height:12px;border-radius:50%;background:var(--acc)}
+.foot{margin-top:auto;padding-bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:24px;color:var(--muted)}
+.foot b{font-weight:500;color:var(--acc-ink)}
+.cta{display:inline-block;background:var(--acc-ink);color:#fff;padding:14px 26px;border-radius:999px;font-size:26px}
+</style>
+</head>
+<body>
+<div class="slide" id="s"></div>
+<script>
+var S=[
+ {img:'portrait.jpg',pos:'50% 62%',badge:'Знакомство',t:'15 лет я строила дома. <em>Теперь помогаю разобраться с жизнью</em>',
+  b:['Меня зовут Юлия Павлова. Я вижу суть там, где вы видите тупик.'],foot:'<b>Листайте →</b>'},
+ {img:'path-2.jpg',pos:'50% 30%',t:'Инженер. Руководитель. <em>Правая рука</em>',
+  b:['15+ лет в строительстве: от инженера на теплосетях до руководителя проектов. Три года вела личные стройки владельца крупного холдинга.']},
+ {img:'hero-city.jpg',pos:'50% 62%',t:'Мне всегда <em>было мало</em>',
+  b:['В 18 купила первую машину на свои. В 20 открыла агентство недвижимости. Мама говорила: «Сиди, у тебя всё есть». А я переехала в Москву.']},
+ {img:'path-3.jpg',pos:'50% 55%',t:'Везение — это <em>год без сна</em>',
+  b:['Квартиру в центре я искала год: просмотры в обед, объявления ночью.','Потом мне сказали: повезло.']},
+ {img:'path-1.jpg',pos:'50% 30%',t:'Без моих людей <em>меня нет</em>',
+  b:['Руководила командой до 70 человек, открыла четыре своих бизнеса. Когда я уходила, команда сказала хором: «Только позови».']},
+ {img:'path-4.jpg',pos:'45% 30%',t:'Скажу как есть. <em>Это и есть забота</em>',
+  b:['Знакомой я сказала: «Ты можешь больше». Она обиделась. А потом написала: «После того разговора я всё поменяла».']},
+ {img:'night-roses.jpg',pos:'50% 35%',t:'С чем ко мне <em>приходят</em>',
+  list:['«Я сильная. Почему я одна?»','Уходить или сохранять отношения','Уйти из найма или остаться','Устала подстраиваться под других']},
+ {img:'path-6.jpg',pos:'50% 35%',badge:'Как поговорить',t:'Личная <em>консультация</em>',
+  b:['1 час, онлайн или лично. Разбираем вашу ситуацию честно и по делу, без готовых рецептов.','Уходите с ясной картиной и следующим шагом.']},
+ {img:'flowers-office.jpg',pos:'40% 38%',t:'Напишите мне <em>«РАЗБОР»</em>',
+  b:['Коротко опишите ситуацию. Отвечу сама, подберу время и назову цену. Встречи по вечерам и в выходные.'],
+  foot:'<span class="cta">Гнуться можно. Прогибаться — нет.</span>'}
+];
+var n=+(location.hash.slice(1)||1),d=S[n-1],N=S.length;
+var body=d.list?'<ul>'+d.list.map(function(x){return'<li>'+x+'</li>'}).join('')+'</ul>':d.b.map(function(x){return'<p>'+x+'</p>'}).join('');
+document.getElementById('s').innerHTML=
+ '<div class="photo"><img src="../../../photos/'+d.img+'" style="object-position:'+d.pos+'"></div>'+
+ '<div class="top"><div class="logo"><span class="mark">Ю<i>.</i></span>Юлия Павлова<i>.</i></div><div class="count">'+String(n).padStart(2,'0')+' / '+String(N).padStart(2,'0')+'</div></div>'+
+ '<div class="title">'+(d.badge?'<span class="badge">'+d.badge+'</span>':'')+'<h1>'+d.t+'</h1></div>'+
+ '<div class="band">'+body+'<div class="foot">'+(d.foot||'<span>Юлия Павлова<b>.</b> О сути, а не о шаблонах</span>')+'</div></div>';
+</script>
+</body>
+</html>
