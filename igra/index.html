@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B0B0A">
+<meta name="robots" content="noindex">
+<title>Игра-знакомство · Юлия Павлова</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Экран 1: участницы -->
+  <section class="screen" id="s-setup">
+    <header class="top">
+      <span class="logo"><img src="../favicon.svg" width="30" height="30" alt=""><span>Юлия Павлова<i class="dot"></i></span></span>
+    </header>
+    <div class="setup">
+      <p class="label">Игра-знакомство</p>
+      <h1>Кто сегодня играет?</h1>
+      <p class="muted">Впиши имена в том порядке, в котором будете ходить. Телефон передаётся по кругу.</p>
+      <form id="add-form" class="add" autocomplete="off">
+        <input id="add-name" maxlength="20" placeholder="Имя участницы" enterkeyhint="done">
+        <button class="pill accent" type="submit" aria-label="Добавить">+</button>
+      </form>
+      <ol id="players" class="players"></ol>
+      <div class="setup-actions">
+        <button id="btn-start" class="pill accent wide" disabled>Начать игру</button>
+      </div>
+      <details class="rules">
+        <summary>Как играть</summary>
+        <ol>
+          <li>Бросай кубик, фишка пройдёт по полю.</li>
+          <li>Цвет клетки — тема. Откроется карточка с началом фразы.</li>
+          <li>Продолжи фразу вслух и расскажи, почему, как тебе кажется, она выпала именно тебе.</li>
+          <li>Отметь, насколько фраза про тебя: «Точно нет», «И да, и нет» или «Точно да».</li>
+          <li>Передай телефон следующей. В конце Юля увидит итоги.</li>
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- Экран 2: поле -->
+  <section class="screen" id="s-game" hidden>
+    <header class="top">
+      <span class="logo small"><img src="../favicon.svg" width="26" height="26" alt=""></span>
+      <div id="queue" class="queue" aria-label="Очередь ходов"></div>
+      <button id="btn-menu" class="icon-btn" aria-label="Меню">
+        <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>
+      </button>
+    </header>
+    <div class="board-wrap">
+      <div id="board" class="board">
+        <div class="center">
+          <p class="label" id="turn-label">Ходит</p>
+          <p class="turn-name" id="turn-name"></p>
+          <div class="scene" id="dice-btn" role="button" tabindex="0" aria-label="Бросить кубик">
+            <div class="cube" id="cube">
+              <div class="face f1"><i></i></div>
+              <div class="face f2"><i></i><i></i></div>
+              <div class="face f3"><i></i><i></i><i></i></div>
+              <div class="face f4"><i></i><i></i><i></i><i></i></div>
+              <div class="face f5"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="face f6"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <p class="hint" id="dice-hint">Нажми на кубик</p>
+        </div>
+      </div>
+    </div>
+    <ul class="legend" id="legend"></ul>
+  </section>
+
+  <!-- Экран 3: итоги -->
+  <section class="screen" id="s-summary" hidden>
+    <header class="top">
+      <button id="btn-back" class="icon-btn" aria-label="Назад к полю">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="top-title">Итоги игры</span>
+      <span class="icon-btn" aria-hidden="true"></span>
+    </header>
+    <div id="summary" class="summary"></div>
+    <div class="summary-actions">
+      <button id="btn-copy" class="pill accent wide">Скопировать итоги</button>
+      <button id="btn-new" class="pill ghost wide">Новая игра</button>
+    </div>
+  </section>
+
+  <!-- Карточка -->
+  <div id="card-layer" class="layer" hidden>
+    <div class="card-flip" id="card-flip">
+      <div class="card back"><span class="back-mark">Ю<i class="dot"></i></span></div>
+      <div class="card front" id="card-front">
+        <div class="card-head">
+          <span class="chip" id="card-theme"></span>
+          <span class="card-who" id="card-who"></span>
+        </div>
+        <p class="phrase" id="card-phrase"></p>
+        <p class="card-hint">Продолжи фразу вслух и расскажи, почему она тебе выпала.</p>
+        <div class="scale" id="scale" role="radiogroup" aria-label="Насколько это про тебя">
+          <button data-v="no" role="radio">Точно нет</button>
+          <button data-v="mid" role="radio">И да, и нет</button>
+          <button data-v="yes" role="radio">Точно да</button>
+        </div>
+        <textarea id="card-note" rows="2" maxlength="300" placeholder="Заметка Юли — по желанию"></textarea>
+        <div class="card-actions">
+          <button class="pill ghost" id="btn-swap">Другая</button>
+          <button class="pill accent" id="btn-done" disabled>Дальше</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Меню -->
+  <div id="menu-layer" class="layer sheet-layer" hidden>
+    <div class="sheet">
+      <button class="sheet-item" data-act="summary">Итоги игры</button>
+      <button class="sheet-item" data-act="skip">Пропустить ход</button>
+      <button class="sheet-item" data-act="players">Изменить участниц</button>
+      <button class="sheet-item danger" data-act="new">Начать заново</button>
+      <button class="sheet-item muted" data-act="close">Закрыть</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</div>
+<script src="cards.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
