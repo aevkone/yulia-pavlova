@@ -63,7 +63,6 @@ h2{font-size:clamp(36px,4.6vw,66px)}
 
 
 /* навигация */
-.draft{background:var(--accent);color:#fff;text-align:center;font-size:12px;letter-spacing:.04em;padding:5px 12px}
 nav{position:sticky;top:0;z-index:50;background:rgba(11,11,10,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
 nav .wrap{height:68px;display:flex;align-items:center;gap:32px}
 .logo{font-weight:600;font-size:17px;letter-spacing:-.02em;margin-right:auto}
@@ -225,6 +224,17 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 @media (hover:hover){.prow:hover h3,.prow:hover p{transform:translateX(16px)}}
 
 /* ============ РЕТРИТ В ТАИЛАНДЕ ============ */
+.trip-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;color:#fff;background:#0f2a33 url(media/day.jpg) center/cover no-repeat}
+.trip-hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.trip-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.35) 0%,rgba(8,8,10,.05) 35%,rgba(8,8,10,.72) 100%)}
+.trip-hero-in{position:relative;z-index:1;width:100%;padding-top:120px;padding-bottom:9vh}
+.trip-hero .trip-kick{color:#fff;opacity:.9}
+.trip-hero h2{font-size:clamp(52px,9vw,150px);letter-spacing:-.05em;margin-top:14px;max-width:1100px}
+.trip-hero-sub{font-size:clamp(19px,1.8vw,24px);line-height:1.4;max-width:620px;margin-top:20px;color:rgba(255,255,255,.88)}
+.trip-down{display:inline-flex;align-items:center;gap:10px;margin-top:40px;font-size:16px;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:6px}
+.trip-down svg{width:18px;height:18px;animation:trip-bob 1.8s var(--ease) infinite}
+@keyframes trip-bob{50%{transform:translateY(5px)}}
+@media (prefers-reduced-motion:reduce){.trip-down svg{animation:none}}
 .trip{background:var(--panel);padding:110px 0 120px;color:#fff}
 .trip .a{color:var(--accent)}
 .trip-kick{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
@@ -262,9 +272,18 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .trip-steps li::before,.trip-why7 li::before{content:counter(n,decimal-leading-zero);display:block;font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:12px}
 .trip-steps p,.trip-why7 p{color:rgba(255,255,255,.7);font-size:15px;margin-top:10px}
 .trip-why7{grid-template-columns:repeat(3,1fr);row-gap:36px}
+.trip-prog{margin-top:100px;background:var(--off);color:var(--ink);border-radius:32px;padding:56px 56px 40px}
+.trip-prog .trip-kick{color:var(--accent-ink)}
+.trip-prog .trip-h3{margin-top:12px}
 .trip-days{margin-top:30px}
-.trip-days details{border-top:1px solid var(--line-d)}
-.trip-days details:last-child{border-bottom:1px solid var(--line-d)}
+.trip-prog details{background:#fff;border:1px solid var(--line);border-radius:20px;padding:0 24px;margin-top:12px}
+.trip-prog details:last-child{border-bottom:1px solid var(--line)}
+.trip-prog details[open]{box-shadow:0 18px 40px -24px rgba(18,18,17,.35)}
+.trip-prog summary{padding:22px 0}
+.trip-prog summary small{color:var(--accent-ink)}
+.trip-prog .day dt{color:var(--gray)}
+.trip-prog .day dd{color:#2b2a28}
+.trip-days details{border-top:1px solid var(--line)}
 .trip-days summary{align-items:center}
 .trip-days summary span{display:flex;flex-direction:column;gap:4px}
 .trip-days summary small{font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
@@ -286,8 +305,8 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .trip-end .trip-q{font-size:21px;color:#fff;margin:26px 0 22px}
 @media (max-width:1024px){
   .trip-top,.trip-fmt,.trip-end{grid-template-columns:1fr;gap:32px}
-  .trip-cover{aspect-ratio:4/3}
-  .trip-fmt img,.trip-end img{aspect-ratio:4/3;max-height:420px}
+  .trip-cover{aspect-ratio:4/5}
+  .trip-fmt img,.trip-end img{aspect-ratio:4/5}
   .trip-who,.trip-why7,.trip-steps{grid-template-columns:1fr 1fr}
 }
 @media (max-width:820px){
@@ -301,7 +320,10 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
   .trip .cta .pill{width:100%;justify-content:center}
   .trip-sub{font-size:17px}
   .day{grid-template-columns:1fr;gap:18px}
-  .day img{aspect-ratio:16/10}
+  .day img{aspect-ratio:3/4}
+  .trip-prog{margin-top:64px;padding:32px 14px 20px;border-radius:24px}
+  .trip-prog .trip-h3{margin-top:10px}
+  .trip-prog details{padding:0 16px}
   .day dl{grid-template-columns:1fr;gap:4px}
   .day dd{margin-bottom:12px}
 }
@@ -579,7 +601,6 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
 <body>
 <a class="skip" href="#spheres">К содержанию</a>
 
-<div class="draft">Черновой вариант. Тексты и цены согласуем</div>
 
 <nav>
   <span class="nprog" id="nprog"></span>
@@ -617,13 +638,24 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
     </div>
   </div>
 </header>
-<div class="introband"><div class="wrap who"><img src="photos/portrait.jpg" width="52" height="52" alt=""><span><b translate="no">Юлия Павлова</b>17 лет руковожу людьми и стройками. 4 своих бизнеса. Команда до 70 человек.</span></div></div>
+<div class="introband"><div class="wrap who"><img src="photos/portrait-s.jpg" width="52" height="52" alt=""><span><b translate="no">Юлия Павлова</b>17 лет руковожу людьми и стройками. 4 своих бизнеса. Команда до 70 человек.</span></div></div>
+
+<!-- РЕТРИТ: ОБЛОЖКА -->
+<section class="trip-hero" id="retreat" aria-label="Ретрит в Таиланде">
+  <video class="trip-hero-vid" id="tvid" aria-hidden="true" muted loop playsinline preload="none" poster="media/day.jpg" src="media/day.mp4"></video>
+  <div class="wrap trip-hero-in">
+    <p class="trip-kick">Паттайя · 21–27 декабря 2026</p>
+    <h2>Ретрит в Таиланде</h2>
+    <p class="trip-hero-sub">Приглашаю на ретрит в Таиланд с 21 по 27 декабря</p>
+    <a class="trip-down" href="#trip-start">Листайте ниже, чтобы увидеть программу <svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg></a>
+  </div>
+</section>
 
 <!-- РЕТРИТ В ТАИЛАНДЕ -->
-<section class="trip" id="retreat" aria-labelledby="trip-h">
+<section class="trip" id="trip-start" aria-labelledby="trip-h">
   <div class="wrap">
     <div class="trip-top">
-      <figure class="trip-cover"><img src="photos/retreat/cover.jpg" width="1125" height="1500" alt="Храм на берегу моря в Паттайе на закате" loading="lazy"><figcaption><b>21–27</b><span>декабря 2026</span></figcaption></figure>
+      <figure class="trip-cover"><img src="photos/retreat/cover.jpg" width="1000" height="1333" alt="Храм на берегу моря в Паттайе на закате" loading="lazy"><figcaption><b>21–27</b><span>декабря 2026</span></figcaption></figure>
       <div class="trip-lead">
         <p class="trip-kick">Ретрит · Паттайя, Таиланд</p>
         <h2 id="trip-h">Обнуление <span class="a">перед Новым годом</span></h2>
@@ -680,7 +712,9 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
       <li><h4>Делимся ощущениями</h4><p>После каждой практики общий разговор. Одна рассказывает, другие узнают себя: «И у меня так было».</p></li>
     </ol>
 
-    <h3 class="trip-h3" id="trip-days">Программа по дням</h3>
+    <div class="trip-prog" id="trip-days">
+    <p class="trip-kick">7 дней · 21–27 декабря</p>
+    <h3 class="trip-h3">Программа по дням</h3>
     <div class="trip-days">
       <details open><summary><span><small>День 1 · пн 21.12 · солнцестояние</small>Заезд и самая длинная ночь</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
         <div class="day"><img src="photos/retreat/d1.jpg" width="640" height="853" alt="" loading="lazy"><dl>
@@ -726,13 +760,14 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
         </dl></div></details>
     </div>
 
+    </div>
     <div class="trip-two">
       <div class="trip-box">
         <h3>С чем вы вернётесь</h3>
         <ol class="trip-num">
-          <li>Разложенная ситуация, та самая, с которой приехали</li>
-          <li>План на год своей рукой, с шагами и сроками</li>
-          <li>Фотографии, которые сделала и обработала Юля</li>
+          <li>Решение запроса и той самой ситуации, с которой приехали</li>
+          <li>План на 2027 год: шаги, стратегия, сроки</li>
+          <li>Красивые фотографии</li>
           <li>Состояние, когда голова чистая и понятно, куда идти</li>
           <li>Женский круг, который остаётся после ретрита</li>
         </ol>
@@ -754,10 +789,10 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
     <ol class="trip-why7">
       <li><h4>Два часа личного разбора и два часа разбора через тонкое тело</h4><p>Оба входят в программу, а не в платные опции.</p></li>
       <li><h4>Разбор конкретного запроса</h4><p>Отношения, карьера, самооценка, а не абстрактное «вернуться к себе».</p></li>
-      <li><h4>Ведёт женщина, которая 17 лет строила и управляла</h4><p>Светский язык, язык предпринимателя, язык женщины, язык эзотерики. Без стеснения говорим то, что видим и думаем.</p></li>
+      <li><h4>Веду я, с большим опытом в бизнесе и в отношениях</h4><p>17 лет строила и управляла, создала четыре бизнеса, многое прошла сама. Говорю на языке предпринимателя, женщины и эзотерики, без стеснения: что вижу, то и говорю.</p></li>
       <li><h4>План на год чётко, по полочкам</h4><p>Без воды и непонятных ритуалов. Не только запишем, но и разложим на уровне осознания.</p></li>
-      <li><h4>Возвращаемся до Нового года</h4><p>27-го дома, 31-го праздник уже с планом.</p></li>
-      <li><h4>Слоны, яхта, остров и фотосессия входят в программу</h4><p>А не за доплату.</p></li>
+      <li><h4>Возвращаемся до Нового года</h4><p>И входим в Новый год в новом состоянии и с понятным планом действий.</p></li>
+      <li><h4>Всё, что описано в программе, входит в стоимость</h4><p>Слоны, яхта, остров и фотосессия без доплат.</p></li>
       <li><h4>21 декабря, солнцестояние</h4><p>Ретрит построен вокруг этой даты.</p></li>
     </ol>
 
@@ -816,7 +851,7 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
   <div class="wrap">
     <h2>Мне всегда было мало, и я научилась выбирать, за что бороться</h2>
     <div class="grid">
-      <figure class="portrait"><img src="photos/portrait.jpg" width="1076" height="1280" alt="Юлия Павлова" loading="lazy"><figcaption translate="no">Юлия Павлова</figcaption></figure>
+      <figure class="portrait"><img src="photos/portrait.jpg" width="860" height="1023" alt="Юлия Павлова" loading="lazy"><figcaption translate="no">Юлия Павлова</figcaption></figure>
       <div class="story">
         <p>Ещё студенткой я сказала декану, что буду работать в крупнейшей нефтяной компании. <b>Все засмеялись. Декан не засмеялся.</b> Так и вышло.</p>
         <p>Мне говорили «повезло». А я год искала квартиру мечты: в обед бегала на просмотры, ночами листала объявления. И сказала хозяину: «Это моя квартира».</p>
@@ -1054,7 +1089,7 @@ function add(k, html){
   d.style.width = s.w+'px'; d.style.height = s.h+'px'; d.style.marginLeft = (-s.w/2)+'px'; d.style.marginTop = (-s.h/2)+'px';
   shape.appendChild(d); ST.push({k:k, el:d}); return d;
 }
-var AV = '<img src="photos/portrait.jpg" alt="" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none">';
+var AV = '<img src="photos/portrait-s.jpg" alt="" style="width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none">';
 var s0 = add(0, '<div style="height:100%;padding:20px 22px;display:flex;flex-direction:column;color:#111"><div style="display:flex;align-items:center;gap:12px">'+AV+'<span style="line-height:1.2"><b style="display:block;font-weight:500;font-size:16px">Юлия Павлова</b><span style="font-size:13px;color:#2E8B57">в сети</span></span></div><div style="flex:1;position:relative"><span class="sb" style="position:absolute;right:0;top:14px;max-width:300px;padding:10px 14px;border-radius:18px 18px 4px 18px;background:#D9714F;color:#fff;font-size:17px;opacity:0;white-space:nowrap">Уходить или остаться? <svg class="tk2" viewBox="0 0 256 256" fill="currentColor" width="18" height="18" style="margin-left:6px;vertical-align:-3px;opacity:0" aria-hidden="true"><path d="M149.61,85.71l-89.6,88a8,8,0,0,1-11.22,0L10.39,136a8,8,0,1,1,11.22-11.41L54.4,156.79l84-82.5a8,8,0,1,1,11.22,11.42Zm96.1-11.32a8,8,0,0,0-11.32-.1l-84,82.5-18.83-18.5a8,8,0,0,0-11.21,11.42l24.43,24a8,8,0,0,0,11.22,0l89.6-88A8,8,0,0,0,245.71,74.39Z"/></svg></span></div><div style="display:flex;gap:10px;align-items:center"><span style="flex:1;height:52px;border-radius:26px;background:#F1EFEC;display:flex;align-items:center;padding:0 18px;font-size:17px;white-space:nowrap;overflow:hidden" class="inp"></span><span class="snd" style="width:52px;height:52px;border-radius:50%;background:#111;display:grid;place-items:center;flex:none"><svg class="ph" viewBox="0 0 256 256" fill="currentColor" width="22" height="22" style="color:#fff" aria-hidden="true"><path d="M240,127.89a16,16,0,0,1-8.18,14L63.9,237.9A16.15,16.15,0,0,1,56,240a16,16,0,0,1-15-21.33l27-79.95A4,4,0,0,1,71.72,136H144a8,8,0,0,0,8-8.53,8.19,8.19,0,0,0-8.26-7.47h-72a4,4,0,0,1-3.79-2.72l-27-79.94A16,16,0,0,1,63.84,18.07l168,95.89A16,16,0,0,1,240,127.89Z"/></svg></span></div></div>');
 var s1 = add(1, '<div style="height:100%;padding:22px 24px;display:flex;flex-direction:column;color:#fff"><div style="display:flex;align-items:center;gap:12px">'+AV+'<span style="line-height:1.2"><b style="display:block;font-weight:500;font-size:16px">Юлия, голосовое</b><span class="vt" style="font-size:13px;color:rgba(255,255,255,.55);font-family:var(--mono)">0:00 / 0:42</span></span></div><div class="sub" style="margin-top:14px;font-size:18px;line-height:1.35;min-height:48px;color:rgba(255,255,255,.92)"></div><div style="margin-top:auto;display:flex;align-items:center;gap:16px"><span class="pb2" style="width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none"><svg class="ip" viewBox="0 0 256 256" fill="currentColor" width="18" height="18" style="color:#111" aria-hidden="true"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"/></svg><svg class="ipa" viewBox="0 0 256 256" fill="currentColor" width="18" height="18" style="color:#111;display:none" aria-hidden="true"><path d="M216,48V208a16,16,0,0,1-16,16H160a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h40A16,16,0,0,1,216,48ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Z"/></svg></span><span class="wf" style="position:relative;flex:1;height:40px;display:flex;align-items:center;justify-content:space-between"></span></div></div>');
 var wf = s1.querySelector('.wf'), WF = [];
@@ -1294,6 +1329,16 @@ function pathRender(p){
     RD[i].style.transform = 'scale('+(1+act*0.5).toFixed(3)+')';
   }
 }
+
+/* ---------- обложка ретрита: видео моря играет, только когда на экране ---------- */
+(function(){
+  var v = document.getElementById('tvid'); if (!v) return;
+  var lite = (navigator.connection && navigator.connection.saveData) || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (lite || !('IntersectionObserver' in window)){ v.removeAttribute('src'); return; }
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ if (v.preload !== 'auto') v.preload = 'auto'; v.play().catch(function(){}); } else if (!v.paused) v.pause(); });
+  }, {rootMargin:'300px 0px'}).observe(v);
+})();
 
 /* ---------- общий цикл ---------- */
 function progress(sec){ var r = sec.getBoundingClientRect(), vh = innerHeight; if (r.bottom < -50 || r.top > vh + 50) return -1; return clamp(-r.top/(r.height - vh), 0, 1); }
