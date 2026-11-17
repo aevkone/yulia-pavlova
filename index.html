@@ -224,23 +224,87 @@ nav .pill{height:40px;padding:0 18px;font-size:14px}
 .prow p{color:rgba(255,255,255,.7);max-width:560px}
 @media (hover:hover){.prow:hover h3,.prow:hover p{transform:translateX(16px)}}
 
-/* ============ РЕТРИТ (моушн C) ============ */
-.retreat{position:relative;height:230vh;background:#08080F}
-.ret-pin{position:sticky;top:0;height:100svh;overflow:hidden}
-.ret-vids{position:absolute;inset:0;background:radial-gradient(90% 60% at 70% 75%,rgba(217,113,79,.38),transparent 70%),linear-gradient(180deg,#1b2433 0%,#3a2a33 55%,#120f14 100%)}
-.ret-vids video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
-.ret-vids::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,.62) 0%,rgba(8,8,10,.28) 45%,rgba(8,8,10,.55) 100%),linear-gradient(90deg,rgba(8,8,10,.5),transparent 60%)}
-.ret-copy{color:#fff}
-
-.ret-copy{position:absolute;inset:0;max-width:1320px;margin:0 auto;padding:13vh 32px 0;pointer-events:none}
-.ret-copy h2{font-size:clamp(56px,10vw,160px);letter-spacing:-.05em}
-.ret-copy .intro{font-size:20px;max-width:520px;margin-top:20px;line-height:1.4}
-.slot{position:relative;margin-top:5vh;height:150px;max-width:620px}
-.sl{position:absolute;left:0;top:0;opacity:0}
-.sl b{display:block;font-family:var(--mono);font-weight:500;font-size:14px;margin-bottom:10px}
-.sl span{font-size:clamp(26px,2.8vw,40px);letter-spacing:-.035em;line-height:1.12;font-weight:500}
-.ret-cta{position:absolute;right:32px;bottom:8vh;pointer-events:auto;opacity:0}
-.ret-clock{position:absolute;right:32px;top:13vh;font-family:var(--mono);font-size:15px}
+/* ============ РЕТРИТ В ТАИЛАНДЕ ============ */
+.trip{background:var(--panel);padding:110px 0 120px;color:#fff}
+.trip .a{color:var(--accent)}
+.trip-kick{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.trip-top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.trip-cover{position:relative;margin:0;border-radius:24px;overflow:hidden;aspect-ratio:4/5}
+.trip-cover img{width:100%;height:100%;object-fit:cover}
+.trip-cover figcaption{position:absolute;left:18px;bottom:18px;background:rgba(11,11,10,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:12px 16px;line-height:1.1}
+.trip-cover figcaption b{display:block;font-size:34px;font-weight:500;letter-spacing:-.04em}
+.trip-cover figcaption span{font-size:14px;color:var(--gray-d)}
+.trip-lead h2{font-size:clamp(40px,5.6vw,84px);margin-top:14px}
+.trip-sub{font-size:20px;line-height:1.45;color:rgba(255,255,255,.78);margin-top:22px;max-width:560px}
+.trip-tags{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 30px}
+.trip-tags li{border:1px solid var(--line-d);border-radius:999px;padding:7px 14px;font-size:14px;color:rgba(255,255,255,.85)}
+.trip .cta{display:flex;flex-wrap:wrap;gap:12px}
+.trip-note{font-size:14px;color:var(--gray-d);margin-top:18px}
+.trip-two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:90px}
+.trip-box{background:var(--black);border:1px solid var(--line-d);border-radius:24px;padding:34px}
+.trip-box h3,.trip-fmt h3,.trip-end h3{font-size:clamp(26px,2.6vw,36px);margin:10px 0 16px}
+.trip-box p{color:rgba(255,255,255,.75)}
+.trip-big{display:block;font-size:clamp(64px,8vw,110px);font-weight:500;letter-spacing:-.05em;line-height:1;margin:12px 0 16px;color:var(--accent)}
+.trip-fmt{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:center;margin-top:90px}
+.trip-fmt img,.trip-end img{width:100%;height:auto;object-position:50% 30%;border-radius:24px;aspect-ratio:3/4;object-fit:cover}
+.trip-list{list-style:none}
+.trip-list li{padding:16px 0;border-top:1px solid var(--line-d);color:rgba(255,255,255,.8)}
+.trip-h3{font-size:clamp(32px,3.8vw,54px);margin-top:100px}
+.trip-intro{color:rgba(255,255,255,.72);max-width:620px;margin-top:14px;font-size:18px}
+.trip-who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.trip-who>div{background:var(--black);border:1px solid var(--line-d);border-radius:20px;padding:26px;display:flex;flex-direction:column}
+.trip-who h4,.trip-steps h4,.trip-why7 h4{font-size:20px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.trip-who p{color:rgba(255,255,255,.7);font-size:15px;margin-top:10px}
+.trip-who .res{margin-top:auto;padding-top:16px;color:#fff}
+.trip-who .res::before{content:"→ ";color:var(--accent)}
+.trip-steps,.trip-why7{list-style:none;counter-reset:n;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:36px}
+.trip-steps li,.trip-why7 li{counter-increment:n;border-top:1px solid var(--line-d);padding-top:18px}
+.trip-steps li::before,.trip-why7 li::before{content:counter(n,decimal-leading-zero);display:block;font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:12px}
+.trip-steps p,.trip-why7 p{color:rgba(255,255,255,.7);font-size:15px;margin-top:10px}
+.trip-why7{grid-template-columns:repeat(3,1fr);row-gap:36px}
+.trip-days{margin-top:30px}
+.trip-days details{border-top:1px solid var(--line-d)}
+.trip-days details:last-child{border-bottom:1px solid var(--line-d)}
+.trip-days summary{align-items:center}
+.trip-days summary span{display:flex;flex-direction:column;gap:4px}
+.trip-days summary small{font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.day{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:0 0 30px;animation:faq-in 200ms var(--ease)}
+.day img{width:100%;height:auto;object-position:50% 35%;border-radius:16px;aspect-ratio:3/4;object-fit:cover}
+.day dl{display:grid;grid-template-columns:90px 1fr;gap:14px 20px;align-content:start;max-width:720px}
+.day dt{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:var(--gray-d);padding-top:3px}
+.day dd{color:rgba(255,255,255,.82)}
+.trip-num,.trip-no{list-style:none;margin-top:6px}
+.trip-num{counter-reset:n}
+.trip-num li,.trip-no li{padding:12px 0 12px 34px;border-top:1px solid var(--line-d);position:relative;color:rgba(255,255,255,.82)}
+.trip-num li{counter-increment:n}
+.trip-num li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:var(--mono);font-size:12px;color:var(--accent)}
+.trip-no li::before{content:"✕";position:absolute;left:2px;top:12px;color:var(--gray-d);font-size:14px}
+.trip-end{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:center;margin-top:100px}
+.trip-end p{color:rgba(255,255,255,.8);max-width:620px}
+.trip-end p+p{margin-top:14px}
+.trip-end .dim{color:var(--gray-d);font-size:15px}
+.trip-end .trip-q{font-size:21px;color:#fff;margin:26px 0 22px}
+@media (max-width:1024px){
+  .trip-top,.trip-fmt,.trip-end{grid-template-columns:1fr;gap:32px}
+  .trip-cover{aspect-ratio:4/3}
+  .trip-fmt img,.trip-end img{aspect-ratio:4/3;max-height:420px}
+  .trip-who,.trip-why7,.trip-steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .trip{padding:72px 0 80px}
+  .trip-two{grid-template-columns:1fr;margin-top:56px}
+  .trip-box{padding:24px}
+  .trip-fmt,.trip-end{margin-top:56px}
+  .trip-h3{margin-top:64px}
+  .trip-who,.trip-steps,.trip-why7{grid-template-columns:1fr;gap:24px}
+  .trip-who{gap:12px}
+  .trip .cta .pill{width:100%;justify-content:center}
+  .trip-sub{font-size:17px}
+  .day{grid-template-columns:1fr;gap:18px}
+  .day img{aspect-ratio:16/10}
+  .day dl{grid-template-columns:1fr;gap:4px}
+  .day dd{margin-bottom:12px}
+}
 
 /* ============ КАК ПРОХОДИТ + FAQ ============ */
 .how{padding:120px 0 40px}
@@ -324,12 +388,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .rail-list li b{display:none}
   .pb{font-size:clamp(40px,12.5vw,64px)}
   .path-big{height:80px}
-  .ret-copy{padding:11vh 20px 0}
-  .ret-copy .intro{font-size:17px}
-  .ret-clock{right:auto;left:20px;top:auto;bottom:calc(6vh + 70px)}
-  .ret-copy h2{font-size:clamp(44px,13vw,64px)}
-  .ret-cta{left:20px;right:20px;bottom:6vh}
-  .ret-cta .pill{width:100%;justify-content:center}
   .final-panel{padding:80px 22px;border-radius:22px}
   summary{font-size:18px}
   .story{font-size:18px}
@@ -351,8 +409,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .rm .ps{position:relative !important;opacity:1 !important;transform:none !important;margin-bottom:22px}
 .rm .path-big,.rm .path-pin>.path-photo{display:none}
 .rm .path-pin{display:block !important}
-.rm .focus,.rm .path,.rm .retreat{height:auto}
-.rm .focus-pin,.rm .path-pin,.rm .ret-pin{position:relative;height:auto;min-height:100svh;padding-top:80px;padding-bottom:80px}
+.rm .focus,.rm .path{height:auto}
+.rm .focus-pin,.rm .path-pin{position:relative;height:auto;min-height:100svh;padding-top:80px;padding-bottom:80px}
 .rm .path-big,.rm .path-sub{height:auto;min-height:0}
 .rm .pb,.rm .ps{position:relative}
 /* ---- единая обработка фото ---- */
@@ -561,6 +619,162 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
 </header>
 <div class="introband"><div class="wrap who"><img src="photos/portrait.jpg" width="52" height="52" alt=""><span><b translate="no">Юлия Павлова</b>17 лет руковожу людьми и стройками. 4 своих бизнеса. Команда до 70 человек.</span></div></div>
 
+<!-- РЕТРИТ В ТАИЛАНДЕ -->
+<section class="trip" id="retreat" aria-labelledby="trip-h">
+  <div class="wrap">
+    <div class="trip-top">
+      <figure class="trip-cover"><img src="photos/retreat/cover.jpg" width="1125" height="1500" alt="Храм на берегу моря в Паттайе на закате" loading="lazy"><figcaption><b>21–27</b><span>декабря 2026</span></figcaption></figure>
+      <div class="trip-lead">
+        <p class="trip-kick">Ретрит · Паттайя, Таиланд</p>
+        <h2 id="trip-h">Обнуление <span class="a">перед Новым годом</span></h2>
+        <p class="trip-sub">Семь дней у моря, после которых вы входите в год с чистой головой и планом, а не с усталостью.</p>
+        <ul class="trip-tags"><li>7 дней</li><li>Море</li><li>Остров</li><li>План на год</li></ul>
+        <div class="cta"><a class="pill w" href="https://t.me/YUA1325" target="_blank" rel="noopener">Узнать подробнее <svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a><a class="pill o" href="#trip-days">Программа по дням</a></div>
+        <p class="trip-note">Мест немного: формат держится на личной работе с каждой.</p>
+      </div>
+    </div>
+
+    <div class="trip-two">
+      <div class="trip-box">
+        <p class="trip-kick">Зачем</p>
+        <h3>Войти в год обновлённой</h3>
+        <p>С очищенной головой, разложенной по полочкам ситуацией и конкретным планом действий на следующий год. Не с усталостью и ощущением, что год прошёл непонятно куда, а с решением, принятым спокойно.</p>
+      </div>
+      <div class="trip-box trip-date">
+        <p class="trip-kick">Почему 21 декабря</p>
+        <b class="trip-big">21.12</b>
+        <p>День зимнего солнцестояния: самая длинная ночь в году, точка разворота. Отпускаем старое в самую тёмную ночь и выходим на свет с планом. 27-го мы дома, и Новый год каждая встречает уже с ним.</p>
+      </div>
+    </div>
+
+    <div class="trip-fmt">
+      <img src="photos/retreat/hotel.jpg" width="640" height="853" alt="Бассейн отеля среди пальм" loading="lazy">
+      <div>
+        <p class="trip-kick">Формат</p>
+        <h3>Отдых с глубокой работой, а не обучение</h3>
+        <ul class="trip-list">
+          <li>Летим в Таиланд кайфовать, а работа идёт параллельно. Никаких лекций, конспектов и домашних заданий.</li>
+          <li>Живём своей компанией в отеле в тайском стиле на берегу. Вечером свечи, разговоры, девчачий вайб.</li>
+          <li>Выезды недалеко, а один на яхте на тихий, не многолюдный остров.</li>
+          <li>Ведёт Юлия Павлова. С каждой участницей личная работа.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="trip-h3">Узнаёте себя?</h3>
+    <p class="trip-intro">Мы летим кайфовать, а параллельно разбираем то, с чем вы приехали: отношения, карьеру, «всё есть, а кажется мало».</p>
+    <div class="trip-who">
+      <div><h4>«Год закончился ни о чём»</h4><p>Отношения без будущего, непонятно, с кем и как встречать Новый год.</p><p class="res">Уедет с разложенной ситуацией и решением, принятым не в панике.</p></div>
+      <div><h4>«Хочу про себя, а не учиться»</h4><p>Тянет работу, дом и детей. На курсы и марафоны не пойдёт: наелась.</p><p class="res">Получит отдых, внутри которого идёт работа.</p></div>
+      <div><h4>«Сильная, но одна»</h4><p>Сама зарабатывает, всё решает. Устала слышать «ты слишком самостоятельная».</p><p class="res">Разберём, почему рядом никого, без «проработай отца».</p></div>
+      <div><h4>«Всё есть, а кажется мало»</h4><p>Муж, дети, работа, достаток, и ощущение, что это не то.</p><p class="res">Получит честный ответ: это кризис или тупик.</p></div>
+      <div><h4>«Потолок в найме»</h4><p>Выросла из должности. Уходить страшно, оставаться невыносимо.</p><p class="res">Уедет с планом отхода и пониманием, её это или нет.</p></div>
+      <div><h4>Живущие в Таиланде</h4><p>Не хватает своих: общения, круга, женской компании.</p><p class="res">Сообщество и личная работа без перелёта.</p></div>
+    </div>
+
+    <h3 class="trip-h3">Не лекции, а живой процесс</h3>
+    <ol class="trip-steps">
+      <li><h4>Запрос всегда другой</h4><p>Приходят «про деньги», а на деле хотят совсем другого. Игра и личный разбор поднимают настоящий запрос.</p></li>
+      <li><h4>Группа усиливает</h4><p>Делимся опытом, личными скилами и сложными ситуациями. Каждой есть чем поделиться, и каждая получает мощную женскую поддержку.</p></li>
+      <li><h4>Фото — часть работы</h4><p>Участница впервые видит себя красивой. Это меняет то, как она потом на себя смотрит.</p></li>
+      <li><h4>Делимся ощущениями</h4><p>После каждой практики общий разговор. Одна рассказывает, другие узнают себя: «И у меня так было».</p></li>
+    </ol>
+
+    <h3 class="trip-h3" id="trip-days">Программа по дням</h3>
+    <div class="trip-days">
+      <details open><summary><span><small>День 1 · пн 21.12 · солнцестояние</small>Заезд и самая длинная ночь</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d1.jpg" width="640" height="853" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>Заселяемся, отдыхаем после перелёта, купаемся в море. Даём себе долететь и выдохнуть.</dd>
+          <dt>День</dt><dd>Игра-знакомство по авторской методике Юлии. Каждая мягко называет свой запрос, без ощущения, что её «разбирают». За откровенность камушек поддержки.</dd>
+          <dt>Вечер</dt><dd>Ритуал солнцестояния: пишем на бумаге то, что оставляем в этом году, и сжигаем. Сегодня ночь разворота, дальше день только прибывает.</dd>
+        </dl></div></details>
+      <details><summary><span><small>День 2 · вт 22.12</small>Медитация у моря и личные разборы</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d2.jpg" width="640" height="853" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>Медитация у моря.</dd>
+          <dt>День</dt><dd>Личные разборы с Юлей, по два часа с каждой, по записи. Кто не на разборе, отдыхает: бассейн, массаж, море.</dd>
+          <dt>Вечер</dt><dd>Красиво одеваемся и едем в бич-клаб на берегу: фото, разговоры про отношения, опыт и сложные ситуации. Каждой есть чем поделиться и получить мощную женскую поддержку.</dd>
+        </dl></div></details>
+      <details><summary><span><small>День 3 · ср 23.12</small>Полёт, водопад и панорама</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d3.jpg" width="640" height="853" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>«Полёт гиббона» в верёвочном парке. Задание одно: прокричаться в полёте. Многие впервые за годы кричат в голос.</dd>
+          <dt>День</dt><dd>Водопад. Встаём под воду и представляем своё: одна смывает старые отношения, другая принимает поток изобилия. После делимся ощущениями.</dd>
+          <dt>Вечер</dt><dd>Ресторан на высоте: панорама, разговоры, итоги дня.</dd>
+        </dl></div></details>
+      <details><summary><span><small>День 4 · чт 24.12</small>Слоны, спа и тайский ужин</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d4.jpg" width="640" height="853" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>Купание со слонами только своей компанией, в деревне слонов. В Таиланде слоны считаются священными. Сопротивляться мощной силе слона, когда он окунает тебя в воду, невозможно: остаётся довериться и отключить контроль.</dd>
+          <dt>День</dt><dd>Крутейшее спа: расслабиться и смыть с себя остатки сомнений.</dd>
+          <dt>Вечер</dt><dd>Ужин в ресторане для местных: свежий улов, настоящая тайская кухня, никаких туристов. А потом посиделки при свечах.</dd>
+        </dl></div></details>
+      <details><summary><span><small>День 5 · пт 25.12</small>Тонкое тело, цветы и ужин над заливом</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d5.jpg" width="640" height="960" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>Кроме личного разбора работаем с тонким телом и душой: тайны рода, кармические привязки, мистические жизненные ситуации, чистка тонкого тела. Без чёрной магии и ритуалистики, только чистый разум и лёгкое погружение в эзотерику.</dd>
+          <dt>День</dt><dd>Цветочный мастер-класс. Когда работаешь руками с живыми цветами, негативные мысли отключаются, остаётся творчество и осмысление всего, что разобрали.</dd>
+          <dt>Вечер</dt><dd>Ужин на террасе с панорамой на залив: красивые образы, последние съёмки в городе, разговор о том, что изменилось за эти дни.</dd>
+        </dl></div></details>
+      <details><summary><span><small>День 6 · сб 26.12</small>Яхта и тихий остров</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d6.jpg" width="640" height="518" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>Яхта на тихий остров: метафорические карты, фрукты, шампанское, открытое море.</dd>
+          <dt>День</dt><dd>Заселяемся в домик у воды. Море, белый песок и никакой толпы.</dd>
+          <dt>Вечер</dt><dd>Медитация по чакрам на деньги и на отношения. Ночуем у моря.</dd>
+        </dl></div></details>
+      <details><summary><span><small>День 7 · вс 27.12</small>Рассвет, фотосессия и план на год</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary>
+        <div class="day"><img src="photos/retreat/d7.jpg" width="640" height="800" alt="" loading="lazy"><dl>
+          <dt>Утро</dt><dd>Рассвет и белый песок. Прогулка и фотосессия: Юля ставит позы, снимает и обрабатывает сама. Многие впервые видят себя такими.</dd>
+          <dt>День</dt><dd>Каждая пишет план на следующий год в золотом блокноте: что решила, какие шаги, в какие сроки. И вслух говорит, с чем уезжает.</dd>
+          <dt>Вечер</dt><dd>Возвращаемся на материк и улетаем домой. 31-го Новый год уже с планом.</dd>
+        </dl></div></details>
+    </div>
+
+    <div class="trip-two">
+      <div class="trip-box">
+        <h3>С чем вы вернётесь</h3>
+        <ol class="trip-num">
+          <li>Разложенная ситуация, та самая, с которой приехали</li>
+          <li>План на год своей рукой, с шагами и сроками</li>
+          <li>Фотографии, которые сделала и обработала Юля</li>
+          <li>Состояние, когда голова чистая и понятно, куда идти</li>
+          <li>Женский круг, который остаётся после ретрита</li>
+        </ol>
+      </div>
+      <div class="trip-box">
+        <h3>Чего здесь не будет</h3>
+        <ul class="trip-no">
+          <li>Просветления и обещаний, что жизнь изменится сама</li>
+          <li>Обетов молчания и подъёмов в 4:30</li>
+          <li>«Сдайте телефоны»</li>
+          <li>Лекций, конспектов и домашних заданий</li>
+          <li>Принудительных практик: не хочешь, не идёшь</li>
+          <li>Запрета на бокал вина за ужином</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="trip-h3">Семь причин выбрать именно этот ретрит</h3>
+    <ol class="trip-why7">
+      <li><h4>Два часа личного разбора и два часа разбора через тонкое тело</h4><p>Оба входят в программу, а не в платные опции.</p></li>
+      <li><h4>Разбор конкретного запроса</h4><p>Отношения, карьера, самооценка, а не абстрактное «вернуться к себе».</p></li>
+      <li><h4>Ведёт женщина, которая 17 лет строила и управляла</h4><p>Светский язык, язык предпринимателя, язык женщины, язык эзотерики. Без стеснения говорим то, что видим и думаем.</p></li>
+      <li><h4>План на год чётко, по полочкам</h4><p>Без воды и непонятных ритуалов. Не только запишем, но и разложим на уровне осознания.</p></li>
+      <li><h4>Возвращаемся до Нового года</h4><p>27-го дома, 31-го праздник уже с планом.</p></li>
+      <li><h4>Слоны, яхта, остров и фотосессия входят в программу</h4><p>А не за доплату.</p></li>
+      <li><h4>21 декабря, солнцестояние</h4><p>Ретрит построен вокруг этой даты.</p></li>
+    </ol>
+
+    <div class="trip-end">
+      <img src="photos/retreat/yulia.jpg" width="640" height="853" alt="Юлия Павлова" loading="lazy">
+      <div>
+        <h3>Что входит</h3>
+        <p>Проживание в отеле в тайском стиле, ночь на острове, все трансферы и переезды, яхта, все выезды и активности, личный разбор с Юлей, все групповые практики, фотосессия с обработкой, цветочный мастер-класс, золотой блокнот и подарки.</p>
+        <p class="dim">Отдельно оплачиваются авиабилеты, страховка и питание.</p>
+        <p>Через 30 и 90 дней онлайн-встреча группы: каждая открывает свой блокнот и сверяется с планом.</p>
+        <p class="trip-q">Напишите мне в личные сообщения, и я расскажу детали.</p>
+        <div class="cta"><a class="pill w" href="https://t.me/YUA1325" target="_blank" rel="noopener">Узнать подробнее <svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- СФЕРЫ -->
 <section class="pillars light" id="spheres">
   <div class="wrap">
@@ -697,11 +911,11 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
       <span class="go"><span>Цену назову в ответ на сообщение</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
     </a>
     <a class="fcard ph2" href="#retreat">
-      <span class="fphoto"><img src="photos/flowers-event.jpg" width="853" height="1280" alt="" loading="lazy"></span>
-      <span class="meta">Скоро. Лист ожидания</span>
-      <h3>Ретрит «Перезагрузка»</h3>
-      <p>Несколько дней в женской компании вдали от города: разговоры, тишина и своё.</p>
-      <span class="go"><span>Узнать первой</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+      <span class="fphoto"><img src="photos/retreat/d7.jpg" width="640" height="800" alt="" loading="lazy"></span>
+      <span class="meta">21–27 декабря, Паттайя</span>
+      <h3>Ретрит в Таиланде</h3>
+      <p>Семь дней у моря и план на год. Возвращаемся до Нового года.</p>
+      <span class="go"><span>Программа и детали</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
     </a>
   </div>
   <div class="wrap"><div class="rprog"><i data-rail="r1"></i></div></div>
@@ -731,30 +945,6 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
       <details><summary>Вы будете говорить жёстко?<svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Честно. Без грубости, но и без сахара: так быстрее доходим до сути.</p></details>
       <details><summary>Кому я не подойду?<svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Если нужна та, кто скажет «ты во всём права», это не ко мне. Если тяжёлое состояние или горе, сначала к врачу или психотерапевту: я их не заменяю.</p></details>
       <details><summary>Вы гарантируете результат?<svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></summary><p>Нет. И никто честный не гарантирует. Я помогаю увидеть ситуацию ясно. Дальше вы действуете сами.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- РЕТРИТ -->
-<section class="retreat" id="retreat" aria-label="Ретрит «Перезагрузка»">
-  <div class="ret-pin">
-    <div class="ret-vids" id="rvids">
-      <video aria-hidden="true" muted loop playsinline preload="none" poster="media/morning.jpg" src="media/morning.mp4"></video>
-      <video aria-hidden="true" muted loop playsinline preload="none" poster="media/day.jpg" src="media/day.mp4"></video>
-      <video aria-hidden="true" muted loop playsinline preload="none" poster="media/evening.jpg" src="media/evening.mp4"></video>
-      <video aria-hidden="true" muted loop playsinline preload="none" poster="media/night.jpg" src="media/night.mp4"></video>
-    </div>
-    <div class="ret-copy" id="rcopy">
-      <h2>Перезагрузка</h2>
-      <p class="intro">Ретрит: несколько дней в женской компании вдали от города. Каждая берёт то, что нужно именно ей.</p>
-      <div class="slot" id="rslot">
-        <div class="sl"><b>Утро</b><span>Моё выступление: одна тема на день</span></div>
-        <div class="sl"><b>День</b><span>Личные консультации и медитации с поющими чашами</span></div>
-        <div class="sl"><b>Вечер</b><span>Тренировка или флористический мастер-класс: цветы разгружают голову</span></div>
-        <div class="sl"><b>Ночь</b><span>Просто время вместе</span></div>
-      </div>
-      <div class="ret-clock" id="rclock">06:00</div>
-      <div class="ret-cta" id="rcta"><a href="#contact" class="pill w" data-fmt="Ретрит">Хочу в лист ожидания <svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></div>
     </div>
   </div>
 </section>
@@ -1105,36 +1295,6 @@ function pathRender(p){
   }
 }
 
-/* =====================================================
-   РЕТРИТ (моушн C): сутки за один скролл — четыре настоящих видео
-   (рассвет в джунглях → пляж днём → закат → ночь), смена по скроллу
-   ===================================================== */
-var RV = [].slice.call(document.querySelectorAll('#rvids video'));
-var LITE = !!(navigator.connection && navigator.connection.saveData);
-RV.forEach(function(v){ if (LITE){ v.removeAttribute('src'); v.load(); } });
-var rcopy = document.getElementById('rcopy'), rclock = document.getElementById('rclock'), rcta = document.getElementById('rcta'), retSec = document.getElementById('retreat');
-var SL = [].slice.call(document.querySelectorAll('.sl'));
-function retRender(now, p){
-  var f = p*4;
-  RV.forEach(function(v, i){
-    var o = clamp(1 - Math.abs(f - i - 0.5)*1.25, 0, 1);
-    if (i === 0 && f < 0.5) o = 1; if (i === 3 && f > 3.5) o = 1;
-    v.style.opacity = o.toFixed(3);
-    v.style.transform = 'scale('+(1.12 - 0.08*o).toFixed(4)+')';
-    if (o > 0.01 && !LITE && !RM){ if (v.preload !== 'auto') v.preload = 'auto'; if (v.paused) v.play().catch(function(){}); }
-    else if (!v.paused) v.pause();
-  });
-  var hour = 6 + p*18, hh = Math.floor(hour) % 24, mm = Math.floor((hour % 1)*4)*15;
-  rclock.textContent = (hh < 10 ? '0' : '')+hh+':'+(mm < 10 ? '0' : '')+mm;
-  SL.forEach(function(s, i){
-    var d = f - i - 0.5, o = clamp(1 - Math.abs(d)*2.2, 0, 1);
-    if (i === 0 && f < 0.5) o = 1; if (i === 3 && f > 3.5) o = 1;
-    s.style.opacity = o.toFixed(3); s.style.transform = 'translateY('+(-d*22).toFixed(1)+'px)';
-  });
-  var cta = sm(0.86, 0.96, p); rcta.style.opacity = cta.toFixed(3); rcta.style.visibility = cta < .05 ? 'hidden' : 'visible'; rcta.style.transform = 'translateY('+((1-cta)*16).toFixed(1)+'px)';
-}
-function retOff(){ RV.forEach(function(v){ if (!v.paused) v.pause(); }); }
-
 /* ---------- общий цикл ---------- */
 function progress(sec){ var r = sec.getBoundingClientRect(), vh = innerHeight; if (r.bottom < -50 || r.top > vh + 50) return -1; return clamp(-r.top/(r.height - vh), 0, 1); }
 function frame(ms){
@@ -1143,14 +1303,11 @@ function frame(ms){
   if (pVisible) pRender(now);
   if ((p = progress(focusSec)) >= 0) focusRender(now, p);
   if ((p = progress(pathSec)) >= 0) pathRender(p);
-  if ((p = progress(retSec)) >= 0) retRender(now, p); else retOff();
   requestAnimationFrame(frame);
 }
 if (RM){
-  focusRender(0, 1); pathRender(1); retRender(0, 0.5);
+  focusRender(0, 1); pathRender(1);
   PB.forEach(function(b){ b.style.opacity = 0; }); PB[PB.length-1].style.opacity = 1;
-  SL.forEach(function(s){ s.style.position = 'relative'; s.style.opacity = 1; s.style.filter = 'none'; s.style.transform = 'none'; s.style.marginBottom = '18px'; });
-  document.getElementById('rslot').style.height = 'auto'; rcta.style.opacity = 1;
   (function loop(ms){ pRender(ms/1000); requestAnimationFrame(loop); })(performance.now());
 } else requestAnimationFrame(frame);
 
@@ -1180,8 +1337,7 @@ function extras(now){
   var y = scrollY, H = document.documentElement.scrollHeight - innerHeight;
   nprog.style.transform = 'scaleX('+(H > 0 ? y/H : 0).toFixed(4)+')';
   var hb = heroEl.getBoundingClientRect().bottom, ct = contactEl.getBoundingClientRect().top;
-  var rp = progress(retSec);
-  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6 && !(rp > 0.82));
+  scta.classList.toggle('on', hb < 0 && ct > innerHeight*0.6);
   scta.style.visibility = scta.classList.contains('on') ? 'visible' : 'hidden';
   // кинетическая строка: позиция от скролла + скорость даёт наклон
   vel += ((y - lastY) - vel)*0.15; lastY = y;
@@ -1272,7 +1428,7 @@ pbtn.forEach(function(b, i){ b.tabIndex = i === 0 ? 0 : -1;
 var CONTACT = { tg: '', ig: '' };
 var chips = [].slice.call(document.querySelectorAll('#mb .chip')), mbmsg = document.getElementById('mbmsg'), mbnote = document.getElementById('mbnote');
 var TOPIC = {'Отношения':'про отношения','Уверенность':'про уверенность в себе','Работа':'про работу','Предназначение':'про то, чем мне заниматься'};
-var FMT = {'Пока не знаю':'Подскажите, какой формат подойдёт.','Личная консультация':'Хочу на личную консультацию.','Три встречи':'Интересует формат «Три встречи».','Месяц вместе':'Интересует формат «Месяц вместе».','Ретрит':'Хочу в лист ожидания ретрита «Перезагрузка».'};
+var FMT = {'Пока не знаю':'Подскажите, какой формат подойдёт.','Личная консультация':'Хочу на личную консультацию.','Три встречи':'Интересует формат «Три встречи».','Месяц вместе':'Интересует формат «Месяц вместе».','Ретрит':'Хочу на ретрит в Таиланд 21–27 декабря. Расскажите подробнее.'};
 function pick(k, label){ chips.forEach(function(c){ if (c.dataset.k === k) c.setAttribute('aria-pressed', String(c.textContent === label)); }); buildMsg(); }
 function val(k){ var c = chips.filter(function(c){ return c.dataset.k === k && c.getAttribute('aria-pressed') === 'true'; })[0]; return c ? c.textContent : ''; }
 function buildMsg(){ mbmsg.textContent = 'Здравствуйте, Юлия! У меня вопрос '+TOPIC[val('topic')]+'. '+FMT[val('fmt')]; mbnote.textContent = ''; }
