@@ -596,6 +596,26 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
 @media (max-width:1024px){.mpause{top:auto;bottom:12px;right:12px}}
 .paused .hero-bg,.paused body::after{animation-play-state:paused}
 .rm .mpause{display:none}
+
+/* ИГРА-ЗНАКОМСТВО (25.11.2026) */
+.game{padding:120px 0;background:var(--panel)}
+.game-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.game-grid>*{min-width:0}
+.game .eb{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.game h2{margin:18px 0 22px}
+.game .lead{color:rgba(255,255,255,.78);max-width:56ch}
+.game .lead+.lead{margin-top:14px}
+.gfmt{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 30px}
+.gfmt div{border:1px solid var(--line-d);border-radius:20px;padding:20px 20px 22px;background:rgba(255,255,255,.02)}
+.gfmt b{display:block;font-size:19px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+.gfmt span{font-size:15px;color:var(--gray-d);line-height:1.45}
+.game .cta{display:flex;flex-wrap:wrap;gap:12px}
+.game .note{margin-top:18px;font-size:14px;color:var(--gray-d)}
+.gshots{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.gshots img{display:block;width:100%;height:auto;border-radius:22px;border:1px solid var(--line-d);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.gshots img:nth-child(2){margin-top:90px}
+@media (max-width:1024px){.game-grid{grid-template-columns:1fr;gap:44px}.gshots{max-width:560px;width:100%}}
+@media (max-width:820px){.game{padding:84px 0}.gfmt{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -952,8 +972,41 @@ body::after{inset:-200px;animation:grain2 1.2s steps(6) infinite;will-change:tra
       <p>Семь дней у моря и план на год. Возвращаемся до Нового года.</p>
       <span class="go"><span>Программа и детали</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
     </a>
+    <a class="fcard ph2" href="#igra">
+      <span class="fphoto"><img src="photos/igra/vstrecha.jpg" width="640" height="853" alt="" loading="lazy"></span>
+      <span class="meta">Офлайн, онлайн или лично</span>
+      <h3>Трансформационная игра</h3>
+      <p>Кубик, поле и 140 карточек. За игрой видно, что на самом деле держит.</p>
+      <span class="go"><span>Как проходит и запись</span><svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+    </a>
   </div>
   <div class="wrap"><div class="rprog"><i data-rail="r1"></i></div></div>
+</section>
+
+<!-- ИГРА-ЗНАКОМСТВО -->
+<section class="game" id="igra" aria-labelledby="igra-h">
+  <div class="wrap game-grid">
+    <div>
+      <span class="eb">Трансформационная игра</span>
+      <h2 id="igra-h">Игра, в которой видно запрос каждой</h2>
+      <p class="lead">Кубик, поле и 140 карточек на семь тем: отношения, деньги, работа, семья, тело, уверенность и лёгкий разогрев. На карточке начало фразы, например: «Я остаюсь в отношениях, даже когда мне плохо, потому что…» Вы продолжаете её вслух и отмечаете, насколько это про вас.</p>
+      <p class="lead">Когда отвечаешь быстро и в лёгкой атмосфере, голова не успевает подобрать «правильный» ответ. А я по ходу слышу, что стоит за словами, и разбираю каждую. В конце у каждой итог: какие темы отозвались сильнее всего и с чем работать дальше.</p>
+      <div class="gfmt">
+        <div><b>Офлайн, 3–5 человек</b><span>Поле на большом экране или телефон по кругу</span></div>
+        <div><b>Онлайн-эфир</b><span>Вывожу игру на экран, играем из разных городов</span></div>
+        <div><b>Лично</b><span>Один на один, только ваш запрос</span></div>
+      </div>
+      <div class="cta">
+        <a class="pill w" href="https://t.me/YUA1325" target="_blank" rel="noopener">Записаться на игру <svg class="ph" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+        <a class="pill o" href="https://t.me/PavlovaJuliya1325" target="_blank" rel="noopener">Мой Telegram-канал</a>
+      </div>
+      <p class="note">Напишите мне «ИГРА», согласуем дату и формат. После игры можно продолжить в личной работе.</p>
+    </div>
+    <div class="gshots" aria-hidden="true">
+      <img src="photos/igra/pole.jpg" width="560" height="996" alt="" loading="lazy">
+      <img src="photos/igra/kartochka.jpg" width="620" height="709" alt="" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <!-- КАК ПРОХОДИТ -->
