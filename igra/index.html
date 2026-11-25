@@ -27,14 +27,18 @@
         <button class="pill accent" type="submit" aria-label="Добавить">+</button>
       </form>
       <ol id="players" class="players"></ol>
+      <label class="opt" id="opt-warmup-row">
+        <span><b>Первый круг — разогрев</b><small>У каждой первая карточка из лёгкой колоды</small></span>
+        <input type="checkbox" id="opt-warmup" checked><i class="switch" aria-hidden="true"></i>
+      </label>
       <div class="setup-actions">
         <button id="btn-start" class="pill accent wide" disabled>Начать игру</button>
       </div>
       <details class="rules">
         <summary>Как играть</summary>
         <ol>
-          <li>Бросай кубик, фишка пройдёт по полю.</li>
-          <li>Цвет клетки — тема. Откроется карточка с началом фразы.</li>
+          <li>Бросай кубик, фишка пройдёт по полю. Первый круг — лёгкие вопросы для разогрева.</li>
+          <li>Цвет и значок клетки — тема. Откроется карточка с началом фразы.</li>
           <li>Продолжи фразу вслух и расскажи, почему, как тебе кажется, она выпала именно тебе.</li>
           <li>Отметь, насколько фраза про тебя: «Точно нет», «И да, и нет» или «Точно да».</li>
           <li>Передай телефон следующей. В конце Юля увидит итоги.</li>
@@ -121,6 +125,7 @@
       <button class="sheet-item" data-act="summary">Итоги игры</button>
       <button class="sheet-item" data-act="skip">Пропустить ход</button>
       <button class="sheet-item" data-act="players">Изменить участниц</button>
+      <button class="sheet-item" data-act="sound" id="menu-sound">Звук: включён</button>
       <button class="sheet-item danger" data-act="new">Начать заново</button>
       <button class="sheet-item muted" data-act="close">Закрыть</button>
     </div>
